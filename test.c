@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:02:38 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 15:26:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:42:48 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	char *line;
+	char	*line;
 
 	line = NULL;
 	while (1)
 	{
-		line = readline("Minishell ");
+		line = readline("Minishell$ ");
 		//printf("%s/n", line);
 		printf("prout");
 		add_history(line);
