@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 23:02:16 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/28 22:55:35 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/28 23:02:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include "libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+void	ft_free_and_exit(t_data *data, int status)
 {
-	char	*line;
-	char	**paths;
-}	t_data;
-
-//ft_parse_env.c
-void	ft_parse_env(char **envp, t_data *data);
-
-//ft_exit.c
-void	ft_free_and_exit(t_data *data, int status);
-
-#endif
+	ft_free_strs(data->paths);
+	exit(status);
+}

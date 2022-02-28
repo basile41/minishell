@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 22:36:30 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/28 23:03:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	main(int argc, char **argv, char **envp)
 		if (!data.line)
 			break ;
 	}
-	ft_free_strs(data.paths);
+	ft_free_and_exit(&data, 0);
 }
