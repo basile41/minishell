@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 	line = NULL;
 	while (1)
 	{
-		line = readline("Minishell ");
+		line = readline("minishell: ");
 		//printf("%s/n", line);
 		printf("prout");
 		add_history(line);
