@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 21:06:29 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/28 22:23:22 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,14 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+typedef struct s_data
+{
+	char	*line;
+	char	**paths;
+}	t_data;
+
+//ft_parse_env.c
+void	ft_parse_env(char **envp, t_data *data);
 
 #endif

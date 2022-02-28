@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/02/28 18:52:03 by bregneau         ###   ########.fr        #
+#    Updated: 2022/02/28 22:29:53 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ OBJS_PATH		=	./objs/
 INC				=	-I $(addprefix $(LIBFT_PATH),.)\
 					-I ./includes
 
-SRCS			= 	main.c
+SRCS			= 	main.c \
+					ft_parse_env.c
 
 OBJS			=	$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
 

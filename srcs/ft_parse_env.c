@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_parse_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 22:36:30 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/28 21:28:03 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/28 22:31:46 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_parse_env(char **envp, t_data *data)
 {
-	t_data	data;
-
-	if (argc != 1)
-		return (0);
-	(void)argv;
-	ft_bzero(&data, sizeof(data));
-	ft_parse_env(envp, &data);
-	while (1)
-	{
-		data.line = readline("Minishell$ ");
-		add_history(data.line);
-		free(data.line);
-		if (!data.line)
-			break ;
-	}
-	ft_free_strs(data.paths);
+	if (envp == NULL)
+		return ;
+	while (*envp && ft_strncmp(*envp, "PATH=", 5) != 0)
+		envp++;
+	if (ft_strncmp(*envp, "PATH=", 5) == 0)
+		data->paths = ft_split(*envp + 5, ':');
 }
