@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 21:08:07 by bregneau         ###   ########.fr       */
+/*   Created: 2021/11/30 17:12:57 by bregneau          #+#    #+#             */
+/*   Updated: 2021/12/02 19:51:49 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	char	*line;
+	t_list	*list;
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	line = NULL;
-	while (1)
+	if (*alst)
 	{
-		line = readline("Minishell$ ");
-		add_history(line);
-		free(line);
-		if (!line)
-			break ;
+		list = ft_lstlast(*alst);
+		list->next = new;
 	}
+	else
+		*alst = new;
 }

@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 21:08:07 by bregneau         ###   ########.fr       */
+/*   Created: 2021/12/01 19:34:41 by bregneau          #+#    #+#             */
+/*   Updated: 2022/01/26 18:23:37 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_print_str(char *str)
 {
-	char	*line;
-
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	line = NULL;
-	while (1)
-	{
-		line = readline("Minishell$ ");
-		add_history(line);
-		free(line);
-		if (!line)
-			break ;
-	}
+	if (!str)
+		return (ft_print_str("(null)"));
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
 }

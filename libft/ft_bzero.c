@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 21:08:07 by bregneau         ###   ########.fr       */
+/*   Created: 2021/11/23 10:02:50 by bregneau          #+#    #+#             */
+/*   Updated: 2022/01/09 12:56:30 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int	main(int argc, char **argv, char **envp)
+#include "libft.h"
+/*
+void	ft_bzero(void *s, size_t n)
 {
-	char	*line;
+	size_t			i;
+	unsigned char	*b;
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	line = NULL;
-	while (1)
-	{
-		line = readline("Minishell$ ");
-		add_history(line);
-		free(line);
-		if (!line)
-			break ;
-	}
+	b = s;
+	i = 0;
+	while (i < n)
+		b[i++] = 0;
+}
+*/
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
 }

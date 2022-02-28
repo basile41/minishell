@@ -1,31 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 21:08:07 by bregneau         ###   ########.fr       */
+/*   Created: 2021/12/02 16:51:02 by bregneau          #+#    #+#             */
+/*   Updated: 2022/01/26 18:23:40 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../libft.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*ft_utoa(unsigned int n)
 {
-	char	*line;
+	unsigned int	nb;
+	char			tmp[12];
+	int				i;
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	line = NULL;
-	while (1)
+	nb = n;
+	i = 0;
+	if (n == 0)
+		return (ft_strdup("0"));
+	while (n)
 	{
-		line = readline("Minishell$ ");
-		add_history(line);
-		free(line);
-		if (!line)
-			break ;
+		n /= 10;
+		i++;
 	}
+	tmp[i] = '\0';
+	while (nb)
+	{
+		tmp[--i] = nb % 10 + '0';
+		nb /= 10;
+	}
+	return (ft_strdup(tmp));
+}
+
+int	ft_print_uint(unsigned int i)
+{
+	char	*a;
+
+	a = ft_utoa(i);
+	ft_putstr_fd(a, 1);
+	i = ft_strlen(a);
+	free(a);
+	return (i);
 }

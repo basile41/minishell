@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 21:08:07 by bregneau         ###   ########.fr       */
+/*   Created: 2021/12/01 16:52:21 by bregneau          #+#    #+#             */
+/*   Updated: 2022/01/26 18:23:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main(int argc, char **argv, char **envp)
-{
-	char	*line;
+# include "../libft.h"
+# include <stdarg.h>
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	line = NULL;
-	while (1)
-	{
-		line = readline("Minishell$ ");
-		add_history(line);
-		free(line);
-		if (!line)
-			break ;
-	}
-}
+int	ft_printf(const char *format, ...);
+
+int	ft_print_char(unsigned char c);
+int	ft_print_str(char *str);
+int	ft_print_ptr(void *ptr);
+int	ft_print_int(int i);
+int	ft_print_uint(unsigned int i);
+int	ft_print_hexa(unsigned long i, char c);
+int	ft_print_percent(void);
+
+#endif
