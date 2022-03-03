@@ -6,10 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 23:34:48 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 23:38:07 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/28 23:48:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_exec()
+int		ft_exec(char *file)
+{
+	
+}
