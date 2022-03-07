@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/03 18:25:39 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/03 22:25:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_process
 {
 	int		pipefd[2];
 	pid_t	*child;
+	char	**cmd;
 	char	*nextcmd;
 	int		pipe;
 }	t_process;

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:05:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/03 18:26:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/05 18:32:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_fork(t_process *p)
 
 void	ft_last_child(t_process *p)
 {
-	
+	return ;
 }
 
 void	ft_process(char *line, char **envp, int fdin)
@@ -42,19 +42,19 @@ void	ft_process(char *line, char **envp, int fdin)
 
 	//ft_parse_line
 	ft_bzero(&p, sizeof(p));
+	p.cmd = ft_split(line, ' ');
 	dup2(fdin, STDIN_FILENO);
+	close(fdin);
 	if (p.pipe)
 	{
 		ft_fork(&p);
-		if (p.child)
+		if (!p.child)
 			ft_process(p.nextcmd, envp, p.pipefd[0]);
 		dup2(p.pipefd[1], STDOUT_FILENO);
+		close(p.pipefd[1]);
+		waitpid(p.child, 0, WNOHANG);
 	}
 	else
 		ft_last_child(&p);
-	//ft_exec
-	waitpid(getppid(), 0, 0);
-	close(fdin);
-	close(p.pipefd[1]);
 	exit(0);
 }
