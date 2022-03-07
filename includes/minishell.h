@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/03 22:25:12 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:34:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,25 @@ typedef struct s_process
 	int		pipe;
 }	t_process;
 
+typedef struct s_pipeline
+{
+	int		redir_in;
+	int		redir_out;
+	char	**cmd;
+}	t_pipeline;
+
+typedef struct s_env
+{
+	char			*var;
+	struct s_env	*next;
+}	t_env;
+
 //ft_parse_env.c
 void	ft_parse_env(char **envp, t_data *data);
 
 //ft_exit.c
 void	ft_free_and_exit(t_data *data, int status);
+
+void	ft_fill_env(char **envp, t_env **env);
 
 #endif
