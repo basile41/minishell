@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/07 21:34:50 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:51:33 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_data
 {
 	char	*line;
+	char	**strs;
 	char	**paths;
 }	t_data;
 
@@ -47,6 +48,13 @@ typedef struct s_env
 	char			*var;
 	struct s_env	*next;
 }	t_env;
+
+typedef struct s_node
+{
+	char			*content;
+	struct s_btree	*left;
+	struct s_btree	*right;
+}	t_node;
 
 //ft_parse_env.c
 void	ft_parse_env(char **envp, t_data *data);

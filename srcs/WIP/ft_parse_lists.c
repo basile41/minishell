@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_parse_lists.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 16:52:21 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/08 17:29:01 by bregneau         ###   ########.fr       */
+/*   Created: 2022/03/08 14:28:00 by bregneau          #+#    #+#             */
+/*   Updated: 2022/03/08 14:54:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "minishell.h"
 
-# include "../libft.h"
-# include <stdarg.h>
+t_node	*ft_new_node(char *content)
+{
+	t_node	*new;
 
-int	ft_print_char(unsigned char c);
-int	ft_print_str(char *str);
-int	ft_print_ptr(void *ptr);
-int	ft_print_int(int i);
-int	ft_print_uint(unsigned int i);
-int	ft_print_hexa(unsigned long i, char c);
-int	ft_print_percent(void);
+	new = ft_calloc(1, sizeof(*new));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	return (new);
+}
 
-#endif
+
+void	ft_parse_list(char *line, t_node **btree)
+{
+	t_node	*node;
+	char	*ptr;
+
+	if (!line)
+		return ;
+	ptr = ft_strrchr(line, '|');
+	if (ptr != line && ptr[-1] 
+}

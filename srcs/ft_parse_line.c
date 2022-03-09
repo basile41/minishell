@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 16:52:21 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/08 17:29:01 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/28 21:24:06 by bregneau          #+#    #+#             */
+/*   Updated: 2022/03/08 19:53:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "minishell.h"
 
-# include "../libft.h"
-# include <stdarg.h>
-
-int	ft_print_char(unsigned char c);
-int	ft_print_str(char *str);
-int	ft_print_ptr(void *ptr);
-int	ft_print_int(int i);
-int	ft_print_uint(unsigned int i);
-int	ft_print_hexa(unsigned long i, char c);
-int	ft_print_percent(void);
-
-#endif
+void	ft_parse_line(char *line, t_data *data)
+{
+	char **words;
+	
+	data.strs = ft_split_f(line, ft_isblank);
+}

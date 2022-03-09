@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 21:36:46 by bregneau          #+#    #+#             */
-/*   Updated: 2021/11/26 15:18:34 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:07:31 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(char c)
-{
-	if (c == ' ' || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
-}
 
 int	ft_atoi(const char *str)
 {
