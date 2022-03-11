@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/08 20:15:49 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:53:14 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	ft_free_and_exit(&data, 0);
 }
-
-
-// int main(int ac, char **av, char **envp)
-// {
-// 	t_env	*env;
-// 	t_env	*ptr;
-	
-// 	(void)ac;
-// 	(void)av;
-// 	env = NULL;
-// 	ft_fill_env(envp, &env);
-// 	ptr = env;
-// 	while (ptr)
-// 	{
-// 		printf("%s\n", ptr->var);
-// 		ptr = ptr->next;
-// 	}
-// }
