@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/07 19:12:01 by bregneau         ###   ########.fr        #
+#    Updated: 2022/03/28 16:11:17 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ INC				=	-I $(addprefix $(LIBFT_PATH),.)\
 					-I ./includes
 
 SRCS			= 	main.c \
-					ft_parse_env.c \
+					ft_minishell.c \
+					ft_parse_line.c \
+					ft_split_toks.c \
+					ft_tokens.c \
 					ft_exit.c \
 					ft_env.c
 
@@ -40,7 +43,7 @@ $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(LIBFT) $(OBJS)
-					$(CC) $(OBJS) $(LIBS) -o $(NAME)
+					$(CC) $(OBJS) $(LIBS) -o $(NAME) #-fsanitize=address 
 
 $(LIBFT):	
 					@echo "Compiling libft..."

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/11 22:55:13 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:10:40 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,16 @@ typedef struct s_pipeline
 	char	**cmd;
 }	t_pipeline;
 
-//ft_parse_env.c
+void ft_minishell(char *line, t_data *data);
+
+//tokens
+t_token	*ft_new_tok(char *word, t_type type);
+void	ft_add_tok(t_token **first, t_token *tok);
+void	ft_free_toks(t_token **first);
+
+//ft_parser
+char	**ft_split_toks(char *s);
+int		ft_tok_rec(char *line, t_data *data);
 void	ft_parse_env(char **envp, t_data *data);
 
 //ft_exit.c

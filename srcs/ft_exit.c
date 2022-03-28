@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 22:55:35 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/28 23:02:07 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:30:18 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_free_and_exit(t_data *data, int status)
 {
-	ft_free_strs(data->paths);
+	(void)data;
+	//ft_free_strs(data->paths);
 	exit(status);
 }
