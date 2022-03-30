@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/28 17:13:31 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:54:52 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		line = readline("Minishell$ ");
 		ft_minishell(line, &data);
-		//ft_aff(data.tok);
+		ft_aff(data.tok);
 		free(line);
 	}
 	ft_free_and_exit(&data, 0);

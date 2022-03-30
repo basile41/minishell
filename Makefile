@@ -6,28 +6,41 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/28 16:11:17 by bregneau         ###   ########.fr        #
+#    Updated: 2022/03/30 21:02:12 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	minishell
 
-LIBFT_PATH		=	./libft/
-SRCS_PATH		=	./srcs/
-OBJS_PATH		=	./objs/
-
 INC				=	-I $(addprefix $(LIBFT_PATH),.)\
 					-I ./includes
 
-SRCS			= 	main.c \
-					ft_minishell.c \
-					ft_parse_line.c \
-					ft_split_toks.c \
-					ft_tokens.c \
-					ft_exit.c \
-					ft_env.c
+LIBFT_PATH		=	./libft/
+SRC_PATH		=	./src/
+OBJ_PATH		=	./obj/
 
-OBJS			=	$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
+PARSER_PATH		=	parser/
+BUILTINS_PATH	=	builtins/
+EXEC_PATH		=	exec/
+UTILS_PATH		=	utils/
+
+SRC_PARSER		=	ft_parse_line.c \
+					ft_tokens.c \
+					ft_split_toks.c 
+SRC_BUILTINS	=	
+SRC_EXEC		=	
+SRC_UTILS		=
+
+SRC				= 	main.c \
+					ft_minishell.c \
+					ft_exit.c \
+					ft_env.c \
+					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
+					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) \
+					$(addprefix $(EXEC_PATH), $(SRC_EXEC)) \
+					$(addprefix $(UTILS_PATH), $(SRC_UTILS))
+					
+OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 
 LIBFT			=	$(addprefix $(LIBFT_PATH),libft.a)
 
@@ -38,12 +51,13 @@ CFLAGS			=	-MMD -Wall -Wextra -Werror -g3 $(INC)
 
 all:				$(NAME)
 
-$(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
-					@mkdir -p $(OBJS_PATH)
+$(OBJ_PATH)%.o:		$(SRC_PATH)%.c
+					@mkdir -p $(OBJ_PATH)
+					@mkdir -p $(OBJ_PATH)$(PARSER_PATH)
 					@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):			$(LIBFT) $(OBJS)
-					$(CC) $(OBJS) $(LIBS) -o $(NAME) #-fsanitize=address 
+$(NAME):			$(LIBFT) $(OBJ)
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."
@@ -51,7 +65,7 @@ $(LIBFT):
 					@make clean -C $(LIBFT_PATH)
 
 clean:		
-					rm -rf $(OBJS_PATH)
+					rm -rf $(OBJ_PATH)
 
 fclean:				clean
 					rm -f $(LIBFT) $(NAME)
