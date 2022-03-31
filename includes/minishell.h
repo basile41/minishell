@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 12:08:09 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 19:15:26 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_pipeline
 	char	**cmd;
 }	t_pipeline;
 
-void ft_minishell(char *line, t_data *data);
+void	ft_minishell(char *line, t_data *data);
 
 //tokens
 t_token	*ft_new_tok(char *word, t_type type);
