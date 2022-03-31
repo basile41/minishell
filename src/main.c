@@ -6,7 +6,11 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
+<<<<<<< HEAD:srcs/main.c
 /*   Updated: 2022/03/30 18:50:23 by cmarion          ###   ########.fr       */
+=======
+/*   Updated: 2022/03/29 17:54:52 by bregneau         ###   ########.fr       */
+>>>>>>> d547056f10803a580c8da182f626aa9dd97ea4d8:src/main.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +48,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		line = readline("Minishell$ ");
 		ft_minishell(line, &data);
-		//ft_aff(data.tok);
+		ft_aff(data.tok);
 		free(line);
 	}*/
 	ft_free_and_exit(&data, 0);

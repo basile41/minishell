@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/30 17:27:09 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:04:10 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void ft_minishell(char *line, t_data *data);
 
 //tokens
 t_token	*ft_new_tok(char *word, t_type type);
-void	ft_add_tok(t_token **first, t_token *tok);
+t_token	*ft_add_tok(t_token **last, t_token *tok);
 void	ft_free_toks(t_token **first);
 
 //ft_parser
