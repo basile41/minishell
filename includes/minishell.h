@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 11:04:10 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:08:09 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,9 @@ void	sh_echo(char **cmd);
 void	sh_pwd(t_data *data);
 void	sh_env(t_data *data);
 void	sh_export(t_data *data, char **cmd);
+
+//Malloc
+void	*x_malloc(t_data *data, size_t size);
+void	freex_malloc(t_mall *mall);
 
 #endif

@@ -6,11 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-<<<<<<< HEAD:srcs/main.c
-/*   Updated: 2022/03/30 18:50:23 by cmarion          ###   ########.fr       */
-=======
-/*   Updated: 2022/03/29 17:54:52 by bregneau         ###   ########.fr       */
->>>>>>> d547056f10803a580c8da182f626aa9dd97ea4d8:src/main.c
+/*   Updated: 2022/03/31 15:24:56 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +35,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_bzero(&data, sizeof(data));
 	(void)envp;
 	ft_fill_env(envp, &data.env);
-	sh_export(&data, argv);
+	sh_env(&data);
 	
 	
 	

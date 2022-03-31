@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/30 11:53:03 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:32:33 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ typedef struct s_env
 	char			*var;
 	struct s_env	*next;
 }	t_env;
+
+typedef struct s_mall
+{
+	char			*var;
+	struct s_mall	*next;
+}	t_mall;
 
 typedef enum type
 {
@@ -51,6 +57,7 @@ typedef struct s_token
 typedef struct s_data
 {
 	t_env	*env;
+	t_mall	*mall;
 	t_token	*tok;
 }	t_data;
 

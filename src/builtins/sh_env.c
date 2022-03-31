@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_echo.c                                          :+:      :+:    :+:   */
+/*   sh_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 14:35:19 by cmarion           #+#    #+#             */
-/*   Updated: 2022/03/31 15:04:02 by cmarion          ###   ########.fr       */
+/*   Created: 2022/03/29 18:39:11 by cmarion           #+#    #+#             */
+/*   Updated: 2022/03/31 14:39:47 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sh_echo(char **cmd)
+void	sh_env(t_data *data)
 {
-	int	i;
-	int	n;
+	t_env	*env;
 
-	n = 0;
-	i = 1;
-	if (cmd[1] && ft_strcmp(cmd[1], "-n") == 0)
-	{	
-		n = 1;
-		i ++;
-	}
-	while(cmd[i])
+	env = data->env;
+	while(env)
 	{
-		printf("%s", cmd[i]);
-		if (cmd[i + 1])
-			printf(" ");
-		i ++;
+		if (ft_strchr(env->var, '='))
+			printf("%s\n", env->var);
+		env = env->next;
 	}
-	if (!n)
-		printf("\n");
 }
