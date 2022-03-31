@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
+#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/31 13:57:11 by cmarion          ###   ########.fr        #
+#    Updated: 2022/03/31 15:41:33 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."

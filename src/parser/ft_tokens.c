@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tokens.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:35:55 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 15:09:07 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 18:58:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_token	*ft_new_tok(char *word, t_type type)
 {
-	t_token *new;
-	
+	t_token	*new;
+
 	new = ft_calloc(1, sizeof(t_token));
 	if (new == NULL)
 		return (NULL);
@@ -45,9 +45,8 @@ t_token	*ft_add_tok(t_token **last, t_token *tok)
 
 void	ft_free_toks(t_token **first)
 {
-	t_token *curr;
-	t_token *next;
-	
+	t_token	*curr;
+	t_token	*next;
 
 	if (*first == NULL)
 		return ;

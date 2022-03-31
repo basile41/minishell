@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/29 17:57:10 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:58:45 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_heredoc(char	*delimiter)
 {
 	char	*line;
 	int		pipefd[2];
-	
+
 	pipe(pipefd);
 	line = readline("heredoc> ");
 	while (line && ft_strcmp(line, delimiter))
@@ -55,9 +55,9 @@ int	ft_heredoc(char	*delimiter)
 
 int	ft_tok_rec(char *line, t_data *data)
 {
-	char 	**strs;
+	char	**strs;
 	t_token	*tok;
-	int i;
+	int		i;
 
 	strs = ft_split_toks(line);
 	if (strs == NULL)
