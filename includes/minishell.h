@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/28 17:10:40 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:27:09 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,11 @@ void	ft_parse_env(char **envp, t_data *data);
 void	ft_free_and_exit(t_data *data, int status);
 
 void	ft_fill_env(char **envp, t_env **env);
+
+//Builtins
+void	sh_echo(char **cmd);
+void	sh_pwd(t_data *data);
+void	sh_env(t_data *data);
+void	sh_export(t_data *data, char **cmd);
 
 #endif

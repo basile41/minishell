@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   sh_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmarion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 22:55:35 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/30 17:31:14 by cmarion          ###   ########.fr       */
+/*   Created: 2022/03/07 15:42:57 by cmarion           #+#    #+#             */
+/*   Updated: 2022/03/29 11:50:43 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
-void	ft_free_and_exit(t_data *data, int status)
+void	sh_pwd(t_data *data)
 {
-	ft_lstclear((t_list **)data->env, free);
-	ft_free_toks(&data->tok);
-	exit(status);
+	char	*buf;
+
+	buf = NULL;
+	buf = getcwd(buf, 4096);
+	if (!buf)
+		ft_free_and_exit(data, 1);
+	printf("%s\n", buf);
+	free(buf);
 }

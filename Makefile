@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/28 16:11:17 by bregneau         ###   ########.fr        #
+#    Updated: 2022/03/30 18:50:10 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS			= 	main.c \
 					ft_split_toks.c \
 					ft_tokens.c \
 					ft_exit.c \
-					ft_env.c
+					ft_env.c \
+					sh_export.c
 
 OBJS			=	$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
 
