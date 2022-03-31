@@ -6,13 +6,12 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 11:32:33 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 18:55:57 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
 
 typedef struct s_env
 {
@@ -53,12 +52,12 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-
 typedef struct s_data
 {
 	t_env	*env;
 	t_mall	*mall;
 	t_token	*tok;
+	int		env_size;
 }	t_data;
 
 #endif

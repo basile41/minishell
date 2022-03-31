@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/31 13:57:11 by cmarion          ###   ########.fr        #
+#    Updated: 2022/03/31 18:57:05 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,10 @@ SRC_PARSER		=	ft_parse_line.c \
 SRC_BUILTINS	=	sh_echo.c \
 					sh_pwd.c \
 					sh_env.c \
-					sh_export.c
+					sh_export.c \
+					display_export.c
 SRC_EXEC		=	
-SRC_UTILS		=
+SRC_UTILS		=	x_malloc.c
 
 SRC				= 	main.c \
 					ft_minishell.c \
@@ -58,6 +59,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@mkdir -p $(OBJ_PATH)
 					@mkdir -p $(OBJ_PATH)$(PARSER_PATH)
 					@mkdir -p $(OBJ_PATH)$(BUILTINS_PATH)
+					@mkdir -p $(OBJ_PATH)$(UTILS_PATH)
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(LIBFT) $(OBJ)

@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_env.c                                           :+:      :+:    :+:   */
+/*   x_malloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:39:11 by cmarion           #+#    #+#             */
-/*   Updated: 2022/03/31 18:54:39 by cmarion          ###   ########.fr       */
+/*   Created: 2022/03/31 11:24:38 by cmarion           #+#    #+#             */
+/*   Updated: 2022/03/31 18:54:02 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
-void	sh_env(t_data *data)
+void	*x_malloc(t_data *data, size_t size)
 {
-	t_env	*env;
+	void	*ret;
 
-	env = data->env;
-	while (env)
+	ret = malloc(size);
+	if (!ret)
+		ft_free_and_exit(data, 1);
+	ft_lstadd_back((t_list **)data->mall, (t_list *)ft_lstnew(ret));
+	return (ret);
+}
+
+void	freex_malloc(t_mall *mall)
+{
+	t_mall	*temp;
+
+	temp = mall;
+	while (temp)
 	{
-		if (ft_strchr(env->var, '='))
-			printf("%s\n", env->var);
-		env = env->next;
+		free(temp->var);
+		temp = temp->next;
 	}
 }

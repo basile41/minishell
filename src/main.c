@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 15:24:56 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 19:16:57 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_aff(t_token *first)
 {
-	t_token *temp;
+	t_token	*temp;
 
 	temp = first;
 	while (temp)
@@ -34,11 +34,8 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	ft_bzero(&data, sizeof(data));
 	(void)envp;
-	ft_fill_env(envp, &data.env);
-	sh_env(&data);
-	
-	
-	
+	ft_fill_env(envp, &data);
+	sh_export(&data, argv);
 	/*line = (char *)1;
 	while (line)
 	{

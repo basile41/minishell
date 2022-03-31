@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:35:19 by cmarion           #+#    #+#             */
-/*   Updated: 2022/03/31 15:04:02 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/03/31 19:07:50 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sh_echo(char **cmd)
 		n = 1;
 		i ++;
 	}
-	while(cmd[i])
+	while (cmd[i])
 	{
 		printf("%s", cmd[i]);
 		if (cmd[i + 1])
