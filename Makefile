@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/31 11:04:19 by cmarion          ###   ########.fr        #
+#    Updated: 2022/03/31 11:19:25 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ UTILS_PATH		=	utils/
 SRC_PARSER		=	ft_parse_line.c \
 					ft_tokens.c \
 					ft_split_toks.c 
-SRC_BUILTINS	=	
+SRC_BUILTINS	=	sh_echo.c \
+					sh_pwd.c \
+					sh_export.c
 SRC_EXEC		=	
 SRC_UTILS		=
 
