@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 19:16:57 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:39:06 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int argc, char **argv, char **envp)
 	t_data	data;
 	//char	*line;
 
-	if (argc != 1)
-		return (0);
-	(void)argv;
+	//if (argc != 1)
+	//	return (0);
+	(void)argc;
 	ft_bzero(&data, sizeof(data));
 	(void)envp;
 	ft_fill_env(envp, &data);
