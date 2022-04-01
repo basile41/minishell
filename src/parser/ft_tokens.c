@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:35:55 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 18:58:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:15:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_token	*ft_new_tok(char *word, t_type type)
 t_token	*ft_add_tok(t_token **last, t_token *tok)
 {
 	//t_token *curr;
-	
+
 	if (*last == NULL)
 		*last = tok;
 	else

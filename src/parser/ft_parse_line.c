@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 18:58:45 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:42:56 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	ft_tok_rec(char *line, t_data *data)
 		tok = ft_add_tok(&tok, ft_new_tok(strs[i], ft_get_type(strs[i])));
 		if (tok->type == DLESS)
 		{
-			ft_heredoc(strs[++i]);
+			free(tok->word);
+			tok->word = ft_itoa(ft_heredoc(strs[++i]));
 		}
 		i++;
 	}
