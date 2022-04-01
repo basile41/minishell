@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/31 18:57:05 by cmarion          ###   ########.fr        #
+#    Updated: 2022/04/01 11:59:47 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC_BUILTINS	=	sh_echo.c \
 					sh_export.c \
 					display_export.c
 SRC_EXEC		=	
-SRC_UTILS		=	x_malloc.c
+SRC_UTILS		=	x_malloc.c \
+					env_lst.c
 
 SRC				= 	main.c \
 					ft_minishell.c \
@@ -45,6 +46,7 @@ SRC				= 	main.c \
 					$(addprefix $(UTILS_PATH), $(SRC_UTILS))
 					
 OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
+DEPS			=	$(addprefix $(OBJ_PATH),$(SRC:.c=.d))
 
 LIBFT			=	$(addprefix $(LIBFT_PATH),libft.a)
 
@@ -77,5 +79,7 @@ fclean:				clean
 					rm -f $(LIBFT) $(NAME)
 
 re:					fclean all
+
+-include			$(DEPS)
 
 .PHONY:				all bonus clean fclean re

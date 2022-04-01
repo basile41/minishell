@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   x_malloc.c                                         :+:      :+:    :+:   */
+/*   env_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 11:24:38 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/01 10:11:01 by cmarion          ###   ########.fr       */
+/*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
+/*   Updated: 2022/04/01 10:43:14 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	*x_malloc(t_data *data, size_t size)
+t_env	*env_last(t_env *lst)
 {
-	void	*ret;
-
-	ret = malloc(size);
-	if (!ret)
-		ft_free_and_exit(data, 1);
-	ft_lstadd_back((t_list **)data->mall, (t_list *)ft_lstnew(ret));
-	return (ret);
+	if (lst)
+		while (lst->next)
+			lst = lst->next;
+	return (lst);
 }
 
-void	freex_malloc(t_mall *mall)
+void	env_add_back(t_env **alst, t_env *new)
 {
-	t_mall	*temp;
+	t_env	*list;
 
-	temp = mall;
-	while (temp)
+	if (*alst)
 	{
-		free(temp->var);
-		temp = temp->next;
+		list = env_last(*alst);
+		list->next = new;
 	}
+	else
+		*alst = new;
+}
+
+t_env	*env_new(char *val, int env_disp)
+{
+	t_env	*new;
+
+	new = malloc(sizeof (t_env));
+	if (!new)
+		return (NULL);
+	new->var = val;
+	new->env_disp = env_disp;
+	new->next = NULL;
+	return (new);
 }
