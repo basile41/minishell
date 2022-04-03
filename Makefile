@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/31 15:41:33 by bregneau         ###   ########.fr        #
+#    Updated: 2022/04/01 21:19:59 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,13 @@ BUILTINS_PATH	=	builtins/
 EXEC_PATH		=	exec/
 UTILS_PATH		=	utils/
 
-SRC_PARSER		=	ft_parse_line.c \
+OBJ_DIRS		=	$(OBJ_PATH) \
+					$(addprefix $(OBJ_PATH),parser/ builtins/ exec/ utils/)
+
+SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
-					ft_split_toks.c 
+					ft_split_toks.c \
+					ft_heredoc.c
 SRC_BUILTINS	=	sh_echo.c \
 					sh_pwd.c \
 					sh_env.c \
@@ -54,13 +58,13 @@ CFLAGS			=	-MMD -Wall -Wextra -Werror -g3 $(INC)
 
 all:				$(NAME)
 
+$(OBJ_DIRS):
+					@mkdir -p $(OBJ_DIRS)
+
 $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
-					@mkdir -p $(OBJ_PATH)
-					@mkdir -p $(OBJ_PATH)$(PARSER_PATH)
-					@mkdir -p $(OBJ_PATH)$(BUILTINS_PATH)
 					@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):			$(LIBFT) $(OBJ)
+$(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
 					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	

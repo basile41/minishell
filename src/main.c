@@ -6,23 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 19:27:03 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/03 19:55:19 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_aff(t_token *first)
-{
-	t_token	*temp;
 
-	temp = first;
-	while (temp)
-	{
-		printf("%s : %i\n", temp->word, temp->type);
-		temp = temp->next;
-	}
-}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -41,8 +31,17 @@ int	main(int argc, char **argv, char **envp)
 	{
 		line = readline("Minishell$ ");
 		ft_minishell(line, &data);
-		ft_aff(data.tok);
 		free(line);
 	}
 	ft_free_and_exit(&data, 0);
 }
+
+// int	main(int argc, char **argv)
+// {
+// 	t_data	data;
+
+// 	(void)argc;
+// 	ft_bzero(&data, sizeof(data));
+// 	ft_tok_rec(argv[1], &data);
+// 	ft_free_toks(&data.tok);
+// }
