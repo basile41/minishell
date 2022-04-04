@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/03 21:29:25 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:03:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_type	ft_get_type(char *s)
 	return (WORD);
 }
 
-int	ft_tok_rec(char *line, t_data *data)
+int	ft_tok_rec(char *line)
 {
 	char	**strs;
 	t_token	*tok;
@@ -49,8 +49,8 @@ int	ft_tok_rec(char *line, t_data *data)
 	while (strs[i])
 	{
 		tok = ft_add_tok(&tok, ft_new_tok(strs[i], ft_get_type(strs[i])));
-		if (!data->tok)
-			data->tok = tok;
+		if (!g_data.tok)
+			g_data.tok = tok;
 		if (tok->type == DLESS)
 		{
 			free(tok->word);

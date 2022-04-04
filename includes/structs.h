@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 19:15:15 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:10:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,20 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+typedef struct s_global
+{
+	t_env	*env;
+	t_mall	*mall;
+	t_token	*tok;
+}	t_global;
+
 typedef struct s_data
 {
 	t_env	*env;
 	t_mall	*mall;
 	t_token	*tok;
 }	t_data;
+
+extern t_global	g_data;
 
 #endif

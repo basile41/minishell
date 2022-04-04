@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/01 21:19:59 by bregneau         ###   ########.fr        #
+#    Updated: 2022/04/04 17:07:08 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
 					ft_split_toks.c \
 					ft_heredoc.c
-SRC_BUILTINS	=	sh_echo.c \
-					sh_pwd.c \
-					sh_env.c \
-					sh_export.c
+# SRC_BUILTINS	=	sh_echo.c \
+# 					sh_pwd.c \
+# 					sh_env.c \
+# 					sh_export.c
 SRC_EXEC		=	
 SRC_UTILS		=
 
@@ -43,9 +43,9 @@ SRC				= 	main.c \
 					ft_exit.c \
 					ft_env.c \
 					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
-					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) \
 					$(addprefix $(EXEC_PATH), $(SRC_EXEC)) \
-					$(addprefix $(UTILS_PATH), $(SRC_UTILS))
+					$(addprefix $(UTILS_PATH), $(SRC_UTILS)) \
+					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) 
 					
 OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 22:55:35 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 17:36:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:08:43 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_null(void *ptr)
 	(void)ptr;
 }
 
-void	ft_free_and_exit(t_data *data, int status)
+void	ft_free_and_exit(int status)
 {
-	ft_lstclear((t_list **)&data->env, ft_null);
-	ft_free_toks(&data->tok);
+	ft_lstclear((t_list **)&g_data.env, ft_null);
+	ft_free_toks(&g_data.tok);
 	exit(status);
 }
