@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
+#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/01 11:59:47 by cmarion          ###   ########.fr        #
+#    Updated: 2022/04/04 17:50:04 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,17 @@ BUILTINS_PATH	=	builtins/
 EXEC_PATH		=	exec/
 UTILS_PATH		=	utils/
 
-SRC_PARSER		=	ft_parse_line.c \
+OBJ_DIRS		=	$(OBJ_PATH) \
+					$(addprefix $(OBJ_PATH),parser/ builtins/ exec/ utils/)
+
+SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
-					ft_split_toks.c 
-SRC_BUILTINS	=	sh_echo.c \
-					sh_pwd.c \
-					sh_env.c \
-					sh_export.c \
-					display_export.c
+					ft_split_toks.c \
+					ft_heredoc.c
+# SRC_BUILTINS	=	sh_echo.c \
+# 					sh_pwd.c \
+# 					sh_env.c \
+# 					sh_export.c
 SRC_EXEC		=	
 SRC_UTILS		=	x_malloc.c \
 					env_lst.c
@@ -41,9 +44,9 @@ SRC				= 	main.c \
 					ft_exit.c \
 					ft_env.c \
 					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
-					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) \
 					$(addprefix $(EXEC_PATH), $(SRC_EXEC)) \
-					$(addprefix $(UTILS_PATH), $(SRC_UTILS))
+					$(addprefix $(UTILS_PATH), $(SRC_UTILS)) \
+					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) 
 					
 OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 DEPS			=	$(addprefix $(OBJ_PATH),$(SRC:.c=.d))
@@ -57,15 +60,14 @@ CFLAGS			=	-MMD -Wall -Wextra -Werror -g3 $(INC)
 
 all:				$(NAME)
 
+$(OBJ_DIRS):
+					@mkdir -p $(OBJ_DIRS)
+
 $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
-					@mkdir -p $(OBJ_PATH)
-					@mkdir -p $(OBJ_PATH)$(PARSER_PATH)
-					@mkdir -p $(OBJ_PATH)$(BUILTINS_PATH)
-					@mkdir -p $(OBJ_PATH)$(UTILS_PATH)
 					@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):			$(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
+$(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."

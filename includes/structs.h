@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/04 13:48:45 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:48:29 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+typedef struct s_global
+{
+	t_env	*env;
+	t_mall	*mall;
+	t_token	*tok;
+}	t_global;
+
 typedef struct s_data
 {
 	t_env	*env;
@@ -62,5 +69,7 @@ typedef struct s_data
 	t_token	*tok;
 	int		env_size;
 }	t_data;
+
+extern t_global	g_data;
 
 #endif

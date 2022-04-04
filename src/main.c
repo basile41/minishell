@@ -3,46 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/01 16:39:06 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:53:36 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_aff(t_token *first)
-{
-	t_token	*temp;
-
-	temp = first;
-	while (temp)
-	{
-		printf("%s : %i\n", temp->word, temp->type);
-		temp = temp->next;
-	}
-}
+t_global	g_data;
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_data	data;
-	//char	*line;
+	char	*line;
 
-	//if (argc != 1)
-	//	return (0);
-	(void)argc;
-	ft_bzero(&data, sizeof(data));
+	if (argc != 1)
+		return (0);
+	(void)argv;
+	ft_bzero(&g_data, sizeof(g_data));
 	(void)envp;
-	ft_fill_env(envp, &data);
-	sh_export(&data, argv);
-	/*line = (char *)1;
+	//ft_fill_env(envp, &g_data.env);
+	//sh_env(&data);
+	line = (char *)1;
 	while (line)
 	{
 		line = readline("Minishell$ ");
-		ft_minishell(line, &data);
-		ft_aff(data.tok);
+		ft_minishell(line);
 		free(line);
-	}*/
-	ft_free_and_exit(&data, 0);
+	}
+	ft_free_and_exit(0);
 }
+
+// int	main(int argc, char **argv)
+// {
+// 	t_data	data;
+
+// 	(void)argc;
+// 	ft_bzero(&data, sizeof(data));
+// 	ft_tok_rec(argv[1], &data);
+// 	ft_free_toks(&data.tok);
+// }

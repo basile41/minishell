@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 15:42:57 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/04 17:04:23 by bregneau         ###   ########.fr       */
+/*   Created: 2022/04/01 19:13:28 by bregneau          #+#    #+#             */
+/*   Updated: 2022/04/01 19:14:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sh_pwd(t_data *data)
+int	ft_heredoc(char	*delimiter)
 {
-	char	*buf;
+	char	*line;
+	int		pipefd[2];
 
-	buf = NULL;
-	buf = getcwd(buf, 4096);
-	if (!buf)
-		ft_free_and_exit(data, 1);
-	printf("%s\n", buf);
-	free(buf);
+	pipe(pipefd);
+	line = readline("heredoc> ");
+	while (line && ft_strcmp(line, delimiter))
+	{
+		write(pipefd[1], line, ft_strlen(line));
+		free(line);
+		line = readline("heredoc> ");
+	}
+	free(line);
+	close(pipefd[1]);
+	return (pipefd[0]);
 }
