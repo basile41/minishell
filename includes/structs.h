@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/01 09:45:44 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/04 13:48:45 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 typedef struct s_env
 {
 	char			*var;
+	char			*key;
+	char			*value;
 	int				env_disp;
 	struct s_env	*next;
 }	t_env;

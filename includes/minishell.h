@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/01 12:10:00 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:58:35 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ void	ft_parse_env(char **envp, t_data *data);
 //ft_exit.c
 void	ft_free_and_exit(t_data *data, int status);
 
+//ft_env.c
 void	ft_fill_env(char **envp, t_data *data);
+void	ft_lstfree_env(t_data *data);
 
 //Builtins
 void	sh_echo(char **cmd);
@@ -64,7 +66,9 @@ void	export_display(t_data *data);
 //Utils
 void	*x_malloc(t_data *data, size_t size);
 void	freex_malloc(t_mall *mall);
+char	*get_env_key(t_data *data, char *var);
+char	*get_env_value(char *var);
 void	env_add_back(t_env **alst, t_env *new);
-t_env	*env_new(char *val, int env_disp);
+t_env	*env_new(t_data *data, char *val, int env_disp);
 
 #endif
