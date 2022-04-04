@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/04 17:50:04 by bregneau         ###   ########.fr        #
+#    Updated: 2022/04/04 18:29:08 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,17 +36,17 @@ SRC_PARSER		=	ft_tok_rec.c \
 # 					sh_env.c \
 # 					sh_export.c
 SRC_EXEC		=	
-SRC_UTILS		=	x_malloc.c \
+#SRC_UTILS		=	x_malloc.c \
 					env_lst.c
 
 SRC				= 	main.c \
 					ft_minishell.c \
 					ft_exit.c \
-					ft_env.c \
 					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
 					$(addprefix $(EXEC_PATH), $(SRC_EXEC)) \
 					$(addprefix $(UTILS_PATH), $(SRC_UTILS)) \
-					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) 
+					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) \
+#					ft_env.c \
 					
 OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 DEPS			=	$(addprefix $(OBJ_PATH),$(SRC:.c=.d))
