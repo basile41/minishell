@@ -66,26 +66,26 @@ void	add_var_to_env(char **cmd)
 	int		key_nexist;
 	t_env	*env;
 
-	i = 1;
-	while (cmd[i])
+	i = 0;
+	while (cmd[++ i])
 	{
 		key_valid = env_name_verif(cmd[i]);
 		key_nexist = env_key_nexist(cmd[i]);
-		if (key_valid >= 0 && key_nexist)
-			env_add_back(&g_data.env, env_new(cmd[i], 1));
-		else if (key_valid >= 0 && key_nexist == 0)
+		if (key_nexist == 0)
 		{
 			env = g_data.env;
 			while (ft_strncmp(env->key, cmd[i], key_valid - 1) != 0)
 				env = env->next;
-			free(env->key);
-			env->var = cmd[i];
-			env->key = get_env_key(cmd[i]);
-			env->value = get_env_value(cmd[i]);
+			ft_free_env(env);
+			if (key_valid == -1)
+				env_add_back(&g_data.env, env_new(cmd[i], 0));
+			else if (key_valid >= 0)
+				env_add_back(&g_data.env, env_new(cmd[i], 1));
 		}
+		else if (key_valid >= 0 && key_nexist)
+			env_add_back(&g_data.env, env_new(cmd[i], 1));
 		else if (key_valid == -1 && key_nexist)
 			env_add_back(&g_data.env, env_new(cmd[i], 0));
-		i ++;
 	}
 }
 
@@ -97,8 +97,5 @@ void	sh_export(char **cmd)
 			export_display();
 	}
 	else
-	{
 		add_var_to_env(cmd);
-		export_display();
-	}
 }

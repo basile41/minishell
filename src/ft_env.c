@@ -12,23 +12,26 @@
 
 #include "minishell.h"
 
-/*void	ft_free_env(t_env env)
+void	ft_free_env(t_env *env)
 {
-	t_env	*env;
 	t_env	*temp;
 
-	if (data->env)
+	if (g_data.env)
 	{
-		env = data->env;
-		while (env)
+		temp = g_data.env;
+		while (temp)
 		{
-			free(env->key);
-			temp = env->next;
-			free(env);
-			env = temp;
+			if (temp->next == env)
+			{
+				temp->next = env->next;
+				free(env->key);
+				free(env);
+				break ;
+			}
+			temp = temp->next;
 		}
 	}
-}*/
+}
 
 void	ft_lstfree_env(void)
 {
@@ -46,7 +49,6 @@ void	ft_lstfree_env(void)
 			env = temp;
 		}
 	}
-
 }
 
 void	ft_fill_env(char **envp)

@@ -19,8 +19,13 @@ void	sh_env(void)
 	env = g_data.env;
 	while (env)
 	{
-		if (ft_strchr(env->var, '='))
-			printf("%s\n", env->var);
+		if (env->env_disp)
+		{
+			printf("%s", env->key);
+			if (env->value)
+				printf("=%s", env->value);
+			printf("\n");
+		}
 		env = env->next;
 	}
 }

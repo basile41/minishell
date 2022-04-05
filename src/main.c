@@ -24,6 +24,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_bzero(&g_data, sizeof(g_data));
 	ft_fill_env(envp);
 	sh_export(argv);
+	sh_env();
 	/*line = (char *)1;
 	while (line)
 	{

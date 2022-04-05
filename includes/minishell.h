@@ -54,8 +54,9 @@ int		ft_heredoc(char	*delimiter);
 void	ft_free_and_exit(int status);
 
 //ft_env.c
-void	ft_fill_env(char **envp);
+void	ft_free_env(t_env *env);
 void	ft_lstfree_env(void);
+void	ft_fill_env(char **envp);
 
 //Builtins
 void	sh_echo(char **cmd);

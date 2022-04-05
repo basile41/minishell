@@ -35,7 +35,7 @@ char	*get_env_value(char *var)
 	i = 0;
 	while (var[i] && var[i] != '=')
 		i ++;
-	if (i < (int)ft_strlen(var))
+	if (var[i] == '=' && var[i + 1])
 		return (var + i + 1);
 	else
 		return (NULL);
