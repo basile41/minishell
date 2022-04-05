@@ -36,7 +36,7 @@ void	sort_display_env(char **tenv)
 	}
 }
 
-void	print_name_env(t_data *data, char *env)
+void	print_name_env(char *env)
 {
 	char	*name;
 	int		i;
@@ -46,7 +46,7 @@ void	print_name_env(t_data *data, char *env)
 		i ++;
 	name = malloc(sizeof(char) * i + 1);
 	if (!name)
-		ft_free_and_exit(data, 1);
+		ft_free_and_exit(1);
 	ft_strlcpy(name, env, i + 1);
 	name[i + 2] = '\0';
 	printf("%s", name);
@@ -68,22 +68,22 @@ void	print_val_env(char *env)
 	printf("\n");
 }
 
-void	export_display(t_data *data)
+void	export_display(void)
 {
 	char	**tenv;
 	t_env	*env;
 	int		i;
 
-	env = data->env;
+	env = g_data.env;
 	i = 0;
-	tenv = malloc(sizeof(char *) * data->env_size);
+	tenv = malloc(sizeof(char *) * g_data.env_size);
 	if (!tenv)
-		ft_free_and_exit(data, 1);
+		ft_free_and_exit(1);
 	while (env)
 	{
 		tenv[i] = ft_strdup(env->var);
 		if (!tenv[i ++])
-			ft_free_and_exit(data, 1);
+			ft_free_and_exit(1);
 		env = env->next;
 	}
 	sort_display_env(tenv);
@@ -91,7 +91,7 @@ void	export_display(t_data *data)
 	while (tenv[i])
 	{
 		printf("declare -x ");
-		print_name_env(data, tenv[i]);
+		print_name_env(tenv[i]);
 		print_val_env(tenv[i ++]);
 	}
 	ft_free_strs(tenv);

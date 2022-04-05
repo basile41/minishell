@@ -12,14 +12,14 @@
 
 #include "minishell.h"
 
-void	*x_malloc(t_data *data, size_t size)
+void	*x_malloc(size_t size)
 {
 	void	*ret;
 
 	ret = malloc(size);
 	if (!ret)
-		ft_free_and_exit(data, 1);
-	ft_lstadd_back((t_list **)data->mall, (t_list *)ft_lstnew(ret));
+		ft_free_and_exit(1);
+	ft_lstadd_back((t_list **)g_data.mall, (t_list *)ft_lstnew(ret));
 	return (ret);
 }
 

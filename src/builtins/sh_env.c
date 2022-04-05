@@ -12,11 +12,11 @@
 
 #include "minishell.h"
 
-void	sh_env(t_data *data)
+void	sh_env(void)
 {
 	t_env	*env;
 
-	env = data->env;
+	env = g_data.env;
 	while (env)
 	{
 		if (ft_strchr(env->var, '='))

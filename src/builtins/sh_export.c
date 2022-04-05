@@ -18,13 +18,13 @@ int	exit_not_a_valid_identifier(void)
 	return (0);
 }
 
-int	env_key_nexist(t_data *data, char *cmd)
+int	env_key_nexist(char *cmd)
 {
 	t_env	*env;
 	char	*name;
 
-	env = data->env;
-	name = get_env_key(data, cmd);
+	env = g_data.env;
+	name = get_env_key(cmd);
 	while (env)
 	{
 		if (ft_strcmp(env->key, name) == 0)
@@ -59,7 +59,7 @@ int	env_name_verif(char *cmd)
 		return (exit_not_a_valid_identifier());
 }
 
-void	add_var_to_env(t_data *data, char **cmd)
+void	add_var_to_env(char **cmd)
 {
 	int		i;
 	int		key_valid;
@@ -70,35 +70,35 @@ void	add_var_to_env(t_data *data, char **cmd)
 	while (cmd[i])
 	{
 		key_valid = env_name_verif(cmd[i]);
-		key_nexist = env_key_nexist(data, cmd[i]);
+		key_nexist = env_key_nexist(cmd[i]);
 		if (key_valid >= 0 && key_nexist)
-			env_add_back(&data->env, env_new(data, cmd[i], 1));
+			env_add_back(&g_data.env, env_new(cmd[i], 1));
 		else if (key_valid >= 0 && key_nexist == 0)
 		{
-			env = data->env;
+			env = g_data.env;
 			while (ft_strncmp(env->key, cmd[i], key_valid - 1) != 0)
 				env = env->next;
 			free(env->key);
 			env->var = cmd[i];
-			env->key = get_env_key(data, cmd[i]);
+			env->key = get_env_key(cmd[i]);
 			env->value = get_env_value(cmd[i]);
 		}
 		else if (key_valid == -1 && key_nexist)
-			env_add_back(&data->env, env_new(data, cmd[i], 0));
+			env_add_back(&g_data.env, env_new(cmd[i], 0));
 		i ++;
 	}
 }
 
-void	sh_export(t_data *data, char **cmd)
+void	sh_export(char **cmd)
 {
 	if (!cmd[1])
 	{
-		if (data->env)
-			export_display(data);
+		if (g_data.env)
+			export_display();
 	}
 	else
 	{
-		add_var_to_env(data, cmd);
-		export_display(data);
+		add_var_to_env(cmd);
+		export_display();
 	}
 }

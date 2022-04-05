@@ -19,8 +19,7 @@ void	ft_null(void *ptr)
 
 void	ft_free_and_exit(int status)
 {
-	//ft_lstfree_env(data);
-	ft_lstclear((t_list **)&g_data.env, ft_null);
+	ft_lstfree_env();
 	ft_free_toks(&g_data.tok);
 	exit(status);
 }

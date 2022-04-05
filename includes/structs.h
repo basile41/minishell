@@ -60,6 +60,7 @@ typedef struct s_global
 	t_env	*env;
 	t_mall	*mall;
 	t_token	*tok;
+	int		env_size;
 }	t_global;
 
 typedef struct s_data

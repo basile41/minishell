@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char	*get_env_key(t_data *data, char *var)
+char	*get_env_key(char *var)
 {
 	char	*key;
 	int		i;
@@ -22,7 +22,7 @@ char	*get_env_key(t_data *data, char *var)
 		i ++;
 	key = malloc(sizeof(char) * i + 1);
 	if (!key)
-		ft_free_and_exit(data, 1);
+		ft_free_and_exit(1);
 	ft_strlcpy(key, var, i + 1);
 	key[i + 2] = '\0';
 	return (key);
@@ -62,15 +62,15 @@ void	env_add_back(t_env **alst, t_env *new)
 		*alst = new;
 }
 
-t_env	*env_new(t_data *data, char *var, int env_disp)
+t_env	*env_new(char *var, int env_disp)
 {
 	t_env	*new;
 
 	new = malloc(sizeof (t_env));
 	if (!new)
-		return (NULL);
+		ft_free_and_exit(1);
 	new->var = var;
-	new->key = get_env_key(data, var);
+	new->key = get_env_key(var);
 	new->value = get_env_value(var);
 	new->env_disp = env_disp;
 	new->next = NULL;

@@ -54,22 +54,22 @@ int		ft_heredoc(char	*delimiter);
 void	ft_free_and_exit(int status);
 
 //ft_env.c
-void	ft_fill_env(char **envp, t_data *data);
-void	ft_lstfree_env(t_data *data);
+void	ft_fill_env(char **envp);
+void	ft_lstfree_env(void);
 
 //Builtins
 void	sh_echo(char **cmd);
-void	sh_pwd(t_data *data);
-void	sh_env(t_data *data);
-void	sh_export(t_data *data, char **cmd);
-void	export_display(t_data *data);
+void	sh_pwd(void);
+void	sh_env(void);
+void	sh_export(char **cmd);
+void	export_display(void);
 
 //Utils
-void	*x_malloc(t_data *data, size_t size);
+void	*x_malloc(size_t size);
 void	freex_malloc(t_mall *mall);
-char	*get_env_key(t_data *data, char *var);
+char	*get_env_key(char *var);
 char	*get_env_value(char *var);
 void	env_add_back(t_env **alst, t_env *new);
-t_env	*env_new(t_data *data, char *val, int env_disp);
+t_env	*env_new(char *val, int env_disp);
 
 #endif

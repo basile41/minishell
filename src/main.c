@@ -16,22 +16,21 @@ t_global	g_data;
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	*line;
+	//char	*line;
 
-	if (argc != 1)
-		return (0);
-	(void)argv;
+	/*if (argc != 1)
+		return (0);*/
+	(void)argc;
 	ft_bzero(&g_data, sizeof(g_data));
-	(void)envp;
-	//ft_fill_env(envp, &g_data.env);
-	//sh_env(&data);
-	line = (char *)1;
+	ft_fill_env(envp);
+	sh_export(argv);
+	/*line = (char *)1;
 	while (line)
 	{
 		line = readline("Minishell$ ");
 		ft_minishell(line);
 		free(line);
-	}
+	}*/
 	ft_free_and_exit(0);
 }
 
