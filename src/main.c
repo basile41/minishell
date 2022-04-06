@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/06 11:34:54 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:08:13 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_bzero(&g_data, sizeof(g_data));
 	ft_fill_env(envp);
 
-	sh_export(argv);
+	sh_echo(argv);
 	/*line = (char *)1;
 	while (line)
 	{

@@ -6,24 +6,43 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:35:19 by cmarion           #+#    #+#             */
-/*   Updated: 2022/03/31 19:07:50 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/06 17:26:02 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	last_flag(char **cmd)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (cmd[i])
+	{
+		if (cmd[i] && cmd[i][0] == '-')
+		{	
+			j = 1;
+			while (cmd[i][j] == 'n')
+				j ++;
+			if (!cmd[i][j])
+				i ++;
+			else
+				return (i);
+		}
+		else
+			return (i);
+	}
+	return (i);
+}
 
 void	sh_echo(char **cmd)
 {
 	int	i;
 	int	n;
 
-	n = 0;
-	i = 1;
-	if (cmd[1] && ft_strcmp(cmd[1], "-n") == 0)
-	{	
-		n = 1;
-		i ++;
-	}
+	i = last_flag(cmd);
+	n = i;
 	while (cmd[i])
 	{
 		printf("%s", cmd[i]);
@@ -31,6 +50,6 @@ void	sh_echo(char **cmd)
 			printf(" ");
 		i ++;
 	}
-	if (!n)
+	if (n == 1)
 		printf("\n");
 }
