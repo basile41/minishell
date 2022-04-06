@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/04 17:47:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:21:03 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	sh_export(char **cmd);
 void	export_display(void);
 
 //Utils
+void	*ft_xmalloc(size_t size);
 void	*x_malloc(size_t size);
 void	freex_malloc(t_mall *mall);
 char	*get_env_key(char *var);

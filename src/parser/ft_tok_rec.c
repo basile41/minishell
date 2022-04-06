@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/05 21:38:19 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:42:55 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,28 @@ t_type	ft_get_type(char *s)
 	return (WORD);
 }
 
-int	ft(char *str)
+int	ft_parse_tok(char *str, t_type type)
 {
-	static t_token	*tok;
-	t_type			type;
+	static t_token	*last;
+	t_token			*new;
 
-	type = ft_get_type(str);
-	ft_new_tok(str, type)
-	if (tok && tok->prev && tok->prev->type == DLESS && type == WORD)
+	new = ft_new_tok(str, type);
+	if (!new)
+		return (0);
+	if (last && last->type == DLESS && type == WORD)
 	{
-		
+		new->type = IO_NUMBER;
+		free(new->word);
+		new->word = ft_itoa(ft_heredoc(str));
 	}
-	if (tok->prev == NULL)
-		g_data.tok = tok;
+	if (last == NULL)
+	{
+		last = new;
+		g_data.tok = new;
+	}
+	else
+		last = ft_add_tok(&last, new);
+	return (1);
 }
 
 int	ft_tok_rec(char *line)
@@ -63,14 +72,7 @@ int	ft_tok_rec(char *line)
 	i = 0;
 	while (strs[i])
 	{
-		tok = ft_add_tok(&tok, ft_new_tok(strs[i], ft_get_type(strs[i])));
-		if (!g_data.tok)
-			g_data.tok = tok;
-		if (tok->type == DLESS)
-		{
-			free(tok->word);
-			tok->word = ft_itoa(ft_heredoc(strs[++i]));
-		}
+		ft_parse_tok(strs[i], ft_get_type(strs[i]));
 		i++;
 	}
 	ft_free_strs(strs);
