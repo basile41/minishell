@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/04 17:00:35 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/06 11:18:28 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	env_name_verif(char *cmd)
 			i ++;
 		if (cmd[i] == '=')
 			return (i);
-		if (cmd[i] && !(ft_isalnum(cmd[i]) && cmd[i] != '_'))
+		if (cmd[i] && !(ft_isalnum(cmd[i]) || cmd[i] == '_' || cmd[i] == '='))
 			return (exit_not_a_valid_identifier());
 		else
 			return (-1);
@@ -61,12 +61,11 @@ int	env_name_verif(char *cmd)
 
 void	add_var_to_env(char **cmd)
 {
-	int		i;
 	int		key_valid;
 	int		key_nexist;
 	t_env	*env;
 
-	i = 0;
+	int (i) = 0;
 	while (cmd[++ i])
 	{
 		key_valid = env_name_verif(cmd[i]);
