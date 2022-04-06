@@ -31,12 +31,14 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
 					ft_split_toks.c \
 					ft_heredoc.c
-# SRC_BUILTINS	=	sh_echo.c \
-# 					sh_pwd.c \
-# 					sh_env.c \
-# 					sh_export.c
+ SRC_BUILTINS	=	display_export.c \
+					sh_cd.c \
+ 					sh_echo.c \
+ 					sh_pwd.c \
+ 					sh_env.c \
+ 					sh_export.c
 SRC_EXEC		=	
-#SRC_UTILS		=	x_malloc.c \
+SRC_UTILS		=	x_malloc.c \
 					env_lst.c
 
 SRC				= 	main.c \
@@ -46,7 +48,7 @@ SRC				= 	main.c \
 					$(addprefix $(EXEC_PATH), $(SRC_EXEC)) \
 					$(addprefix $(UTILS_PATH), $(SRC_UTILS)) \
 					$(addprefix $(BUILTINS_PATH), $(SRC_BUILTINS)) \
-#					ft_env.c \
+					ft_env.c \
 					
 OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 DEPS			=	$(addprefix $(OBJ_PATH),$(SRC:.c=.d))
@@ -67,7 +69,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."

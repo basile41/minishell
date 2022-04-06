@@ -12,32 +12,35 @@
 
 #include "minishell.h"
 
-/*void	ft_free_env(t_env env)
+void	ft_free_env(t_env *env)
 {
-	t_env	*env;
 	t_env	*temp;
 
-	if (data->env)
+	if (g_data.env)
 	{
-		env = data->env;
-		while (env)
+		temp = g_data.env;
+		while (temp)
 		{
-			free(env->key);
-			temp = env->next;
-			free(env);
-			env = temp;
+			if (temp->next == env)
+			{
+				temp->next = env->next;
+				free(env->key);
+				free(env);
+				break ;
+			}
+			temp = temp->next;
 		}
 	}
-}*/
+}
 
-void	ft_lstfree_env(t_data *data)
+void	ft_lstfree_env(void)
 {
 	t_env	*env;
 	t_env	*temp;
 
-	if (data->env)
+	if (g_data.env)
 	{
-		env = data->env;
+		env = g_data.env;
 		while (env)
 		{
 			free(env->key);
@@ -48,16 +51,16 @@ void	ft_lstfree_env(t_data *data)
 	}
 }
 
-void	ft_fill_env(char **envp, t_data *data)
+void	ft_fill_env(char **envp)
 {
 	int	i;
 
-	data->env = env_new(data, envp[0], 1);
+	g_data.env = env_new(envp[0], 1);
 	i = 1;
 	while (envp[i])
 	{
-		env_add_back(&data->env, env_new(data, envp[i], 1));
+		env_add_back(&g_data.env, env_new(envp[i], 1));
 		i ++;
 	}
-	data->env_size = i;
+	g_data.env_size = i;
 }

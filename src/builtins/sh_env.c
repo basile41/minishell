@@ -6,21 +6,27 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:39:11 by cmarion           #+#    #+#             */
-/*   Updated: 2022/03/31 18:54:39 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/06 11:27:44 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sh_env(t_data *data)
+void	sh_env(void)
 {
 	t_env	*env;
 
-	env = data->env;
+	env = g_data.env;
 	while (env)
 	{
-		if (ft_strchr(env->var, '='))
-			printf("%s\n", env->var);
+		if (env->env_disp)
+		{
+			printf("%s", env->key);
+			if (env->value)
+				printf("=%s\n", env->value);
+			else
+				printf("=\n");
+		}
 		env = env->next;
 	}
 }

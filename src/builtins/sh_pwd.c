@@ -12,14 +12,14 @@
 
 #include "minishell.h"
 
-void	sh_pwd(t_data *data)
+void	sh_pwd(void)
 {
 	char	*buf;
 
 	buf = NULL;
 	buf = getcwd(buf, 4096);
 	if (!buf)
-		ft_free_and_exit(data, 1);
+		ft_free_and_exit(1);
 	printf("%s\n", buf);
 	free(buf);
 }
