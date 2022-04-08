@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/07 15:08:18 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/08 12:13:10 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	sh_pwd(void);
 void	sh_env(void);
 void	sh_export(char **cmd);
 void	export_display(void);
+void	sh_cd(char **cmd);
 
 //Utils
 void	*ft_xmalloc(size_t size);
