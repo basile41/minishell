@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/06 18:50:27 by bregneau         ###   ########.fr        #
+#    Updated: 2022/04/07 15:58:31 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ OBJ_DIRS		=	$(OBJ_PATH) \
 SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
 					ft_split_toks.c \
-					ft_heredoc.c
+					ft_heredoc.c \
+					ft_check_tok.c
  SRC_BUILTINS	=	display_export.c \
 					sh_cd.c \
  					sh_echo.c \

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/06 17:21:03 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/07 15:08:18 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	**ft_split_toks(char *s);
 int		ft_tok_rec(char *line);
 void	ft_parse_env(char **envp);
 int		ft_heredoc(char	*delimiter);
+int		ft_check_tok(t_token *last, t_type type);
+
 
 //ft_exit.c
 void	ft_free_and_exit(int status);
