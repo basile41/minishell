@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/04 17:00:08 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/08 10:21:29 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_free_env(t_env *env)
 			if (temp->next == env)
 			{
 				temp->next = env->next;
+				free (env->var);
 				free(env->key);
 				free(env);
 				break ;
@@ -44,6 +45,7 @@ void	ft_lstfree_env(void)
 		while (env)
 		{
 			free(env->key);
+			free(env->var);
 			temp = env->next;
 			free(env);
 			env = temp;

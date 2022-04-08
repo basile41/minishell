@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/04 17:47:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/07 09:30:03 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	sh_pwd(void);
 void	sh_env(void);
 void	sh_export(char **cmd);
 void	export_display(void);
+void	sh_cd(char **cmd);
 
 //Utils
 void	*x_malloc(size_t size);
