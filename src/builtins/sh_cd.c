@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:23:02 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/08 11:05:42 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/12 14:32:54 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sh_cd(char **cmd)
 	if (cmd[1] && cmd[2])
 	{
 		printf("minishell: cd: too many arguments");
-		ft_free_and_exit(1);
+		g_data.exit_code = 1;
 	}
 	else
 	{
@@ -82,8 +82,7 @@ void	sh_cd(char **cmd)
 		else
 		{
 			printf("minishell: cd: %s: No such file or directory\n", cmd[1]);
-			free (add);
-			ft_free_and_exit(127);
+			g_data.exit_code = 1;
 		}
 		free (add);
 	}
