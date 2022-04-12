@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/07 09:30:03 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/12 10:20:12 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	sh_env(void);
 void	sh_export(char **cmd);
 void	export_display(void);
 void	sh_cd(char **cmd);
+int		sh_unset(char **cmd);
 
 //Utils
 void	*x_malloc(size_t size);
