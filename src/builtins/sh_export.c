@@ -6,13 +6,13 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/12 14:53:28 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/13 09:20:57 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	exit_not_a_valid_identifier(char cmd)
+int	exit_not_a_valid_identifier(char *cmd)
 {
 	printf("bash: export: `%s': not a valid identifier", cmd);
 	g_data.exit_code = 1;
