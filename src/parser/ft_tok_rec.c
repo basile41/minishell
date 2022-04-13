@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/07 15:07:39 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:07:01 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_type	ft_get_type(char *s)
 		return (DLESS);
 	if (ft_strncmp(s, ">>", 2) == 0)
 		return (DGREAT);
+	if (ft_strncmp(s, "\\n", 2) == 0)
+		return (ENDLINE);
 	if (*s == '|')
 		return (PIPE);
 	if (*s == '<')
@@ -65,16 +67,25 @@ int	ft_tok_rec(char *line)
 {
 	char	**strs;
 	int		i;
+	int		ret;
 
 	strs = ft_split_toks(line);
 	if (strs == NULL)
-		return (0);
+		return (1);
 	i = 0;
-	while (strs[i])
+	ret = 1;
+	while (strs[i] && ret)
 	{
-		ft_parse_tok(strs[i], ft_get_type(strs[i]));
+		ret = ft_parse_tok(strs[i], ft_get_type(strs[i]));
 		i++;
 	}
+	if (ret == 0)
+	{
+		printf("minishell: syntax error near unexpected token `%s'\n",
+			strs[i - 1]);
+		ft_free_strs(strs);
+		return (2);
+	}
 	ft_free_strs(strs);
-	return (1);
+	return (0);
 }

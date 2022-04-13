@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:55:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/04 16:48:15 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:07:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_aff(t_token *first)
 	t_token	*temp;
 
 	temp = first;
-	while (temp)
+	while (temp && temp->type != ENDLINE)
 	{
 		printf("%s : %i\n", temp->word, temp->type);
 		temp = temp->next;

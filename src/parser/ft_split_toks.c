@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:02:38 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/31 19:08:06 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:20:44 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,21 @@ char	**ft_split_toks(char *s)
 	size_t	size;
 
 	size = str_count_toks(s);
-	strs = malloc((size + 1) * sizeof(char *));
+	strs = malloc((size + 2) * sizeof(char *));
 	if (!strs)
 		return (NULL);
-	i = 0;
+	i = -1;
 	while (ft_isblank(*s))
 		s++;
-	while (i < size)
+	while (++i < size)
 	{
 		j = ft_get_next_sep(s);
 		strs[i] = ft_strndup(s, j);
 		s += j;
 		while (ft_isblank(*s))
 			s++;
-		i++;
 	}
-	strs[i] = NULL;
+	strs[i] = ft_strndup("\\n", 2);
+	strs[++i] = NULL;
 	return (strs);
 }
