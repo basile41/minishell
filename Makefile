@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/08 12:13:45 by bregneau         ###   ########.fr        #
+#    Updated: 2022/04/08 17:25:00 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,8 @@ clean:
 fclean:				clean
 					rm -f $(LIBFT) $(NAME)
 
-re:					fclean all
+re:					fclean
+					make all
 
 -include			$(DEPS)
 

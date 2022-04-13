@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/06 19:03:17 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:54:15 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ typedef struct s_token
 	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;
+
+typedef struct s_clist
+{
+	t_token			*start;
+	t_token			*end;
+	struct s_clist	*next;
+}	t_clist;
 
 typedef struct s_global
 {
