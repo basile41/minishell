@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   x_malloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:24:38 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/04 14:03:45 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/06 17:22:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@ void	freex_malloc(t_mall *mall)
 		temp = temp->next;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/14 13:57:21 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:13:24 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	**ft_split_toks(char *s);
 int		ft_tok_rec(char *line);
 void	ft_parse_env(char **envp);
 int		ft_heredoc(char	*delimiter);
+int		ft_check_tok(t_token *last, t_type type);
 
 //ft_exit.c
 void	ft_free_and_exit(int status);
@@ -71,6 +72,7 @@ int		is_builtins(char *cmd);
 void	builtins_ex(char **cmd, void (*f)(char **));
 
 //Utils
+void	*ft_xmalloc(size_t size);
 void	*x_malloc(size_t size);
 void	freex_malloc(t_mall *mall);
 char	*get_env_key(char *var);

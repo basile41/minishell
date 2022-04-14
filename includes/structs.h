@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/12 10:40:41 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:07:00 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum type
 	WORD,
 	ASSIGNMENT_WORD,
 	NAME,
-	NEWLINE,
+	ENDLINE,
 	IO_NUMBER,
 	AND_IF,
 	OR_IF,
@@ -54,6 +54,13 @@ typedef struct s_token
 	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;
+
+typedef struct s_clist
+{
+	t_token			*start;
+	t_token			*end;
+	struct s_clist	*next;
+}	t_clist;
 
 typedef struct s_global
 {

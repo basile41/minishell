@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/14 15:11:39 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:13:09 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ t_global	g_data;
 
 int	main(int argc, char **argv, char **envp)
 {
-	//char	*line;
-	
-	/*if (argc != 1)
-		return (0);*/
+	char	*line;
+
 	(void)argc;
+	(void)argv;
+	(void)envp;
 	ft_bzero(&g_data, sizeof(g_data));
 	ft_fill_env(envp);
 
@@ -30,10 +30,13 @@ int	main(int argc, char **argv, char **envp)
 	while (line)
 	{
 		line = readline("Minishell$ ");
+		if (line == NULL)
+			break ;
 		ft_minishell(line);
 		free(line);
-	}*/
-	ft_free_and_exit(0);
+	}
+	ft_putstr("exit\n");
+	ft_fre./m	e_and_exit(0);
 }
 
 // int	main(int argc, char **argv)

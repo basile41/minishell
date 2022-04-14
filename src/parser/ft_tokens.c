@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:35:55 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/03 21:14:29 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:05:25 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_token	*ft_new_tok(char *word, t_type type)
 	if (new == NULL)
 		return (NULL);
 	new->word = ft_strdup(word);
-	
 	new->type = type;
 	return (new);
 }

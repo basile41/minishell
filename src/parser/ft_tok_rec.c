@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/04 20:52:38 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:50:27 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_type	ft_get_type(char *s)
 		return (DLESS);
 	if (ft_strncmp(s, ">>", 2) == 0)
 		return (DGREAT);
+	if (ft_strncmp(s, "\\n", 2) == 0)
+		return (ENDLINE);
 	if (*s == '|')
 		return (PIPE);
 	if (*s == '<')
@@ -35,29 +37,54 @@ t_type	ft_get_type(char *s)
 	return (WORD);
 }
 
+int	ft_parse_tok(char *str, t_type type)
+{
+	static t_token	*last;
+	t_token			*new;
+
+	if (ft_check_tok(last, type) == 0)
+		return ((last = NULL, 0));
+	new = ft_new_tok(str, type);
+	if (!new)
+		return ((last = NULL, 0));
+	if (last && last->type == DLESS && type == WORD)
+	{
+		new->type = IO_NUMBER;
+		free(new->word);
+		new->word = ft_itoa(ft_heredoc(str));
+	}
+	if (last == NULL)
+	{
+		last = new;
+		g_data.tok = new;
+	}
+	else
+		last = ft_add_tok(&last, new);
+	if (type == ENDLINE)
+		last = NULL;
+	return (1);
+}
+
 int	ft_tok_rec(char *line)
 {
 	char	**strs;
-	t_token	*tok;
 	int		i;
+	int		ret;
 
 	strs = ft_split_toks(line);
 	if (strs == NULL)
-		return (0);
-	tok = NULL;
-	i = 0;
-	while (strs[i])
+		return (1);
+	i = -1;
+	ret = 1;
+	while (strs[++i] && ret)
+		ret = ft_parse_tok(strs[i], ft_get_type(strs[i]));
+	if (ret == 0)
 	{
-		tok = ft_add_tok(&tok, ft_new_tok(strs[i], ft_get_type(strs[i])));
-		if (!g_data.tok)
-			g_data.tok = tok;
-		if (tok->type == DLESS)
-		{
-			free(tok->word);
-			tok->word = ft_itoa(ft_heredoc(strs[++i]));
-		}
-		i++;
+		printf("minishell: syntax error near unexpected token `%s'\n",
+			strs[i - 1]);
+		ft_free_strs(strs);
+		return (2);
 	}
 	ft_free_strs(strs);
-	return (1);
+	return (0);
 }
