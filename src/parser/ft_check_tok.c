@@ -6,11 +6,18 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:07:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/13 21:06:50 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:37:14 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_is_redir(t_type type)
+{
+	if (type == LESS || type == DLESS || type == GREAT || type == DGREAT)
+		return (1);
+	return (0);
+}
 
 int	ft_check_tok(t_token *last, t_type type)
 {
@@ -32,6 +39,8 @@ int	ft_check_tok(t_token *last, t_type type)
 			&& last->type != PIPE)
 			return (0);
 		if (type == R_PARENTH && last->type != WORD)
+			return (0);
+		if ((ft_is_redir(type) || type == ENDLINE) && ft_is_redir(last->type))
 			return (0);
 	}
 	else if (type == PIPE || type == AND_IF || type == OR_IF)

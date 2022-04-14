@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/13 21:07:01 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:02:39 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	ft_parse_tok(char *str, t_type type)
 	t_token			*new;
 
 	if (ft_check_tok(last, type) == 0)
-		return (0);
+		return ((last = NULL, 0));
 	new = ft_new_tok(str, type);
 	if (!new)
-		return (0);
+		return ((last = NULL, 0));
 	if (last && last->type == DLESS && type == WORD)
 	{
 		new->type = IO_NUMBER;
@@ -60,6 +60,8 @@ int	ft_parse_tok(char *str, t_type type)
 	}
 	else
 		last = ft_add_tok(&last, new);
+	if (type == ENDLINE)
+		last = NULL;
 	return (1);
 }
 
