@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/13 09:21:41 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/14 13:57:21 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	export_display(void);
 void	sh_cd(char **cmd);
 void	sh_unset(char **cmd);
 void	sh_exit(char **cmd);
+int		is_builtins(char *cmd);
+void	builtins_ex(char **cmd, void (*f)(char **));
 
 //Utils
 void	*x_malloc(size_t size);

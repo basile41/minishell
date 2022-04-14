@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/13 09:20:18 by cmarion          ###   ########.fr        #
+#    Updated: 2022/04/14 13:58:21 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_PARSER		=	ft_tok_rec.c \
  					sh_env.c \
  					sh_export.c \
 					sh_unset.c \
-					sh_exit.c
+					sh_exit.c \
+					builtins_ex.c
 SRC_EXEC		=	
 SRC_UTILS		=	x_malloc.c \
 					env_lst.c
