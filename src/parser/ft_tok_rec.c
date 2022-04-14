@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/14 14:02:39 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:50:27 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,10 @@ int	ft_tok_rec(char *line)
 	strs = ft_split_toks(line);
 	if (strs == NULL)
 		return (1);
-	i = 0;
+	i = -1;
 	ret = 1;
-	while (strs[i] && ret)
-	{
+	while (strs[++i] && ret)
 		ret = ft_parse_tok(strs[i], ft_get_type(strs[i]));
-		i++;
-	}
 	if (ret == 0)
 	{
 		printf("minishell: syntax error near unexpected token `%s'\n",
