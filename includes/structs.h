@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/14 15:07:00 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:32:49 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_mall
 	struct s_mall	*next;
 }	t_mall;
 
-typedef enum type
+typedef enum typeg
 {
 	WORD,
 	ASSIGNMENT_WORD,
