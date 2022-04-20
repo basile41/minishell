@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/19 17:05:42 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:13:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	(void)envp;
 	ft_bzero(&g_data, sizeof(g_data));
-	ft_fill_env(envp);
+	//ft_fill_env(envp);
 
 	//builtins_ex(argv, (void (*)(char **))argv[1]);
 

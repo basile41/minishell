@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
+#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/14 15:13:04 by cmarion          ###   ########.fr        #
+#    Updated: 2022/04/19 17:08:03 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
 					ft_split_toks.c \
 					ft_heredoc.c \
-					ft_check_tok.c
+					ft_check_tok.c \
+					ft_parser.c
  SRC_BUILTINS	=	display_export.c \
 					sh_cd.c \
  					sh_echo.c \
