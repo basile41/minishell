@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 17:43:00 by bregneau          #+#    #+#              #
-#    Updated: 2022/03/08 18:31:50 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/04 18:53:16 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_strncmp.c ft_isalpha.c \
 					ft_printf/ft_print_int.c ft_printf/ft_print_ptr.c \
 					ft_printf/ft_print_str.c  ft_printf/ft_print_uint.c \
 					ft_printf/ft_printf.c \
-					ft_split_f.c
+					ft_split_f.c ft_add_to_str.c
 					
 OBJS			= $(SRCS:.c=.o)
 
