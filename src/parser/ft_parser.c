@@ -6,20 +6,20 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/04 21:31:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/05 20:32:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_execution(t_token *first, t_token *last)
-{
-	char	**cmd;
+// int	ft_execution(t_token *first, t_token *last)
+// {
+// 	char	**cmd;
 
-	while (first && first != last && first->type != PIPE)
-	{
-	}
-}
+// 	while (first && first != last && first->type != PIPE)
+// 	{
+// 	}
+// }
 
 void	ft_open_redir(t_token *tok)
 {
@@ -39,38 +39,63 @@ void	ft_open_redir(t_token *tok)
 	tok->next->word = ft_itoa(fd);
 }
 
-void	ft_expand_dollars(char *str)
-{
-	
-}
-
-char	ft_expand(char *word)
+void	ft_expand_dollars(t_token **tok, char *str, int quoted)
 {
 	int		i;
-	int		j;
-	int		dquoted;
+	char	*var;
 
-	i = -1;
-	str = NULL;
-	while (word && word[i])
+	i = 1;
+	if (ft_isalpha(*str) == 0)
+	while (str[i] && str[i])
+
+}
+
+void	ft_expand(t_token **tok)
+{
+	int		i;
+	char	*word;
+	t_token *newtok;
+
+	
+	word = (*tok)->word;
+	if (0 == (ft_strchr(word, '$') && ft_strchr(word, '\'')
+			&& ft_strchr(word, '\"')))
+		return ;
+	i = 0;
+	while (word[i])
 	{
-		if (word[i] == '$' || word[i] == '\'' || word[i] == '\"')
-		{
-			str = ft_add_to_str(str, word, i - 1);
-		}
 		if (word[i] == '\'')
 		{
-			j = 1;
-			while (word[i + j] != '\'')
-				j++;
-			str = ft_add_to_str(str, &word[i + 1], j - 2);
-			word += i + j + 1;
-			i = 0;
+			ft_add_to_str ft_strchr(word + i + 1, '\'')
 		}
-		if (word[i] == '$' && ft_isalpha(word[i + 1]) )
-			ft_expand_dollars(word + i);
-
+		i++;
 	}
+
+	// int		i;
+	// int		j;
+	// int		dquoted;
+	// char	*str;
+
+	// i = -1;
+	// str = NULL;
+	// while (word && word[i])
+	// {
+	// 	if (word[i] == '$' || word[i] == '\'' || word[i] == '\"')
+	// 	{
+	// 		str = ft_add_to_str(str, word, i - 1);
+	// 	}
+	// 	if (word[i] == '\'')
+	// 	{
+	// 		j = 1;
+	// 		while (word[i + j] != '\'')
+	// 			j++;
+	// 		str = ft_add_to_str(str, &word[i + 1], j - 2);
+	// 		word += i + j + 1;
+	// 		i = 0;
+	// 	}
+	// 	if (word[i] == '$' && ft_isalpha(word[i + 1]))
+	// 		ft_expand_dollars(word + i);
+	// }
 }
 
 int	ft_pipeline(t_token **toks)
@@ -79,9 +104,9 @@ int	ft_pipeline(t_token **toks)
 	t_token	*curr;
 	int		nb_pipes;
 
-	if (*toks)
-		printf("%s\n", (*toks)->word);
-	curr = toks;
+	// if (*toks)
+	// 	printf("%s\n", (*toks)->word);
+	curr = *toks;
 	nb_pipes = 0;
 	while (curr && curr->type != OR_IF && curr->type != AND_IF)
 	{
@@ -89,12 +114,12 @@ int	ft_pipeline(t_token **toks)
 			nb_pipes++;
 		if (curr->type == LESS || curr->type == GREAT || curr->type == DGREAT)
 			ft_open_redir(curr);
-		if (curr->type == WORD)
+		// if (curr->type == WORD)
 
 		curr = curr->next;
 	}
 
-	ft_execution(toks, curr);
+	// ft_execution(toks, curr);
 	return (0);
 }
 
