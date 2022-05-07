@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/07 22:52:43 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/08 00:53:54 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_split_exp(t_token **tok_exp, char *value)
 		(*tok_exp)->word = ft_add_to_str((*tok_exp)->word, strs[i],
 				ft_strlen(strs[i]));
 		if (strs[++i])
-			*tok_exp = ft_add_tok(tok_exp, ft_new_tok(NULL, WORD));
+			*tok_exp = ft_add_tok(*tok_exp, ft_new_tok(NULL, WORD));
 	}
 	ft_free_strs(strs);
 }
@@ -60,6 +60,7 @@ void	ft_split_exp(t_token **tok_exp, char *value)
 int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 {
 	int		i;
+	char	*key;
 	char	*value;
 
 	i = 1;
@@ -67,7 +68,13 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 		return (i);
 	while (str[i] && ft_isalnum(str[i]))
 		i++;
-	value = ft_strndup(ft_get_exp(str + i + 1), i - 1);
+	key = ft_strndup(str + 1, i - 1);
+	if (key == NULL)
+		return (i);
+	value = ft_strdup(ft_get_exp(key));
+	free(key);
+	if (value == NULL)
+		return (i);
 	if (quoted == DQUOTED)
 		(*tok_exp)->word = ft_add_to_str((*tok_exp)->word, value, i - 1);
 	else
@@ -140,15 +147,19 @@ void	ft_expand(t_token **tok)
 	char		*word;
 
 	word = (*tok)->word;
-	if (0 == (ft_strchr(word, '$') && ft_strchr(word, '\'')
-			&& ft_strchr(word, '\"')))
+	if (0 == (ft_strchr(word, '$') || ft_strchr(word, '\'')
+			|| ft_strchr(word, '\"')))
 		return ;
 	tok_exp = ft_new_tok(NULL, WORD);
-	(*tok)->prev->next = tok_exp;
-	tok_exp->prev = (*tok)->prev;
+	if ((*tok)->prev)
+		ft_add_tok((*tok)->prev, tok_exp);
+	// (*tok)->prev->next = tok_exp;
+	// tok_exp->prev = (*tok)->prev;
 	tok_exp = ft_expand_in(tok_exp, word);
-	tok_exp->next = (*tok)->next;
-	(*tok)->next->prev = tok_exp;
+	if ((*tok)->next)
+		ft_add_tok(tok_exp, (*tok)->next);
+	// tok_exp->next = (*tok)->next;
+	// (*tok)->next->prev = tok_exp;
 }
 
 int	ft_pipeline(t_token **toks)

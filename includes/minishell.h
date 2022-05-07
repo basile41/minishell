@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/07 23:03:07 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/08 00:14:14 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_minishell(char *line);
 
 //tokens
 t_token	*ft_new_tok(char *word, t_type type);
-t_token	*ft_add_tok(t_token **last, t_token *tok);
+t_token	*ft_add_tok(t_token *last, t_token *tok);
 void	ft_free_toks(t_token **first);
 
 //ft_parser

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/08 11:01:41 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/08 00:41:21 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ char	*get_env_key(char *var)
 	i = 0;
 	while (var[i] && var[i] != '=')
 		i ++;
-	key = malloc(sizeof(char) * i + 1);
+	key = malloc(sizeof(char) * (i + 1));
 	if (!key)
 		ft_free_and_exit(1);
+	key[0] = '\0';
 	ft_strlcpy(key, var, i + 1);
-	key[i + 2] = '\0';
+	// key[i + 2] = '\0';
 	return (key);
 }
 
