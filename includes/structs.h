@@ -6,12 +6,19 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/03 16:53:53 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/07 15:15:40 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef enum e_quoted
+{
+	NOT_QUOTED,
+	QUOTED,
+	DQUOTED
+}	t_quoted;
 
 typedef struct s_env
 {
@@ -43,7 +50,7 @@ typedef enum type
 	DGREAT,
 	PIPE,
 	L_PARENTH,
-	R_PARENTH,
+	R_PARENTH
 }	t_type;
 
 typedef struct s_token

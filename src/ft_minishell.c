@@ -6,11 +6,24 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:55:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/05 16:40:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/07 23:05:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	test_expand(t_token *tok)
+{
+	t_token	*curr;
+
+	curr = tok;
+	while (curr)
+	{
+		if (curr->type == WORD)
+			ft_expand(&curr);
+		curr = curr->next;
+	}
+}
 
 void	ft_aff(t_token *first)
 {
@@ -31,6 +44,7 @@ void	ft_minishell(char *line)
 	add_history(line);
 	if (ft_tok_rec(line) == 0)
 		ft_parser(g_data.tok);
+test_expand(g_data.tok);
 	ft_aff(g_data.tok);
 	ft_free_toks(&g_data.tok);
 	g_data.tok = NULL;

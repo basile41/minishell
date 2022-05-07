@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/06 22:13:25 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/07 18:30:20 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,8 @@ SRC_BUILTINS	=	display_export.c \
 					sh_exit.c \
 					builtins_ex.c
 SRC_EXEC		=	
-SRC_UTILS		=	x_malloc.c \
-					env_lst.c
+SRC_UTILS		=	env_lst.c \
+					ft_env_utils.c
 
 SRC				= 	main.c \
 					ft_minishell.c \

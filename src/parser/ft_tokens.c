@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:35:55 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/06 20:05:25 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/07 15:53:04 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ t_token	*ft_add_tok(t_token **last, t_token *tok)
 	{
 		(*last)->next = tok;
 		tok->prev = *last;
-		// curr = *last;
-		// while (curr->next)
-		// 	curr = curr->next;
-		// curr->next = tok;
-		// tok->prev = curr;
 	}
 	return (tok);
 }
