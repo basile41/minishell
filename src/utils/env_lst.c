@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/08 00:41:21 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:19:28 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*get_env_key(char *var)
 		ft_free_and_exit(1);
 	key[0] = '\0';
 	ft_strlcpy(key, var, i + 1);
-	// key[i + 2] = '\0';
 	return (key);
 }
 

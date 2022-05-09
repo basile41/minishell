@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:05:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/03/05 18:32:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:21:47 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_process(char *line, char **envp, int fdin)
 {
 	t_process	p;
 
-	//ft_parse_line
 	ft_bzero(&p, sizeof(p));
 	p.cmd = ft_split(line, ' ');
 	dup2(fdin, STDIN_FILENO);

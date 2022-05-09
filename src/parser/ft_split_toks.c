@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:02:38 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/09 19:18:43 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:13:41 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	ft_get_end_quote(char *s)
 		i++;
 	if (s[i] == '\0')
 	{
-		printf("minishell: unclosed quote \n");
+		printf("minishell: unexpected NL while looking for matching `%c'\n",
+			*s);
 		return (-1);
 	}
 	if (s[i] == *s)
@@ -90,11 +91,13 @@ int	str_count_toks(char *str)
 char	**ft_split_toks(char *s)
 {
 	char	**strs;
-	size_t	i;
+	int		i;
 	int		j;
-	size_t	size;
+	int		size;
 
 	size = str_count_toks(s);
+	if (size < 0)
+		return (NULL);
 	strs = malloc((size + 2) * sizeof(char *));
 	if (!strs)
 		return (NULL);
