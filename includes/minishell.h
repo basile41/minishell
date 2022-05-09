@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/08 00:14:14 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:18:53 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ char	*get_env_key(char *var);
 char	*get_env_value(char *var);
 void	env_add_back(t_env **alst, t_env *new);
 t_env	*env_new(char *val, int env_disp);
-char	*ft_get_exp(char *key);
+char	*ft_get_value(char *key);
 
 #endif

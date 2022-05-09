@@ -6,13 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 18:19:53 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/08 00:42:20 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:18:49 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_get_exp(char *key)
+char	*ft_get_value(char *key)
 {
 	t_env	*curr;
 
@@ -20,7 +20,7 @@ char	*ft_get_exp(char *key)
 	while (curr)
 	{
 		if (ft_strcmp(curr->key, key) == 0)
-			return (curr->value);
+			return (strdup(curr->value));
 		curr = curr->next;
 	}
 	return (NULL);

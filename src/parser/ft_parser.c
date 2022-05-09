@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/08 00:53:54 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:25:33 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	ft_split_exp(t_token **tok_exp, char *value)
 	int		i;
 
 	strs = ft_split_f(value, isblank);
+	if (strs != NULL && ft_isblank(*value) && (*tok_exp)->word)
+		*tok_exp = ft_add_tok(*tok_exp, ft_new_tok(NULL, WORD));
 	i = 0;
-
 	while (strs[i])
 	{
 		(*tok_exp)->word = ft_add_to_str((*tok_exp)->word, strs[i],
@@ -63,20 +64,20 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 	char	*key;
 	char	*value;
 
-	i = 1;
-	if (ft_isalpha(str[i]) == 0)
+	i = 0;
+	if (ft_isalpha(*(++str)) == 0)
 		return (i);
 	while (str[i] && ft_isalnum(str[i]))
 		i++;
-	key = ft_strndup(str + 1, i - 1);
+	key = ft_strndup(str, i);
 	if (key == NULL)
 		return (i);
-	value = ft_strdup(ft_get_exp(key));
+	value = ft_get_value(key);
 	free(key);
 	if (value == NULL)
 		return (i);
 	if (quoted == DQUOTED)
-		(*tok_exp)->word = ft_add_to_str((*tok_exp)->word, value, i - 1);
+		(*tok_exp)->word = ft_add_to_str((*tok_exp)->word, value, ft_strlen(value));
 	else
 	{
 		ft_split_exp(tok_exp, value);
@@ -89,7 +90,7 @@ t_quoted	ft_set_quoted(t_quoted q, char c)
 {
 	if (c == '\'' && q == NOT_QUOTED)
 		return (QUOTED);
-	if (c == '\'' && q == QUOTED)
+	if (q == QUOTED)
 		return (NOT_QUOTED);
 	if (c == '\"' && q == NOT_QUOTED)
 		return (DQUOTED);
@@ -105,7 +106,7 @@ char	*ft_delete_quotes(char	*s)
 
 int	ft_q_size(char *s)
 {
-	return (ft_strchr(s + 1, *s) - s + 1);
+	return (ft_strchr(s + 1, *s) - s - 1);
 }
 
 t_token	*ft_expand_in(t_token *tok_exp, char *word)
@@ -118,23 +119,25 @@ t_token	*ft_expand_in(t_token *tok_exp, char *word)
 	while (word[i])
 	{
 		quoted = ft_set_quoted(quoted, word[i]);
-		if (i && quoted == DQUOTED)
+		if (quoted != 0 || word[i] == '$' || word[i] == '\"'
+			|| (!word[i + 1] && ++i))
 		{
-			tok_exp->word = ft_add_to_str(tok_exp->word, word, i - 1);
+			if (i)
+				tok_exp->word = ft_add_to_str(tok_exp->word, word, i);
+			word += i;
 			i = 0;
+			if (quoted == QUOTED)
+			{
+				tok_exp->word = ft_add_to_str(tok_exp->word, word + 1,
+						ft_q_size(word));
+				word += ft_q_size(word) + 1;
+			}
+			else if (*word == '$')
+				word += ft_expand_dollar(&tok_exp, word, quoted);
+			else if (quoted == DQUOTED && *word != '\"')
+				tok_exp->word = ft_add_to_str(tok_exp->word, word, 1);
+			word++;
 		}
-		if (quoted == QUOTED)
-		{
-			tok_exp->word = ft_add_to_str(tok_exp->word, word, i - 1);
-			tok_exp->word = ft_add_to_str(tok_exp->word, &word[i + 1],
-					ft_q_size(&word[i]));
-			word += ft_q_size(word + i) + 1 + i;
-			i = 0;
-		}
-		else if (quoted == DQUOTED && word[i] != '\"')
-			tok_exp->word = ft_add_to_str(tok_exp->word, word, 1);
-		else if (word[i] == '$')
-			word += ft_expand_dollar(&tok_exp, word + i, quoted);
 		else
 			i++;
 	}
@@ -144,8 +147,10 @@ t_token	*ft_expand_in(t_token *tok_exp, char *word)
 void	ft_expand(t_token **tok)
 {
 	t_token		*tok_exp;
+	t_token		*tmp;
 	char		*word;
 
+	tmp = *tok;
 	word = (*tok)->word;
 	if (0 == (ft_strchr(word, '$') || ft_strchr(word, '\'')
 			|| ft_strchr(word, '\"')))
@@ -153,11 +158,13 @@ void	ft_expand(t_token **tok)
 	tok_exp = ft_new_tok(NULL, WORD);
 	if ((*tok)->prev)
 		ft_add_tok((*tok)->prev, tok_exp);
+	else
+		*tok = tok_exp;
 	// (*tok)->prev->next = tok_exp;
 	// tok_exp->prev = (*tok)->prev;
 	tok_exp = ft_expand_in(tok_exp, word);
-	if ((*tok)->next)
-		ft_add_tok(tok_exp, (*tok)->next);
+	if (tmp->next) 
+		ft_add_tok(tok_exp, tmp->next);
 	// tok_exp->next = (*tok)->next;
 	// (*tok)->next->prev = tok_exp;
 }
