@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 11:39:57 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/10 16:53:55 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_quoted	ft_set_quoted(t_quoted q, char c);
+char		*ft_delete_quotes(char	*s);
+int			ft_q_size(char *s);
 
 void	ft_split_exp(t_token **tok_exp, char *value)
 {
@@ -109,8 +113,8 @@ void	ft_expand(t_token **tok)
 
 	tmp = *tok;
 	word = (*tok)->word;
-	if (0 == (ft_strchr(word, '$') || ft_strchr(word, '\'')
-			|| ft_strchr(word, '\"')))
+	if (tmp->type != WORD && 0 == (ft_strchr(word, '$')
+			|| ft_strchr(word, '\'') || ft_strchr(word, '\"')))
 		return ;
 	tok_exp = ft_new_tok(NULL, WORD);
 	if ((*tok)->prev)

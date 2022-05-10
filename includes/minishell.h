@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 11:25:39 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/10 20:41:31 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct s_process
-{
-	int		pipefd[2];
-	pid_t	*child;
-	char	**cmd;
-	char	*nextcmd;
-	int		pipe;
-}	t_process;
-
-typedef struct s_pipeline
-{
-	int		redir_in;
-	int		redir_out;
-	char	**cmd;
-}	t_pipeline;
-
 void		ft_minishell(char *line);
 
 //tokens
@@ -54,9 +38,7 @@ int			ft_heredoc(char	*delimiter);
 int			ft_check_tok(t_token *last, t_type type);
 void		ft_parser(t_token *toks);
 void		ft_expand(t_token **tok);
-t_quoted	ft_set_quoted(t_quoted q, char c);
-char		*ft_delete_quotes(char	*s);
-int			ft_q_size(char *s);
+int			ft_pipex(t_pipeline *pl, int nb_cmds);
 
 //ft_exit.c
 void		ft_free_and_exit(int status);
@@ -76,7 +58,8 @@ void		sh_cd(char **cmd);
 void		sh_unset(char **cmd);
 void		sh_exit(char **cmd);
 int			is_builtins(char *cmd);
-void		builtins_ex(char **cmd, void (*f)(char **));
+// void		builtins_ex(char **cmd, void (*f)(char **));
+void		builtins_ex(char **cmd);
 
 //Utils
 void		*ft_xmalloc(size_t size);
@@ -87,5 +70,6 @@ char		*get_env_value(char *var);
 void		env_add_back(t_env **alst, t_env *new);
 t_env		*env_new(char *val, int env_disp);
 char		*ft_get_value(char *key);
+char		**ft_toks_to_strs(t_pipeline *pl);
 
 #endif

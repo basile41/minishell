@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
+#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/10 11:22:12 by cmarion          ###   ########.fr        #
+#    Updated: 2022/05/10 20:43:09 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_check_tok.c \
 					ft_parser.c \
 					ft_expand.c \
-					ft_quotes.c
+					ft_quotes.c \
+					ft_pipex.c
 SRC_BUILTINS	=	display_export.c \
 					sh_cd.c \
  					sh_echo.c \
@@ -46,8 +47,9 @@ SRC_BUILTINS	=	display_export.c \
 					builtins_ex.c
 SRC_EXEC		=	
 SRC_UTILS		=	env_lst.c \
-					ft_env_utils.c
-
+					ft_env_utils.c \
+					ft_pipex_utils.c 
+					
 SRC				= 	main.c \
 					ft_minishell.c \
 					ft_exit.c \
@@ -76,7 +78,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."

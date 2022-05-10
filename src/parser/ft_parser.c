@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 14:06:07 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:19:43 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,23 @@ void	ft_open_redir(t_token *tok)
 int	ft_pipeline(t_token **toks)
 {
 	//int	status;
-	t_token	*curr;
-	int		nb_pipes;
+	int			nb_cmds;
+	t_pipeline	pl;
 
+	pl.start = *toks;
 	//if (*toks)
 	//	printf("%s\n", (*toks)->word);
-	curr = *toks;
-	nb_pipes = 0;
-	while (curr && curr->type != OR_IF && curr->type != AND_IF)
+	nb_cmds = 1;
+	while (*toks && (*toks)->type != OR_IF && (*toks)->type != AND_IF)
 	{
-		if (curr->type == PIPE)
-			nb_pipes++;
-		if (curr->type == LESS || curr->type == GREAT || curr->type == DGREAT)
-			ft_open_redir(curr);
-		// if (curr->type == WORD)
-
-		curr = curr->next;
+		if ((*toks)->type == PIPE)
+			nb_cmds++;
+		if ((*toks)->type == LESS || (*toks)->type == GREAT || (*toks)->type == DGREAT)
+			ft_open_redir(*toks);
+		*toks = (*toks)->next;
 	}
-
-	// ft_execution(toks, curr);
-	return (0);
+	pl.end = *toks;
+	return (ft_pipex(&pl, nb_cmds));
 }
 
 t_token	*ft_get_next_ccom(t_token *curr, int status)
@@ -85,6 +82,8 @@ void	ft_parser(t_token *toks)
 	curr = toks;
 	while (curr)
 	{
+		// if (curr)
+		// 	printf("%s\n", curr->word);
 		status = ft_pipeline(&curr);
 		curr = ft_get_next_ccom(curr, status);
 	}
