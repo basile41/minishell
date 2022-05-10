@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/07 15:15:40 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:08:22 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_token
 {
 	char			*word;
 	t_type			type;
-	struct s_token	*sub;
+	// struct s_token	*sub;
 	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;

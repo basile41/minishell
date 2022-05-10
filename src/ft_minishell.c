@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:55:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 11:17:45 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/10 13:46:45 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_minishell(char *line)
 	add_history(line);
 	if (ft_tok_rec(line) == 0)
 		ft_parser(g_data.tok);
-test_expand(&g_data.tok);
-	ft_aff(g_data.tok);
+//test_expand(&g_data.tok);
+	// ft_aff(g_data.tok);
 	ft_free_toks(&g_data.tok);
 	g_data.tok = NULL;
 }

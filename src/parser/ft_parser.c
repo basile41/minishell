@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/09 21:25:53 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:06:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_pipeline(t_token **toks)
 	t_token	*curr;
 	int		nb_pipes;
 
-	// if (*toks)
-	// 	printf("%s\n", (*toks)->word);
+	//if (*toks)
+	//	printf("%s\n", (*toks)->word);
 	curr = *toks;
 	nb_pipes = 0;
 	while (curr && curr->type != OR_IF && curr->type != AND_IF)
