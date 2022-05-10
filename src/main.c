@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/14 15:13:09 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:44:19 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	(void)envp;
 	ft_bzero(&g_data, sizeof(g_data));
 	ft_fill_env(envp);
-
-	//builtins_ex(argv, (void (*)(char **))argv[1]);
-
-	/*line = (char *)1;
+	//builtins_ex(argv, (void (*))argv[1]);
+	line = (char *)1;
 	while (line)
 	{
 		line = readline("Minishell$ ");
@@ -36,15 +33,5 @@ int	main(int argc, char **argv, char **envp)
 		free(line);
 	}
 	ft_putstr("exit\n");
-	ft_fre./m	e_and_exit(0);
+	ft_free_and_exit(g_data.exit_code);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	t_data	data;
-
-// 	(void)argc;
-// 	ft_bzero(&data, sizeof(data));
-// 	ft_tok_rec(argv[1], &data);
-// 	ft_free_toks(&data.tok);
-// }
