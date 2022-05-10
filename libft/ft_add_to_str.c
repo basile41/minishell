@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_add_to_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 21:36:46 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/04 18:55:44 by bregneau         ###   ########.fr       */
+/*   Created: 2022/05/04 15:48:26 by bregneau          #+#    #+#             */
+/*   Updated: 2022/05/08 14:41:14 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_add_to_str(char *s1, char *s2, size_t s2_size)
 {
-	unsigned int	i;
-	int				s;
-	char			*a;
+	static size_t	size = 1;
+	size_t			old_size;
+	size_t			new_size;
 
-	a = (char *)str;
-	while (ft_isspace(*a))
-		a++;
-	s = 1;
-	if (*a == '-')
+	old_size = size;
+	if (s1)
+		new_size = ft_strlen(s1) + s2_size + 1;
+	else
 	{
-		a++;
-		s = -1;
+		s1 = ft_calloc(1, 1);
+		new_size = s2_size + 1;
+		size = 1;
 	}
-	else if (*a == '+')
-		a++;
-	i = 0;
-	while (ft_isdigit(*a))
+	if (size <= new_size)
 	{
-		i = i * 10 + *a - '0';
-		a++;
+		while (size < new_size)
+			size *= 2;
+		s1 = ft_realloc(s1, old_size, size);
+		if (s1 == NULL)
+			return (NULL);
 	}
-	return (i * s);
+	ft_strlcat(s1, s2, new_size);
+	return (s1);
 }

@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/04/14 15:35:37 by cmarion          ###   ########.fr        #
+#    Updated: 2022/05/10 11:22:12 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,11 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_tokens.c \
 					ft_split_toks.c \
 					ft_heredoc.c \
-					ft_check_tok.c
- SRC_BUILTINS	=	display_export.c \
+					ft_check_tok.c \
+					ft_parser.c \
+					ft_expand.c \
+					ft_quotes.c
+SRC_BUILTINS	=	display_export.c \
 					sh_cd.c \
  					sh_echo.c \
  					sh_pwd.c \
@@ -42,8 +45,8 @@ SRC_PARSER		=	ft_tok_rec.c \
 					sh_exit.c \
 					builtins_ex.c
 SRC_EXEC		=	
-SRC_UTILS		=	x_malloc.c \
-					env_lst.c
+SRC_UTILS		=	env_lst.c \
+					ft_env_utils.c
 
 SRC				= 	main.c \
 					ft_minishell.c \

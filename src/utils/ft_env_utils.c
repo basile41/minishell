@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_env_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 21:36:46 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/04 18:55:44 by bregneau         ###   ########.fr       */
+/*   Created: 2022/05/07 18:19:53 by bregneau          #+#    #+#             */
+/*   Updated: 2022/05/08 16:18:49 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int	ft_atoi(const char *str)
+char	*ft_get_value(char *key)
 {
-	unsigned int	i;
-	int				s;
-	char			*a;
+	t_env	*curr;
 
-	a = (char *)str;
-	while (ft_isspace(*a))
-		a++;
-	s = 1;
-	if (*a == '-')
+	curr = g_data.env;
+	while (curr)
 	{
-		a++;
-		s = -1;
+		if (ft_strcmp(curr->key, key) == 0)
+			return (strdup(curr->value));
+		curr = curr->next;
 	}
-	else if (*a == '+')
-		a++;
-	i = 0;
-	while (ft_isdigit(*a))
-	{
-		i = i * 10 + *a - '0';
-		a++;
-	}
-	return (i * s);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/14 14:50:27 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:07:06 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_parse_tok(char *str, t_type type)
 		g_data.tok = new;
 	}
 	else
-		last = ft_add_tok(&last, new);
+		last = ft_add_tok(last, new);
 	if (type == ENDLINE)
 		last = NULL;
 	return (1);
