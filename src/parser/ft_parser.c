@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 20:19:43 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:48:30 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,14 @@ void	ft_open_redir(t_token *tok)
 	tok->next->word = ft_itoa(fd);
 }
 
-int	ft_pipeline(t_token **toks)
+int	ft_parse_pipeline(t_token **toks)
 {
-	//int	status;
 	int			nb_cmds;
 	t_pipeline	pl;
 
 	pl.start = *toks;
-	//if (*toks)
-	//	printf("%s\n", (*toks)->word);
 	nb_cmds = 1;
-	while (*toks && (*toks)->type != OR_IF && (*toks)->type != AND_IF)
+	while (*toks && (*toks)->type != NEWLINE && (*toks)->type != OR_IF && (*toks)->type != AND_IF)
 	{
 		if ((*toks)->type == PIPE)
 			nb_cmds++;
@@ -84,7 +81,7 @@ void	ft_parser(t_token *toks)
 	{
 		// if (curr)
 		// 	printf("%s\n", curr->word);
-		status = ft_pipeline(&curr);
+		status = ft_parse_pipeline(&curr);
 		curr = ft_get_next_ccom(curr, status);
 	}
 }

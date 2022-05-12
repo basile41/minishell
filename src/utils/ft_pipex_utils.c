@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 20:43:11 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:07:04 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ char	**ft_toks_to_strs(t_pipeline *pl)
 		}
 		tok = tok->next;
 	}
+	if (cmd)
+		cmd[i] = NULL;
 	return (cmd);
 }

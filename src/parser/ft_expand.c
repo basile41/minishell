@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 16:53:55 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:28:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_token	*ft_do_expand_in(t_token *tok_exp, char **word, t_quoted quoted)
 	{
 		tok_exp->word = ft_add_to_str(tok_exp->word, *word + 1,
 				ft_q_size(*word));
-		word += ft_q_size(*word) + 1;
+		*word += ft_q_size(*word) + 1;
 	}
 	else if (**word == '$')
 		*word += ft_expand_dollar(&tok_exp, *word, quoted);
@@ -97,7 +97,8 @@ t_token	*ft_do_expand(t_token *tok_exp, char *word)
 			word += i;
 			i = 0;
 			tok_exp = ft_do_expand_in(tok_exp, &word, quoted);
-			word++;
+			if (*word)
+				word++;
 		}
 		else
 			i++;
@@ -105,23 +106,34 @@ t_token	*ft_do_expand(t_token *tok_exp, char *word)
 	return (tok_exp);
 }
 
-void	ft_expand(t_token **tok)
+t_token	*ft_expand(t_token **tok)
 {
-	t_token		*tok_exp;
+	// t_token		*tok_exp;
+	t_token		*start;
+	t_token 	*end;
 	t_token		*tmp;
 	char		*word;
 
 	tmp = *tok;
 	word = (*tok)->word;
-	if (tmp->type != WORD && 0 == (ft_strchr(word, '$')
+	if ((*tok)->type != WORD && 0 == (ft_strchr(word, '$')
 			|| ft_strchr(word, '\'') || ft_strchr(word, '\"')))
-		return ;
-	tok_exp = ft_new_tok(NULL, WORD);
-	if ((*tok)->prev)
-		ft_add_tok((*tok)->prev, tok_exp);
-	else
-		*tok = tok_exp;
-	tok_exp = ft_do_expand(tok_exp, word);
+		return (*tok);
+	*tok = ft_new_tok(NULL, WORD);
+	start = *tok;
+	// if ((*tok)->prev)
+	// {
+	// 	ft_add_tok((*tok)->prev, tok_exp);
+	// }
+	// else
+	// 	*tok = tok_exp;
+	end = ft_do_expand(*tok, word);
+	if (tmp->prev)
+		ft_add_tok(tmp->prev, *tok);
+	*tok = end;
 	if (tmp->next)
-		ft_add_tok(tok_exp, tmp->next);
+		ft_add_tok(*tok, tmp->next);
+	// ft_aff(*tok);
+	// ft_aff(tok_exp);
+	return (start);
 }
