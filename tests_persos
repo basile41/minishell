@@ -1,0 +1,12 @@
+echo a
+
+echo $USER
+echo '$USER'
+echo "$USER"
+echo "'$USER'"
+echo '"$USER"'
+echo 'a
+export $a='echo b'
+$a
+((echo a)
+((echo (a))
