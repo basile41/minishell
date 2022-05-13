@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 17:43:00 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/04 18:53:16 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/12 16:52:45 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ BONUS_OBJS		= $(BONUS:.c=.o)
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+CFLAGS			= -Wall -Wextra -Werror -g3 -I.
 
 NAME			= libft.a
 

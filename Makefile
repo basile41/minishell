@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/11 11:37:58 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/12 16:22:22 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_check_tok.c \
 					ft_parser.c \
 					ft_expand.c \
-					ft_quotes.c
+					ft_expand2.c
 SRC_BUILTINS	=	display_export.c \
 					sh_cd.c \
  					sh_echo.c \

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 14:48:30 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:13:29 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_open_redir(t_token *tok)
 		perror("minishell");
 	free(tok->next->word);
 	tok->next->word = ft_itoa(fd);
+	tok->next->type = IO_NUMBER;
 }
 
 int	ft_parse_pipeline(t_token **toks)
@@ -82,6 +83,6 @@ void	ft_parser(t_token *toks)
 		// if (curr)
 		// 	printf("%s\n", curr->word);
 		status = ft_parse_pipeline(&curr);
-		curr = ft_get_next_ccom(curr, status);
+		curr = ft_get_next_ccom(curr, g_data.exit_code);
 	}
 }

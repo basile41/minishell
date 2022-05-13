@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/11 14:07:31 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:53:01 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,41 @@ char	*ft_get_path(char *cmd_name)
 		i++;
 	}
 	ft_free_strs(paths);
+	if (path == NULL)
+		printf("%s : command not found", cmd_name);
 	return (path);
 }
 
-// void	ft_pipeline(t_pipeline *pl, int nb_cmds)
-// {
+pid_t	ft_fork()
+{
+	pid_t	child;
 
-// }
+	child = fork;
+	if (fork == -1)
+	{
+		perror("fork: ");
+		return (-1);
+	}
+	else
+		return (child);
+}
+
+void	ft_pipeline(t_pipeline *pl, int nb_cmds)
+{
+	pid_t	child[2048];
+	int		pipefd[2];
+	int		i;
+
+	i = 0;
+	while (i < nb_cmds)
+	{
+		pipe(pipefd);
+		child[i] = ft_fork();
+		if (child[i] == -1)
+			return (ft_error(1))
+		i++;
+	}
+}
 
 // int	main(int argc, char **argv, char **envp)
 // {

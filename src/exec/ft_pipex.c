@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 11:26:02 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:03:25 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_simple_cmd(t_pipeline *pl)
 	cmd = ft_toks_to_strs(pl);
 	if (is_builtins(*cmd))
 		builtins_ex(cmd);
-	// else
+	else
 	// 	;//exec
 }
 

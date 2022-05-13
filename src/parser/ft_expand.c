@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 12:28:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:29:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_quoted	ft_set_quoted(t_quoted q, char c);
 char		*ft_delete_quotes(char	*s);
 int			ft_q_size(char *s);
+int			ft_expand_status(t_token **tok_exp);
 
 void	ft_split_exp(t_token **tok_exp, char *value)
 {
@@ -42,6 +43,8 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 	char	*value;
 
 	i = 0;
+	if (*(++str) == '?')
+		return (ft_expand_status(tok_exp));
 	if (ft_isalpha(*(++str)) == 0)
 		return (i);
 	while (str[i] && ft_isalnum(str[i]))
@@ -57,9 +60,7 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 		(*tok_exp)->word = ft_add_to_str((*tok_exp)->word,
 				value, ft_strlen(value));
 	else
-	{
 		ft_split_exp(tok_exp, value);
-	}
 	free(value);
 	return (i);
 }
@@ -108,9 +109,8 @@ t_token	*ft_do_expand(t_token *tok_exp, char *word)
 
 t_token	*ft_expand(t_token **tok)
 {
-	// t_token		*tok_exp;
 	t_token		*start;
-	t_token 	*end;
+	t_token		*end;
 	t_token		*tmp;
 	char		*word;
 
@@ -121,19 +121,11 @@ t_token	*ft_expand(t_token **tok)
 		return (*tok);
 	*tok = ft_new_tok(NULL, WORD);
 	start = *tok;
-	// if ((*tok)->prev)
-	// {
-	// 	ft_add_tok((*tok)->prev, tok_exp);
-	// }
-	// else
-	// 	*tok = tok_exp;
 	end = ft_do_expand(*tok, word);
 	if (tmp->prev)
 		ft_add_tok(tmp->prev, *tok);
 	*tok = end;
 	if (tmp->next)
 		ft_add_tok(*tok, tmp->next);
-	// ft_aff(*tok);
-	// ft_aff(tok_exp);
 	return (start);
 }
