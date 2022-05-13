@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 17:53:01 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:01:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_pipeline(t_pipeline *pl, int nb_cmds)
 		pipe(pipefd);
 		child[i] = ft_fork();
 		if (child[i] == -1)
-			return (ft_error(1))
+			return (ft_ex(1))
 		i++;
 	}
 }

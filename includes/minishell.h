@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 11:21:38 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:03:54 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void		ft_parser(t_token *toks);
 t_token		*ft_expand(t_token **tok);
 int			ft_pipex(t_pipeline *pl, int nb_cmds);
 
-//ft_exit.c
-void		ft_free_and_exit(int status);
-
 //ft_env.c
 void		ft_free_env(t_env *env);
 void		ft_lstfree_env(void);
@@ -71,6 +68,8 @@ void		env_add_back(t_env **alst, t_env *new);
 t_env		*env_new(char *val, int env_disp);
 char		*ft_get_value(char *key);
 char		**ft_toks_to_strs(t_pipeline *pl);
+void		ft_free_and_exit(int status);
+void		ft_exit_perror(char *message);
 
 void	ft_aff(t_token *first);
 

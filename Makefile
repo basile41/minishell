@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/12 16:22:22 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/13 12:04:11 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,11 @@ SRC_EXEC		=	ft_pipex.c \
 					ft_exec.c
 SRC_UTILS		=	env_lst.c \
 					ft_env_utils.c \
+					ft_exit.c \
 					ft_pipex_utils.c 
 					
 SRC				= 	main.c \
 					ft_minishell.c \
-					ft_exit.c \
 					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
 					$(addprefix $(EXEC_PATH), $(SRC_EXEC)) \
 					$(addprefix $(UTILS_PATH), $(SRC_UTILS)) \
