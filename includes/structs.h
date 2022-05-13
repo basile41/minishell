@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/10 16:21:05 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:47:37 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ typedef struct s_env
 	int				env_disp;
 	struct s_env	*next;
 }	t_env;
-
-typedef struct s_mall
-{
-	char			*var;
-	struct s_mall	*next;
-}	t_mall;
 
 typedef enum type
 {
@@ -72,7 +66,6 @@ typedef struct s_pipeline
 typedef struct s_global
 {
 	t_env	*env;
-	t_mall	*mall;
 	t_token	*tok;
 	int		env_size;
 	int		exit_code;

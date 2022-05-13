@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:31:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/13 09:44:47 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:55:21 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	sh_exit(char **cmd)
 	{
 		if (!ft_isnum(cmd[1]))
 		{
-			printf("exit\nminishell: exit: %s: numeric argument required",
+			printf("exit\nminishell: exit: %s: numeric argument required\n",
 				cmd[1]);
 			_exit(2);
 		}
@@ -55,7 +55,7 @@ void	sh_exit(char **cmd)
 	}
 	if (cmd[1] && cmd[2])
 	{
-		printf("exit\nminishell: exit: too many arguments");
+		printf("exit\nminishell: exit: too many arguments\n");
 		_exit(1);
 	}
 }

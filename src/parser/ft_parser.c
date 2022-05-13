@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 17:13:29 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 14:56:26 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_open_redir(t_token *tok)
 		fd = open(tok->next->word, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR
 				| S_IRGRP | S_IROTH | S_IWUSR);
 	if (fd < 0)
-		perror("minishell");
+		ft_exit_perror("open");
 	free(tok->next->word);
 	tok->next->word = ft_itoa(fd);
 	tok->next->type = IO_NUMBER;

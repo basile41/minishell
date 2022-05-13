@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 12:01:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:05:40 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ char	*ft_get_path(char *cmd_name)
 		return (NULL);
 	paths = ft_split(path, ':');
 	free(path);
-	if (paths == NULL)
-		return (NULL);
 	tmp = ft_strjoin("/", cmd_name);
-	i = 0;
-	while (paths[i])
+	i = -1;
+	while (paths[++i])
 	{
 		path = ft_strjoin(paths[i], tmp);
 		if (access(path, X_OK) == 0)
 			break ;
 		free(path);
 		path = NULL;
-		i++;
 	}
 	ft_free_strs(paths);
 	if (path == NULL)
@@ -43,33 +40,42 @@ char	*ft_get_path(char *cmd_name)
 	return (path);
 }
 
-pid_t	ft_fork()
+void	ft_fork(pid_t *child)
+{
+	*child = fork();
+	if (*child == -1)
+		ft_exit_perror("fork");
+}
+
+void	ft_pipe_fork(void)
 {
 	pid_t	child;
+	int		pipefd[2];
+	int		ret;
 
-	child = fork;
-	if (fork == -1)
+	ret = pipe(pipefd);
+	if (ret < 0)
+		ft_exit_perror("pipe");
+	ft_fork(&child);
+	if (child == 0)
 	{
-		perror("fork: ");
-		return (-1);
+		dup2(pipefd[1], STDOUT_FILENO);
+
 	}
-	else
-		return (child);
+	ret = dup2(pipefd[0], STDIN_FILENO);
+	if (ret < 0)
+		ft_exit_perror("dup2");
 }
 
 void	ft_pipeline(t_pipeline *pl, int nb_cmds)
 {
-	pid_t	child[2048];
-	int		pipefd[2];
 	int		i;
 
+	(void)pl;
 	i = 0;
 	while (i < nb_cmds)
 	{
-		pipe(pipefd);
-		child[i] = ft_fork();
-		if (child[i] == -1)
-			return (ft_ex(1))
+		ft_pipe_fork();
 		i++;
 	}
 }

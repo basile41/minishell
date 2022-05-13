@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 16:29:12 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:53:28 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 	i = 0;
 	if (*(++str) == '?')
 		return (ft_expand_status(tok_exp));
-	if (ft_isalpha(*(++str)) == 0)
+	if (ft_isalpha(*(str)) == 0)
 		return (i);
 	while (str[i] && ft_isalnum(str[i]))
 		i++;

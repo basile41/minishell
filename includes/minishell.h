@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 12:03:54 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:50:22 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			ft_tok_rec(char *line);
 void		ft_parse_env(char **envp);
 int			ft_heredoc(char	*delimiter);
 int			ft_check_tok(t_token *last, t_type type);
+int			ft_is_redir(t_type type);
 void		ft_parser(t_token *toks);
 t_token		*ft_expand(t_token **tok);
 int			ft_pipex(t_pipeline *pl, int nb_cmds);
@@ -61,7 +62,6 @@ void		builtins_ex(char **cmd);
 //Utils
 void		*ft_xmalloc(size_t size);
 void		*x_malloc(size_t size);
-void		freex_malloc(t_mall *mall);
 char		*get_env_key(char *var);
 char		*get_env_value(char *var);
 void		env_add_back(t_env **alst, t_env *new);

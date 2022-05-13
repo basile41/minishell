@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:23:02 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/12 14:32:54 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:55:42 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sh_cd(char **cmd)
 
 	if (cmd[1] && cmd[2])
 	{
-		printf("minishell: cd: too many arguments");
+		printf("minishell: cd: too many arguments\n");
 		g_data.exit_code = 1;
 	}
 	else

@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   x_malloc.c                                         :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 11:24:38 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/09 21:19:46 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/28 22:55:35 by bregneau          #+#    #+#             */
+/*   Updated: 2022/05/13 12:04:17 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	*x_malloc(size_t size)
+void	ft_free_and_exit(int status)
 {
-	void	*ret;
-
-	ret = malloc(size);
-	if (!ret)
-		ft_free_and_exit(1);
-	ft_lstadd_back((t_list **)g_data.mall, (t_list *)ft_lstnew(ret));
-	return (ret);
+	ft_lstfree_env();
+	ft_free_toks(&g_data.tok);
+	exit(status);
 }
 
-void	freex_malloc(t_mall *mall)
+void	ft_exit_perror(char *message)
 {
-	t_mall	*temp;
-
-	temp = mall;
-	while (temp)
-	{
-		free(temp->var);
-		temp = temp->next;
-	}
+	perror(message);
+	exit(EXIT_FAILURE);
 }
