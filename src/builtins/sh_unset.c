@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 11:16:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/13 17:55:52 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:18:11 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	sh_unset(char **cmd)
 		if (cmd_verif(cmd[i]))
 		{
 			env = g_data.env;
-			while (env && ft_strcmp(cmd[i], env->var) != 0)
+			while (env && ft_strcmp(cmd[i], env->key) != 0)
 				env = env->next;
-			if (env && ft_strcmp(cmd[i], env->var) == 0)
+			if (env && ft_strcmp(cmd[i], env->key) == 0)
 				ft_free_env(env);
 		}
 		else
