@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 18:19:53 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/11 14:11:41 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:35:42 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,32 @@ char	*ft_get_value(char *key)
 		curr = curr->next;
 	}
 	return (NULL);
+}
+
+char	*ft_get_path(char *cmd_name)
+{
+	char	**paths;
+	char	*path;
+	char	*tmp;
+	int		i;
+
+	path = ft_get_value("PATH");
+	if (path == NULL)
+		return (NULL);
+	paths = ft_split(path, ':');
+	free(path);
+	tmp = ft_strjoin("/", cmd_name);
+	i = -1;
+	while (paths[++i])
+	{
+		path = ft_strjoin(paths[i], tmp);
+		if (access(path, X_OK) == 0)
+			break ;
+		free(path);
+		path = NULL;
+	}
+	ft_free_strs(paths);
+	if (path == NULL)
+		ft_dprintf(2, "%s : command not found", cmd_name);
+	return (path);
 }

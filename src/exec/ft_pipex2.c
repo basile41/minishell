@@ -6,39 +6,11 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 14:13:06 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:36:24 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*ft_get_path(char *cmd_name)
-{
-	char	**paths;
-	char	*path;
-	char	*tmp;
-	int		i;
-
-	path = ft_get_value("PATH");
-	if (path == NULL)
-		return (NULL);
-	paths = ft_split(path, ':');
-	free(path);
-	tmp = ft_strjoin("/", cmd_name);
-	i = -1;
-	while (paths[++i])
-	{
-		path = ft_strjoin(paths[i], tmp);
-		if (access(path, X_OK) == 0)
-			break ;
-		free(path);
-		path = NULL;
-	}
-	ft_free_strs(paths);
-	if (path == NULL)
-		ft_dprintf(2, "%s : command not found", cmd_name);
-	return (path);
-}
 
 void	ft_fork(pid_t *child)
 {
@@ -47,7 +19,7 @@ void	ft_fork(pid_t *child)
 		ft_exit_perror("fork");
 }
 
-void	ft_pipe_fork(void)
+void	ft_pipe_fork(t_pipeline *pl)
 {
 	pid_t	child;
 	int		pipefd[2];
@@ -60,7 +32,7 @@ void	ft_pipe_fork(void)
 	if (child == 0)
 	{
 		dup2(pipefd[1], STDOUT_FILENO);
-
+		(void)pl;
 	}
 	ret = dup2(pipefd[0], STDIN_FILENO);
 	if (ret < 0)
@@ -75,7 +47,7 @@ void	ft_pipeline(t_pipeline *pl, int nb_cmds)
 	i = 0;
 	while (i < nb_cmds)
 	{
-		ft_pipe_fork();
+		ft_pipe_fork(pl);
 		i++;
 	}
 }

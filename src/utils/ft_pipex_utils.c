@@ -6,11 +6,22 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/12 14:07:04 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:45:16 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_redir(t_token *tok)
+{
+	int	fd;
+
+	fd = ft_atoi(tok->word);
+	if (tok->prev->type == DLESS || tok->prev->type == LESS)
+		dup2(fd, STDIN_FILENO);
+	else
+		dup2(fd, STDOUT_FILENO);
+}
 
 char	**ft_toks_to_strs(t_pipeline *pl)
 {
@@ -32,6 +43,8 @@ char	**ft_toks_to_strs(t_pipeline *pl)
 			cmd[i] = tok->word;
 			i++;
 		}
+		if (tok->type == IO_NUMBER)
+			ft_redir(tok);
 		tok = tok->next;
 	}
 	if (cmd)

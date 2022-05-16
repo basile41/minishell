@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/04/08 10:21:29 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/16 19:42:05 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,30 @@ void	ft_lstfree_env(void)
 			env = temp;
 		}
 	}
+}
+
+char	**ft_get_env(void)
+{
+	char	**env;
+	t_env	*curr;
+	int		i;
+
+	curr = g_data.env;
+	i = 0;
+	env = NULL;
+	while (curr)
+	{
+		env = ft_realloc(env, (i + 1) * sizeof(*env),
+				(i + 2) * sizeof(*env));
+		if (env == NULL)
+			return (NULL);
+		env[i] = ft_strdup(curr->var);
+		i++;
+		curr = curr->next;
+	}
+	if (env)
+		env[i] = NULL;
+	return (env);
 }
 
 void	ft_fill_env(char **envp)

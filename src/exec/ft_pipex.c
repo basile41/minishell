@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 18:04:23 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:12:02 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ void	ft_simple_cmd(t_pipeline *pl)
 	if (cmd == NULL)
 		return ;
 	if (is_builtins(*cmd))
+	{
 		builtins_ex(cmd);
+		close(STDOUT_FILENO);
+		open("/dev/tty", O_WRONLY);
+		close(STDIN_FILENO);
+		open("/dev/tty", O_RDONLY);
+	}
 	// else
 	// 	;//exec
 }

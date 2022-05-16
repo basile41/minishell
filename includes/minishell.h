@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 15:50:22 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:42:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ int			ft_is_redir(t_type type);
 void		ft_parser(t_token *toks);
 t_token		*ft_expand(t_token **tok);
 int			ft_pipex(t_pipeline *pl, int nb_cmds);
+void		ft_process(t_pipeline *pl);
 
 //ft_env.c
 void		ft_free_env(t_env *env);
 void		ft_lstfree_env(void);
+char		**ft_get_env(void);
 void		ft_fill_env(char **envp);
 
 //Builtins
@@ -67,6 +69,7 @@ char		*get_env_value(char *var);
 void		env_add_back(t_env **alst, t_env *new);
 t_env		*env_new(char *val, int env_disp);
 char		*ft_get_value(char *key);
+char		*ft_get_path(char *cmd_name);
 char		**ft_toks_to_strs(t_pipeline *pl);
 void		ft_free_and_exit(int status);
 void		ft_exit_perror(char *message);
