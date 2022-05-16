@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/13 17:55:04 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 13:31:00 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exit_not_a_valid_identifier(char *cmd)
 {
-	printf("bash: export: `%s': not a valid identifier\n", cmd);
+	ft_dprintf(2, "bash: export: `%s': not a valid identifier\n", cmd);
 	g_data.exit_code = 1;
 	return (0);
 }

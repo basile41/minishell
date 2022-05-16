@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 16:07:09 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:13:44 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_tok_rec(char *line)
 		ret = ft_parse_tok(strs[i], ft_get_type(strs[i]));
 	if (ret == 0)
 	{
-		printf("minishell: syntax error near unexpected token `%s'\n",
+		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
 			strs[i - 1]);
 		ft_free_strs(strs);
 		return (2);

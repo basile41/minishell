@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:23:02 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/13 17:55:42 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 13:16:11 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	home_cd(char *old)
 		&& chdir(env->value) == 0)
 		pwds_actu(old);
 	else
-		printf("minishell: cd: HOME not set\n");
+		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 }
 
 void	sh_cd(char **cmd)
@@ -66,7 +66,7 @@ void	sh_cd(char **cmd)
 
 	if (cmd[1] && cmd[2])
 	{
-		printf("minishell: cd: too many arguments\n");
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
 		g_data.exit_code = 1;
 	}
 	else
@@ -81,7 +81,7 @@ void	sh_cd(char **cmd)
 			pwds_actu(add);
 		else
 		{
-			printf("minishell: cd: %s: No such file or directory\n", cmd[1]);
+			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd[1]);
 			g_data.exit_code = 1;
 		}
 		free (add);

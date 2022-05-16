@@ -1,12 +1,22 @@
 echo a
-
+export a="coucou '$USER'"
+echo $a
 echo $USER
 echo '$USER'
 echo "$USER"
 echo "'$USER'"
 echo '"$USER"'
+
 echo 'a
-export $a='echo b'
+export a='echo hello'
 $a
+$variable_inexistante
 ((echo a)
 ((echo (a))
+
+cd src
+pwd
+cd ..
+pwd
+cd /tmp
+pwd

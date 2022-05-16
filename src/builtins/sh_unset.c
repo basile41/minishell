@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 11:16:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/16 12:18:11 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:11:44 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	sh_unset(char **cmd)
 		}
 		else
 		{
-			printf("minishell: unset: `%s': not a valid identifier\n", cmd[i]);
+			ft_dprintf(2, "minishell: unset: `%s': not a valid identifier\n",
+				cmd[i]);
 			exit_code ++;
 		}
 	}
