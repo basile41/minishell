@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:58:13 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/13 18:05:13 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:02:33 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	is_builtins(char *cmd)
 {
+	if (cmd == NULL)
+		return (0);
 	if (!ft_strcmp(cmd, "cd"))
 		return (1);
 	else if (!ft_strcmp(cmd, "echo"))
