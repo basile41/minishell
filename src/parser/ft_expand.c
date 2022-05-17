@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 11:59:05 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:25:08 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,13 @@ t_token	*ft_expand(t_token **tok)
 	start = *tok;
 	end = ft_do_expand(*tok, word);
 	if (tmp->prev)
-		ft_add_tok(tmp->prev, *tok);
+		ft_add_tok(tmp->prev, start);
+	else
+		g_data.tok = start;
 	*tok = end;
 	if (tmp->next)
 		ft_add_tok(*tok, tmp->next);
+	free(tmp->word);
+	free(tmp);
 	return (start);
 }

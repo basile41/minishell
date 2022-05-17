@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:48:26 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/08 14:41:14 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:47:02 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_add_to_str(char *s1, char *s2, size_t s2_size)
 		s1 = ft_calloc(1, 1);
 		new_size = s2_size + 1;
 		size = 1;
+		old_size = 1;
 	}
 	if (size <= new_size)
 	{
