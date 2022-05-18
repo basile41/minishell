@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 17:09:26 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:43:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_parser(t_token *toks);
 t_token		*ft_expand(t_token **tok);
 
 //exec
-int			ft_pipex(t_pipeline *pl, int nb_cmds);
+void			ft_pipex(t_pipeline *pl, int nb_cmds);
 void		ft_pipeline(t_pipeline *pl, int nb_cmds);
 void		ft_process(t_pipeline *pl);
 void		ft_exec(char **cmd);

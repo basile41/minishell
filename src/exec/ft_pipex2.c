@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 21:25:34 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:35:41 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_last_cmd(t_pipeline *pl)
 	ft_fork(&child);
 	if (child == 0)
 		ft_process(pl);
-	waitpid(child, 0, 0);// il faut recuper exit code
+	waitpid(child, &g_data.exit_code, 0);
 }
 
 void	ft_pipeline(t_pipeline *pl, int nb_cmds)

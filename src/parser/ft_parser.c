@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 14:56:26 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:41:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_open_redir(t_token *tok)
 	tok->next->type = IO_NUMBER;
 }
 
-int	ft_parse_pipeline(t_token **toks)
+void	ft_parse_pipeline(t_token **toks)
 {
 	int			nb_cmds;
 	t_pipeline	pl;
@@ -47,7 +47,7 @@ int	ft_parse_pipeline(t_token **toks)
 		*toks = (*toks)->next;
 	}
 	pl.end = *toks;
-	return (ft_pipex(&pl, nb_cmds));
+	ft_pipex(&pl, nb_cmds);
 }
 
 t_token	*ft_get_next_ccom(t_token *curr, int status)
@@ -75,14 +75,11 @@ t_token	*ft_get_next_ccom(t_token *curr, int status)
 void	ft_parser(t_token *toks)
 {
 	t_token	*curr;
-	int		status;
 
 	curr = toks;
 	while (curr)
 	{
-		// if (curr)
-		// 	printf("%s\n", curr->word);
-		status = ft_parse_pipeline(&curr);
+		ft_parse_pipeline(&curr);
 		curr = ft_get_next_ccom(curr, g_data.exit_code);
 	}
 }
