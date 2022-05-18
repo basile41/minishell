@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:04:27 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 20:33:40 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:15:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	ft_exec(char **cmd)
 
 	path = ft_get_path(*cmd);
 	execve(path, cmd, ft_get_env());
-	perror("execve");
+	// perror("execve");
 	exit(EXIT_FAILURE);
 }

@@ -6,11 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 16:52:36 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:08:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_last_cmd(t_pipeline *pl);
 
 void	ft_simple_cmd(t_pipeline *pl)
 {
@@ -24,8 +26,8 @@ void	ft_simple_cmd(t_pipeline *pl)
 		return ;
 	if (is_builtins(*cmd))
 		builtins_ex(cmd);
-	// else
-	// 	;//exec
+	else
+		ft_last_cmd(pl);
 	free(cmd);
 }
 
