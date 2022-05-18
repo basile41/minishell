@@ -6,11 +6,27 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 20:45:16 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:53:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_expand_cmd(t_pipeline *pl)
+{
+	t_token	*tok;
+
+	tok = pl->start->next;
+	pl->start = ft_expand(&pl->start);
+	// 	printf("%s\n", pl->start->word);
+	// ft_expand(&pl->start);
+	while (tok != pl->end && tok->type != PIPE)
+	{
+		// printf("%s\n", (tok)->word);
+		ft_expand(&tok);
+		tok = tok->next;
+	}
+}
 
 void	ft_redir(t_token *tok)
 {
