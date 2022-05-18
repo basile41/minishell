@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 19:14:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/18 20:44:45 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,44 @@ void	ft_pipe_fork(t_pipeline *pl)
 	if (child == 0)
 	{
 		ret = dup2(pipefd[1], STDOUT_FILENO);
+		close(pipefd[0]);
 		if (ret < 0)
 			ft_exit_perror("dup2");
 		ft_process(pl);
 	}
 	ret = dup2(pipefd[0], STDIN_FILENO);
-
+	close(pipefd[1]);
 	waitpid(child, 0, WNOHANG);
 	if (ret < 0)
 		ft_exit_perror("dup2");
 }
 
-void	ft_last_cmd(t_pipeline *pl)
+pid_t	ft_last_cmd(t_pipeline *pl)
 {
 	pid_t	child;
 
 	ft_fork(&child);
 	if (child == 0)
 		ft_process(pl);
-	waitpid(child, 0, 0);
+	return (child);
 }
 
 void	ft_pipeline(t_pipeline *pl, int nb_cmds)
 {
+	pid_t	last_child;
+
 	while (nb_cmds)
 	{
 		if (nb_cmds > 1)
 			ft_pipe_fork(pl);
 		else
-			ft_last_cmd(pl);
-		while (pl->start != pl->end && pl->start->type != PIPE)
-			pl->start = pl->start->next;
+			last_child = ft_last_cmd(pl);
 		nb_cmds--;
+		while (nb_cmds && pl->start->type != PIPE)
+			pl->start = pl->start->next;
+		pl->start = pl->start->next;
 	}
+	waitpid(last_child, 0, 0);// il faut recuper exit code
 }
 
 // int	main(int argc, char **argv, char **envp)
