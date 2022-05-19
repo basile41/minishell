@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 21:43:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:20:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <termios.h>
 
 void		ft_minishell(char *line);
 
@@ -75,7 +76,7 @@ char		*ft_get_value(char *key);
 char		*ft_get_path(char *cmd_name);
 void		ft_free_and_exit(int status);
 void		ft_exit_perror(char *message);
-//pipex
+//pipex utils
 void		ft_expand_cmd(t_pipeline *pl);
 char		**ft_toks_to_strs(t_pipeline *pl);
 
