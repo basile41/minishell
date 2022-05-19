@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 15:26:52 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/19 17:09:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,25 @@ void	ft_last_cmd(t_pipeline *pl, pid_t *child)
 	ft_fork(child);
 	if (*child == 0)
 		ft_process(pl);
-	waitpid(*child, &g_data.exit_code, 0);
+	// waitpid(*child, &g_data.exit_code, 0);
 }
 
-void	ft_pipeline(t_pipeline *pl, int nb_cmds)
+void	ft_pipeline(t_pipeline *pl, int nb_cmds, pid_t *childs)
 {
-	pid_t	*childs;
 	int		i;
 
-	childs = malloc(nb_cmds * sizeof(*childs));
-	if (childs == NULL)
-		ft_exit_perror("malloc");
 	i = 0;
 	while (i < nb_cmds)
 	{
-		if (i > nb_cmds - 1)
+		if (i < nb_cmds - 1)
 			ft_pipe_fork(pl, childs + i);
 		else
 			ft_last_cmd(pl, childs + i);
 		i++;
-		while (nb_cmds && pl->start->type != PIPE)
+		while (i < nb_cmds && pl->start->type != PIPE)
 			pl->start = pl->start->next;
 		pl->start = pl->start->next;
 	}
-	i = 0;
-	while (i < nb_cmds)
-		waitpid(childs[i], &g_data.exit_code, 0);
-	free(childs);
 }
 
 // int	main(int argc, char **argv, char **envp)
