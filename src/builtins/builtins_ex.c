@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_ex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:58:13 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/16 12:02:33 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:50:22 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 int	is_builtins(char *cmd)
 {
@@ -33,12 +33,6 @@ int	is_builtins(char *cmd)
 	else
 		return (0);
 }
-
-// void	builtins_ex(char **cmd, void (*f)(char **))
-// {
-// 	f(cmd);
-// }
-
 
 void	builtins_ex(char **cmd)
 {

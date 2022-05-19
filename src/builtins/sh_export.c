@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/16 13:31:00 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:12:41 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	env_name_verif(char *cmd)
 		if (cmd[i] && !(ft_isalnum(cmd[i]) || cmd[i] == '_' || cmd[i] == '='))
 			return (exit_not_a_valid_identifier(cmd));
 		else
-			return (-1);
+			return (i);
 	}
 	else
 		return (exit_not_a_valid_identifier(cmd));
@@ -74,7 +74,7 @@ void	add_var_to_env(char **cmd)
 		if (key_nexist == 0)
 		{
 			env = g_data.env;
-			while (ft_strncmp(env->key, cmd[i], key_valid - 1) != 0)
+			while (ft_strncmp(env->key, cmd[i], key_valid) != 0)
 				env = env->next;
 			ft_free_env(env);
 			if (key_valid == -1)
