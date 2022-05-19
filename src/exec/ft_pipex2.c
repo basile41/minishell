@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 21:35:41 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/19 17:09:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ void	ft_fork(pid_t *child)
 		ft_exit_perror("fork");
 }
 
-void	ft_pipe_fork(t_pipeline *pl)
+void	ft_pipe_fork(t_pipeline *pl, pid_t *child)
 {
-	pid_t	child;
 	int		pipefd[2];
 	int		ret;
 
 	ret = pipe(pipefd);
 	if (ret < 0)
 		ft_exit_perror("pipe");
-	ft_fork(&child);
-	if (child == 0)
+	ft_fork(child);
+	if (*child == 0)
 	{
 		ret = dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[0]);
@@ -39,31 +38,32 @@ void	ft_pipe_fork(t_pipeline *pl)
 	}
 	ret = dup2(pipefd[0], STDIN_FILENO);
 	close(pipefd[1]);
-	waitpid(child, 0, WNOHANG);
+	// waitpid(child, 0, WNOHANG);
 	if (ret < 0)
 		ft_exit_perror("dup2");
 }
 
-void	ft_last_cmd(t_pipeline *pl)
+void	ft_last_cmd(t_pipeline *pl, pid_t *child)
 {
-	pid_t	child;
-
-	ft_fork(&child);
-	if (child == 0)
+	ft_fork(child);
+	if (*child == 0)
 		ft_process(pl);
-	waitpid(child, &g_data.exit_code, 0);
+	// waitpid(*child, &g_data.exit_code, 0);
 }
 
-void	ft_pipeline(t_pipeline *pl, int nb_cmds)
+void	ft_pipeline(t_pipeline *pl, int nb_cmds, pid_t *childs)
 {
-	while (nb_cmds)
+	int		i;
+
+	i = 0;
+	while (i < nb_cmds)
 	{
-		if (nb_cmds > 1)
-			ft_pipe_fork(pl);
+		if (i < nb_cmds - 1)
+			ft_pipe_fork(pl, childs + i);
 		else
-			ft_last_cmd(pl);
-		nb_cmds--;
-		while (nb_cmds && pl->start->type != PIPE)
+			ft_last_cmd(pl, childs + i);
+		i++;
+		while (i < nb_cmds && pl->start->type != PIPE)
 			pl->start = pl->start->next;
 		pl->start = pl->start->next;
 	}
