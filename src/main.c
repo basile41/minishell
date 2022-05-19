@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 14:21:13 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:53:36 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	main(int argc, char **argv, char **envp)
 	line = (char *)1;
 	while (line)
 	{
-		tcsetattr()
 		line = readline(prompt);
 		if (line == NULL)
 			break ;
