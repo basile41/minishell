@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/20 12:27:26 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:27:18 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	aff_tabcchar(char **tab)
 	int	i;
 
 	i = 0;
-	while (expwild[i])
+	while (tab[i])
 	{
-		printf("%s, %d\n", expwild[i], i);
+		printf("%s, %d\n", tab[i], i);
 		i ++;
 	}
 }
@@ -45,10 +45,45 @@ char	**simple_star(void)
 		size ++;
 	}
 	expwild[size - 1] = NULL;
+	free (dir);
+	free (content);
 	return (expwild);
 }
 
-char	**complex_star(void)
+int	has_more_star(char *str)
+{
+	int	i;
+
+	while (str[i] == '*')
+		i ++;
+	if (ft_strchr(&str[i], '*'))
+		return (i);
+	return (0);
+}
+
+char	**wilcards_type(char **content, char *str)
+{
+	int		i;
+	char	**ret;
+
+	if (str[0] == '*' && has_more_star(&str[1]) == 0)
+		ending_chr(str);
+	i = 1;
+	
+	if ()
+	while (str[i])
+	{
+		if (str[i] == '*' && ret == 1)
+		{
+			while (str[i] == '*')
+				i ++;
+				
+		}
+			tes;
+	}
+}
+
+char	**complex_star(char *str)
 {
 	struct dirent	*content;
 	DIR				*dir;
@@ -68,6 +103,7 @@ char	**complex_star(void)
 		content = readdir(dir);
 		size ++;
 	}
+	free (dir);
 	expwild[size - 1] = NULL;
 	return (expwild);
 }
@@ -76,10 +112,10 @@ char	**ft_wildcard(char *wild)
 {	
 	char	**expwild;
 
-	if (!wild[1])
+	if (wild[0] == '*' && !wild[1])
 		expwild = simple_star();
 	else
-		expwild = complex_star(&wild[1]);
-	free (dir);
+		expwild = complex_star(wild);
+	aff_tabcchar(expwild);
 	return (expwild);
 }

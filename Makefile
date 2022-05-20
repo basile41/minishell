@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/20 08:30:01 by cmarion          ###   ########.fr        #
+#    Updated: 2022/05/20 09:48:12 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_check_tok.c \
 					ft_parser.c \
 					ft_expand.c \
-					ft_expand2.c
+					ft_expand2.c \
+					ft_wildcards.c
 SRC_BUILTINS	=	display_export.c \
 					sh_cd.c \
  					sh_echo.c \
@@ -80,7 +81,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."
