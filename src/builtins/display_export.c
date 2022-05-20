@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/20 08:50:02 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:34:54 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	export_display(void)
 	t_env	*env;
 	int		i;
 
-	tenv = calloc(sizeof(char *), g_data.env_size + 1);
+	tenv = ft_calloc(sizeof(char *), g_data.env_size + 1);
 	if (!tenv)
 		ft_free_and_exit(1);
 	env = g_data.env;
