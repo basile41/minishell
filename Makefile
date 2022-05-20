@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/18 17:08:09 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/20 14:58:54 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC_EXEC		=	ft_pipex.c \
 SRC_UTILS		=	env_lst.c \
 					ft_env_utils.c \
 					ft_exit.c \
-					ft_pipex_utils.c 
+					ft_pipex_utils.c \
+					ft_signal.c
 					
 SRC				= 	main.c \
 					ft_minishell.c \

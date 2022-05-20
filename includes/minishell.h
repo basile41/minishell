@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 14:13:47 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:59:20 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <termios.h>
+# include <signal.h>
 
 # ifndef HD_TMP_FILE
 #  define HD_TMP_FILE "/tmp/-ms-thd-"
@@ -80,6 +81,8 @@ char		*ft_get_value(char *key);
 char		*ft_get_path(char *cmd_name);
 void		ft_free_and_exit(int status);
 void		ft_exit_perror(char *message);
+void		ft_signal1(void);
+void		ft_signal2(void);
 //pipex utils
 void		ft_expand_cmd(t_pipeline *pl);
 char		**ft_toks_to_strs(t_pipeline *pl);

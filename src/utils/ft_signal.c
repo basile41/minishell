@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 21:04:27 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 16:24:03 by bregneau         ###   ########.fr       */
+/*   Created: 2022/05/20 14:36:05 by bregneau          #+#    #+#             */
+/*   Updated: 2022/05/20 16:37:19 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_exec(char **cmd)
+void	ft_handler1(int signum)
 {
-	char	*path;
+	(void)signum;
+	write(STDOUT_FILENO, "\n ", 1);
+	rl_replace_line("", 1);
+	rl_on_new_line();
+	rl_redisplay();
+}
 
-	path = ft_get_path(*cmd);
-	signal(SIGQUIT, SIG_DFL);
-	execve(path, cmd, ft_get_env());
-	// perror("execve");
-	exit(EXIT_FAILURE);
+void	ft_handler2(int signum)
+{
+	(void)signum;
+	write(STDOUT_FILENO, "\n ", 1);
+}
+
+void	ft_signal1(void)
+{
+	signal(SIGINT, ft_handler1);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	ft_signal2(void)
+{
+	signal(SIGINT, ft_handler2);
 }
