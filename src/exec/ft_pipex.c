@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 17:07:33 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:17:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_pipex(t_pipeline *pl, int nb_cmds)
 	t_token	*tok;
 	pid_t	*childs;
 	int		i;
+	int		status;
 
 	childs = malloc((nb_cmds + 1) * sizeof(*childs));
 	if (childs == NULL)
@@ -48,6 +49,7 @@ void	ft_pipex(t_pipeline *pl, int nb_cmds)
 		ft_pipeline(pl, nb_cmds, childs);
 	i = 0;
 	while (i < nb_cmds && childs[i])
-		waitpid(childs[i++], &g_data.exit_code, 0);
+		waitpid(childs[i++], &status, 0);
+	g_data.exit_code = WEXITSTATUS(status);
 	free(childs);
 }
