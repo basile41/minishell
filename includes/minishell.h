@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 11:16:22 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:40:04 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
+# include <termios.h>
+# include <signal.h>
+
+# ifndef HD_TMP_FILE
+#  define HD_TMP_FILE "/tmp/-ms-thd-"
+# endif
 
 void		ft_minishell(char *line);
 
@@ -44,7 +50,11 @@ char		**ft_wildcard(char *address);
 
 //exec
 void		ft_pipex(t_pipeline *pl, int nb_cmds);
+<<<<<<< HEAD
 void		ft_pipeline(t_pipeline *pl, int nb_cmds);
+=======
+void		ft_pipeline(t_pipeline *pl, int nb_cmds, pid_t *childs);
+>>>>>>> ff0e99c35004df1d26e056b509b7422f44b21f68
 void		ft_process(t_pipeline *pl);
 void		ft_exec(char **cmd);
 
@@ -77,7 +87,9 @@ char		*ft_get_value(char *key);
 char		*ft_get_path(char *cmd_name);
 void		ft_free_and_exit(int status);
 void		ft_exit_perror(char *message);
-//pipex
+void		ft_signal1(void);
+void		ft_signal2(void);
+//pipex utils
 void		ft_expand_cmd(t_pipeline *pl);
 char		**ft_toks_to_strs(t_pipeline *pl);
 

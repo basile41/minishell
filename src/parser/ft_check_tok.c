@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:07:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 17:31:11 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 14:22:41 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	ft_check_tok_in(t_token *last, t_type type)
 {
 
 	if ((type == OR_IF || type == AND_IF || type == PIPE || type == ENDLINE)
-		&& last->type != WORD && last->type != R_PARENTH)
+		&& last->type != WORD && last->type != R_PARENTH
+		&& last->type != IO_NUMBER)
 		return (0);
 	if (type == L_PARENTH && last->type != AND_IF && last->type != OR_IF
 		&& last->type != PIPE && last->type != L_PARENTH)
