@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 17:03:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 14:13:47 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <termios.h>
+
+# ifndef HD_TMP_FILE
+#  define HD_TMP_FILE "/tmp/-ms-thd-"
+# endif
 
 void		ft_minishell(char *line);
 
