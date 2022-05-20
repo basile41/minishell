@@ -6,12 +6,12 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/20 17:27:18 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/20 18:02:12 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 void	aff_tabcchar(char **tab)
 {
 	int	i;
@@ -50,10 +50,11 @@ char	**simple_star(void)
 	return (expwild);
 }
 
-int	has_more_star(char *str)
+int	has_star_after(char *str)
 {
 	int	i;
 
+	i = 0;
 	while (str[i] == '*')
 		i ++;
 	if (ft_strchr(&str[i], '*'))
@@ -61,16 +62,21 @@ int	has_more_star(char *str)
 	return (0);
 }
 
+int has_star_before(char str, int i)
+{
+	
+}
+
+
 char	**wilcards_type(char **content, char *str)
 {
 	int		i;
 	char	**ret;
 
-	if (str[0] == '*' && has_more_star(&str[1]) == 0)
-		ending_chr(str);
+	if (str[0] == '*' && has_star_after(&str[1]) == 0)
+		ret = ending_chr(str);
 	i = 1;
 	
-	if ()
 	while (str[i])
 	{
 		if (str[i] == '*' && ret == 1)
@@ -119,3 +125,4 @@ char	**ft_wildcard(char *wild)
 	aff_tabcchar(expwild);
 	return (expwild);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 17:40:04 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:45:50 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ char		**ft_wildcard(char *address);
 
 //exec
 void		ft_pipex(t_pipeline *pl, int nb_cmds);
-<<<<<<< HEAD
-void		ft_pipeline(t_pipeline *pl, int nb_cmds);
-=======
 void		ft_pipeline(t_pipeline *pl, int nb_cmds, pid_t *childs);
->>>>>>> ff0e99c35004df1d26e056b509b7422f44b21f68
 void		ft_process(t_pipeline *pl);
 void		ft_exec(char **cmd);
 

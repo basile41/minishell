@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 15:59:06 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:43:14 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,10 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	ft_bzero(&g_data, sizeof(g_data));
 	ft_fill_env(envp);
-
 	if (isatty(STDIN_FILENO))
 		prompt = ft_strdup("Minishell$ ");
 	else
 		prompt = ft_strdup("");
-
-	//builtins_ex(argv, (void (*)(char **))argv[1]);
-
 	line = (char *)1;
 	while (line)
 	{
