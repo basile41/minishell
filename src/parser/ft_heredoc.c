@@ -6,11 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:13:28 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 19:03:37 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:27:52 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+// static void	ft_exit_unlink(char *file, int fd, char *message);
 
 int	ft_create_tmp_file(char *here_doc)
 {
@@ -23,10 +25,12 @@ int	ft_create_tmp_file(char *here_doc)
 		tmp_file = ft_strjoin("/tmp/-ms-thd-", tmp_file);
 	if (tmp_file == NULL)
 		ft_exit_perror("malloc");
-	fd = open(tmp_file, O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0600);
+	fd = open(tmp_file, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR
+			| S_IRGRP | S_IROTH | S_IWUSR);
 	if (fd == -1)
 		ft_exit_perror("open");
-	write(fd, here_doc, ft_strlen(here_doc));
+	if (here_doc != NULL)
+		write(fd, here_doc, ft_strlen(here_doc));
 	close(fd);
 	fd = open(tmp_file, O_RDONLY);
 	if (fd == -1)
@@ -43,12 +47,13 @@ int	ft_heredoc(char	*delimiter)
 	int		fd;
 
 	here_doc = NULL;
-	line = readline("heredoc> ");
+	line = readline("> ");
 	while (line && ft_strcmp(line, delimiter))
 	{
 		here_doc = ft_add_to_str(here_doc, line, ft_strlen(line));
+		here_doc = ft_add_to_str(here_doc, "\n", 1);
 		free(line);
-		line = readline("heredoc> ");
+		line = readline("> ");
 	}
 	free(line);
 	fd = ft_create_tmp_file(here_doc);
