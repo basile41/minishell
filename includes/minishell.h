@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 21:43:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/20 11:16:22 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <dirent.h>
 
 void		ft_minishell(char *line);
 
@@ -39,9 +40,10 @@ int			ft_check_tok(t_token *last, t_type type);
 int			ft_is_redir(t_type type);
 void		ft_parser(t_token *toks);
 t_token		*ft_expand(t_token **tok);
+char		**ft_wildcard(char *address);
 
 //exec
-void			ft_pipex(t_pipeline *pl, int nb_cmds);
+void		ft_pipex(t_pipeline *pl, int nb_cmds);
 void		ft_pipeline(t_pipeline *pl, int nb_cmds);
 void		ft_process(t_pipeline *pl);
 void		ft_exec(char **cmd);
