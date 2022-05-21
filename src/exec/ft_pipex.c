@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/21 15:10:56 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:56:30 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_pipex(t_pipeline *pl, int nb_cmds)
 		ft_simple_cmd(pl, childs);
 	else
 		ft_pipeline(pl, nb_cmds, childs);
+	ft_dup_fd(0);
 	i = -1;
 	while (++i < nb_cmds)
 	{

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 15:59:20 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:04:19 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void		ft_free_and_exit(int status);
 void		ft_exit_perror(char *message);
 void		ft_signal1(void);
 void		ft_signal2(void);
+void		ft_dup_fd(int b);
 //pipex utils
 void		ft_expand_cmd(t_pipeline *pl);
 char		**ft_toks_to_strs(t_pipeline *pl);
