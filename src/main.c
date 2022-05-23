@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 17:43:14 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/23 14:20:39 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@ t_global	g_data;
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	*line;
-	char	*prompt;
+	//char	*line;
+	//char	*prompt;
 
 	(void)argc;
-	(void)argv;
+	//(void)argv;
 	ft_bzero(&g_data, sizeof(g_data));
 	ft_fill_env(envp);
-	if (isatty(STDIN_FILENO))
+	ft_wildcard(argv[1]);
+	/*if (isatty(STDIN_FILENO))
 		prompt = ft_strdup("Minishell$ ");
 	else
 		prompt = ft_strdup("");
@@ -37,9 +38,9 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		ft_minishell(line);
 		free(line);
-	}
+	}*/
 	ft_putstr_fd("exit\n", 2);
-	free(prompt);
+	//free(prompt);
 	ft_free_and_exit(0);
 }
 

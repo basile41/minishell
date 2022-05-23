@@ -6,13 +6,13 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/23 14:10:46 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:00:12 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*void	aff_tabcchar(char **tab)
+void	aff_tabcchar(char **tab)
 {
 	int	i;
 
@@ -22,14 +22,14 @@
 		printf("%s, %d\n", tab[i], i);
 		i ++;
 	}
-}*/
+}
 
 char	**w_content(char **content, char *str, int i, char **ret)
 {
 	int	j;
 	int	k;
 	int	l;
-	int	m;
+	int	ret_size;
 
 	j = -1;
 	while (content[++ j])
@@ -37,15 +37,17 @@ char	**w_content(char **content, char *str, int i, char **ret)
 		k = -1;
 		while (content[j][++ k])
 		{
-			l = k;
-			m = i;
-			while (content[j][l] == str[l] && m --)
+			l = 0;
+			while (content[j][k + l] == str[l] && l <= i)
 				l ++;
-			if (m == 0)
+			if (l == i)
 			{	
-				ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
-						tabchar_len(ret) * sizeof(char *) + 1);
-				ret[tabchar_len(ret) + 1] = ft_strdup(content[j]);
+				ret_size = tabchar_len(ret);
+				ret = ft_realloc(ret, (ret_size + 1) * sizeof(char *),
+						(ret_size + 2) * sizeof(char *));
+				ret[ret_size] = ft_strdup(content[j]);
+				printf("content%d] = %s\n", k, content[j]);
+				ret[ret_size + 1] = NULL;
 			}
 		}
 	}
@@ -57,6 +59,7 @@ char	**w_ending(char **content, char *str, char **ret)
 	int	i;
 	int	j;
 	int	k;
+	int	ret_size;
 
 	i = -1;
 	while (content[++ i])
@@ -67,9 +70,11 @@ char	**w_ending(char **content, char *str, char **ret)
 			;
 		if (k == 0)
 		{
-			ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
-					tabchar_len(ret) * sizeof(char *) + 1);
-			ret[tabchar_len(ret) + 1] = ft_strdup(content[i]);
+			ret_size = tabchar_len(ret);
+			ret = ft_realloc(ret, ret_size * sizeof(char *),
+					ret_size * sizeof(char *) + 1);
+			ret[ret_size + 1] = ft_strdup(content[i]);
+			ret[ret_size + 2] = NULL;
 		}
 	}
 	return (ret);
@@ -79,6 +84,7 @@ char	**w_begining(char **content, char *str, int i, char **ret)
 {	
 	int	j;
 	int	k;
+	int	ret_size;
 
 	j = -1;
 	while (content[++ j])
@@ -88,9 +94,12 @@ char	**w_begining(char **content, char *str, int i, char **ret)
 			k ++;
 		if (i == k)
 		{
-			ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
-					tabchar_len(ret) * sizeof(char *) + 1);
-			ret[tabchar_len(ret) + 1] = ft_strdup(content[j]);
+			ret_size = tabchar_len(ret);
+			ret = ft_realloc(ret, ret_size * sizeof(char *),
+					(ret_size + 1) * sizeof(char *));
+			ret[ret_size] = ft_strdup(content[j]);
+			printf("ret[%d] = %s\n", ret_size, ret[ret_size]);
+			ret[ret_size + 1] = NULL;
 		}
 	}
 	return (ret);
@@ -101,20 +110,25 @@ char	**complex_star(char *str, char **content)
 	int		i;
 	char	**ret;
 
-	ret = NULL;
+	ret = calloc(sizeof(char *), 0);
 	i = -1;
 	while (str[++ i])
 	{
 		if (str[i] == '*')
 		{
-			if (star_before(str, i) > 0 && star_after(&str[i]) > 0)
+			if (star_before(str, i - 1) > 0 && star_after(&str[i + 1]) > 0)
 				w_content(content, &str[star_before(str, i)], star_after(&str[i]), ret);
-			if (star_before(str, i) > 0 && star_after(&str[i]) == 0)
+			if (str[i + 1] && star_after(&str[i + 1]) == 0)
 				w_ending(content, &str[i], ret);
-			if (star_before(str, i) == 0 && star_after(&str[i]) > 0)
+			if (star_before(str, i - 1) == 0 && !str[i + 1])
 				w_begining(content, str, i, ret);
 		}
 	}
+	i = -1;
+	while (content[++ i])
+		free (content[i]);
+	free (content);
+	aff_tabcchar(ret);
 	return (ret);
 }
 
@@ -126,7 +140,7 @@ char	**ft_wildcard(char *wild)
 	int				size;
 
 	dir = opendir(".");
-	content = malloc(sizeof(struct dirent));
+	//content = malloc(sizeof(struct dirent));
 	content = readdir(dir);
 	expwild = NULL;
 	size = 1;
