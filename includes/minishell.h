@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 17:45:50 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/23 13:51:33 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ void		ft_signal2(void);
 //pipex utils
 void		ft_expand_cmd(t_pipeline *pl);
 char		**ft_toks_to_strs(t_pipeline *pl);
+//wildcard utils
+int			star_before(char *str, int i);
+int			star_after(char *str);
+int			tabchar_len(char **tchar);
 
 void	ft_aff(t_token *first);
 

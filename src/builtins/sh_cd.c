@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:23:02 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/16 13:16:11 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:27:12 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	sh_cd(char **cmd)
 			pwds_actu(add);
 		else
 		{
-			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd[1]);
+			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
+				cmd[1]);
 			g_data.exit_code = 1;
 		}
 		free (add);

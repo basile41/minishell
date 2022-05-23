@@ -6,13 +6,13 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/20 18:02:12 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/23 14:10:46 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
-void	aff_tabcchar(char **tab)
+
+/*void	aff_tabcchar(char **tab)
 {
 	int	i;
 
@@ -22,79 +22,108 @@ void	aff_tabcchar(char **tab)
 		printf("%s, %d\n", tab[i], i);
 		i ++;
 	}
-}
+}*/
 
-char	**simple_star(void)
+char	**w_content(char **content, char *str, int i, char **ret)
 {
-	struct dirent	*content;
-	DIR				*dir;
-	int				size;
-	char			**expwild;
+	int	j;
+	int	k;
+	int	l;
+	int	m;
 
-	dir = opendir(".");
-	content = malloc(sizeof(struct dirent));
-	content = readdir(dir);
-	expwild = NULL;
-	size = 1;
-	while (content)
+	j = -1;
+	while (content[++ j])
 	{
-		expwild = ft_realloc(expwild, size * sizeof(char *),
-				(size + 1) * sizeof(char *));
-		expwild[size - 1] = ft_strdup(content->d_name);
-		content = readdir(dir);
-		size ++;
+		k = -1;
+		while (content[j][++ k])
+		{
+			l = k;
+			m = i;
+			while (content[j][l] == str[l] && m --)
+				l ++;
+			if (m == 0)
+			{	
+				ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
+						tabchar_len(ret) * sizeof(char *) + 1);
+				ret[tabchar_len(ret) + 1] = ft_strdup(content[j]);
+			}
+		}
 	}
-	expwild[size - 1] = NULL;
-	free (dir);
-	free (content);
-	return (expwild);
+	return (ret);
 }
 
-int	has_star_after(char *str)
+char	**w_ending(char **content, char *str, char **ret)
 {
 	int	i;
+	int	j;
+	int	k;
 
-	i = 0;
-	while (str[i] == '*')
-		i ++;
-	if (ft_strchr(&str[i], '*'))
-		return (i);
-	return (0);
+	i = -1;
+	while (content[++ i])
+	{
+		j = ft_strlen(content[i]);
+		k = ft_strlen(str);
+		while (content[i][j --] == str[k --])
+			;
+		if (k == 0)
+		{
+			ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
+					tabchar_len(ret) * sizeof(char *) + 1);
+			ret[tabchar_len(ret) + 1] = ft_strdup(content[i]);
+		}
+	}
+	return (ret);
 }
 
-int has_star_before(char str, int i)
-{
-	
+char	**w_begining(char **content, char *str, int i, char **ret)
+{	
+	int	j;
+	int	k;
+
+	j = -1;
+	while (content[++ j])
+	{
+		k = 0;
+		while (content[j][k] == str[k] && k <= i)
+			k ++;
+		if (i == k)
+		{
+			ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
+					tabchar_len(ret) * sizeof(char *) + 1);
+			ret[tabchar_len(ret) + 1] = ft_strdup(content[j]);
+		}
+	}
+	return (ret);
 }
 
-
-char	**wilcards_type(char **content, char *str)
+char	**complex_star(char *str, char **content)
 {
 	int		i;
 	char	**ret;
 
-	if (str[0] == '*' && has_star_after(&str[1]) == 0)
-		ret = ending_chr(str);
-	i = 1;
-	
-	while (str[i])
+	ret = NULL;
+	i = -1;
+	while (str[++ i])
 	{
-		if (str[i] == '*' && ret == 1)
+		if (str[i] == '*')
 		{
-			while (str[i] == '*')
-				i ++;
-				
+			if (star_before(str, i) > 0 && star_after(&str[i]) > 0)
+				w_content(content, &str[star_before(str, i)], star_after(&str[i]), ret);
+			if (star_before(str, i) > 0 && star_after(&str[i]) == 0)
+				w_ending(content, &str[i], ret);
+			if (star_before(str, i) == 0 && star_after(&str[i]) > 0)
+				w_begining(content, str, i, ret);
 		}
-			tes;
 	}
+	return (ret);
 }
 
-char	**complex_star(char *str)
-{
+char	**ft_wildcard(char *wild)
+{	
+	char			**expwild;
 	struct dirent	*content;
 	DIR				*dir;
 	int				size;
-	char			**expwild;
 
 	dir = opendir(".");
 	content = malloc(sizeof(struct dirent));
@@ -110,19 +139,9 @@ char	**complex_star(char *str)
 		size ++;
 	}
 	free (dir);
+	free (content);
 	expwild[size - 1] = NULL;
-	return (expwild);
-}
-
-char	**ft_wildcard(char *wild)
-{	
-	char	**expwild;
-
 	if (wild[0] == '*' && !wild[1])
-		expwild = simple_star();
-	else
-		expwild = complex_star(wild);
-	aff_tabcchar(expwild);
-	return (expwild);
+		return (expwild);
+	return (complex_star(wild, expwild));
 }
-*/

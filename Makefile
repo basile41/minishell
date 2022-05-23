@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/20 17:39:06 by cmarion          ###   ########.fr        #
+#    Updated: 2022/05/23 11:42:06 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,8 @@ SRC_UTILS		=	env_lst.c \
 					ft_env_utils.c \
 					ft_exit.c \
 					ft_pipex_utils.c \
-					ft_signal.c
-					
+					ft_signal.c \
+					ft_wildcards_utils.c
 SRC				= 	main.c \
 					ft_minishell.c \
 					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
