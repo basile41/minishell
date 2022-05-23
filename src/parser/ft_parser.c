@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/18 21:41:12 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:37:17 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_parse_pipeline(t_token **toks)
 
 	pl.start = *toks;
 	nb_cmds = 1;
-	while (*toks && (*toks)->type != NEWLINE && (*toks)->type != OR_IF && (*toks)->type != AND_IF)
+	while (*toks && (*toks)->type != ENDLINE && (*toks)->type != OR_IF && (*toks)->type != AND_IF)
 	{
 		if ((*toks)->type == PIPE)
 			nb_cmds++;
