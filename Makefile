@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
+#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/23 11:42:06 by cmarion          ###   ########.fr        #
+#    Updated: 2022/05/23 14:17:32 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,9 @@ SRC_UTILS		=	env_lst.c \
 					ft_exit.c \
 					ft_pipex_utils.c \
 					ft_signal.c \
-					ft_wildcards_utils.c
+					ft_wildcards_utils.c \
+					ft_dup_fd.c
+					
 SRC				= 	main.c \
 					ft_minishell.c \
 					$(addprefix $(PARSER_PATH), $(SRC_PARSER)) \
@@ -82,7 +84,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."

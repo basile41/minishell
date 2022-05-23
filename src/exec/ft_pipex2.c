@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 17:09:23 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:04:09 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ void	ft_pipe_fork(t_pipeline *pl, pid_t *child)
 	ft_fork(child);
 	if (*child == 0)
 	{
-		ret = dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[0]);
+		ret = dup2(pipefd[1], STDOUT_FILENO);
+		close(pipefd[1]);
 		if (ret < 0)
 			ft_exit_perror("dup2");
 		ft_process(pl);
 	}
-	ret = dup2(pipefd[0], STDIN_FILENO);
 	close(pipefd[1]);
-	// waitpid(child, 0, WNOHANG);
+	ret = dup2(pipefd[0], STDIN_FILENO);
+	close(pipefd[0]);
 	if (ret < 0)
 		ft_exit_perror("dup2");
 }
@@ -48,7 +49,6 @@ void	ft_last_cmd(t_pipeline *pl, pid_t *child)
 	ft_fork(child);
 	if (*child == 0)
 		ft_process(pl);
-	// waitpid(*child, &g_data.exit_code, 0);
 }
 
 void	ft_pipeline(t_pipeline *pl, int nb_cmds, pid_t *childs)
