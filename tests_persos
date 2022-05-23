@@ -17,6 +17,9 @@ $variable_inexistante
 cd src
 pwd
 cd ..
-pwd
-cd /tmp
-pwd
+
+les suivants ne fonctionnent pas
+unset HOME
+cd
+unset PWD
+cd ..
