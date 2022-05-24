@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/23 14:20:25 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:59:36 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char **argv, char **envp)
 	while (line)
 	{
 		ft_signal1();
-		line = readline(MS_PROMPT);
+		ft_putstr_fd(MS_PROMPT, 2);
+		line = readline(NULL);
 		ft_signal2();
 		if (line == NULL)
 			break ;
