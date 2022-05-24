@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/13 15:47:37 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:41:51 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct s_global
 	t_token	*tok;
 	int		env_size;
 	int		exit_code;
+	int		fdin_dup;
+	int		fdout_dup;
 }	t_global;
 
 extern t_global	g_data;
