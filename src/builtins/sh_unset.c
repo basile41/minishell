@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 11:16:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/16 14:11:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:37:11 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sh_unset(char **cmd)
 		{
 			ft_dprintf(2, "minishell: unset: `%s': not a valid identifier\n",
 				cmd[i]);
-			exit_code ++;
+			exit_code = 1;
 		}
 	}
 	g_data.exit_code = exit_code;

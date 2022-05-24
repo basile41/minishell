@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/23 14:10:46 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/24 14:17:25 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,61 +24,57 @@
 	}
 }*/
 
-char	**w_content(char **content, char *str, int i, char **ret)
+char	**w_contain(char **content, char *str, int i)
 {
 	int	j;
-	int	k;
-	int	l;
-	int	m;
+	int	cont_size;
 
 	j = -1;
 	while (content[++ j])
 	{
-		k = -1;
-		while (content[j][++ k])
-		{
-			l = k;
-			m = i;
-			while (content[j][l] == str[l] && m --)
-				l ++;
-			if (m == 0)
-			{	
-				ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
-						tabchar_len(ret) * sizeof(char *) + 1);
-				ret[tabchar_len(ret) + 1] = ft_strdup(content[j]);
-			}
+		if (!str_contain(content[j], str, i))
+		{	
+			cont_size = tabchar_len(content);
+			content = tab_del_one(content, j);
+			content = ft_realloc(content, cont_size * sizeof(char *),
+					(cont_size) * sizeof(char *));
+			j --;
 		}
 	}
-	return (ret);
+	return (content);
 }
 
-char	**w_ending(char **content, char *str, char **ret)
+char	**w_ending(char **content, char *str)
 {
 	int	i;
 	int	j;
 	int	k;
+	int	cont_size;
 
 	i = -1;
 	while (content[++ i])
 	{
-		j = ft_strlen(content[i]);
-		k = ft_strlen(str);
-		while (content[i][j --] == str[k --])
+		j = ft_strlen(content[i]) + 1;
+		k = ft_strlen(str) + 1;
+		while (content[i][-- j] == str[-- k])
 			;
-		if (k == 0)
+		if (!(content[i][j + 1] == str[k + 1] && str[k] == '*'))
 		{
-			ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
-					tabchar_len(ret) * sizeof(char *) + 1);
-			ret[tabchar_len(ret) + 1] = ft_strdup(content[i]);
+			cont_size = tabchar_len(content);
+			content = tab_del_one(content, i);
+			content = ft_realloc(content, cont_size * sizeof(char *),
+					(cont_size) * sizeof(char *));
+			i --;
 		}
 	}
-	return (ret);
+	return (content);
 }
 
-char	**w_begining(char **content, char *str, int i, char **ret)
+char	**w_begining(char **content, char *str, int i)
 {	
 	int	j;
 	int	k;
+	int	cont_size;
 
 	j = -1;
 	while (content[++ j])
@@ -86,36 +82,40 @@ char	**w_begining(char **content, char *str, int i, char **ret)
 		k = 0;
 		while (content[j][k] == str[k] && k <= i)
 			k ++;
-		if (i == k)
+		if (i != k)
 		{
-			ret = ft_realloc(ret, tabchar_len(ret) * sizeof(char *),
-					tabchar_len(ret) * sizeof(char *) + 1);
-			ret[tabchar_len(ret) + 1] = ft_strdup(content[j]);
+			cont_size = tabchar_len(content);
+			content = tab_del_one(content, j);
+			content = ft_realloc(content, cont_size * sizeof(char *),
+					(cont_size) * sizeof(char *));
+			j --;
 		}
 	}
-	return (ret);
+	return (content);
 }
 
 char	**complex_star(char *str, char **content)
 {
 	int		i;
-	char	**ret;
 
-	ret = NULL;
 	i = -1;
 	while (str[++ i])
 	{
 		if (str[i] == '*')
 		{
-			if (star_before(str, i) > 0 && star_after(&str[i]) > 0)
-				w_content(content, &str[star_before(str, i)], star_after(&str[i]), ret);
-			if (star_before(str, i) > 0 && star_after(&str[i]) == 0)
-				w_ending(content, &str[i], ret);
-			if (star_before(str, i) == 0 && star_after(&str[i]) > 0)
-				w_begining(content, str, i, ret);
+			if (str[i + 1] && str[i + 1] != '*' && star_after(&str[i + 1]) > 0)
+				content = w_contain(content, &str[i + 1],
+						star_after(&str[i + 1]));
+			if (str[i - 1] && star_before(str, i - 1) == 0 && str[i - 1] != '*')
+				content = w_begining(content, str, i);
+			if (str[i + 1] && str[i + 1] != '*' && star_after(&str[i + 1]) == 0)
+			{
+				content = w_ending(content, &str[i + 1]);
+				break ;
+			}
 		}
 	}
-	return (ret);
+	return (content);
 }
 
 char	**ft_wildcard(char *wild)
@@ -126,7 +126,6 @@ char	**ft_wildcard(char *wild)
 	int				size;
 
 	dir = opendir(".");
-	content = malloc(sizeof(struct dirent));
 	content = readdir(dir);
 	expwild = NULL;
 	size = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/23 14:19:19 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:29:07 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ char		**ft_toks_to_strs(t_pipeline *pl);
 int			star_before(char *str, int i);
 int			star_after(char *str);
 int			tabchar_len(char **tchar);
+char		**tab_del_one(char **tchar, int del);
+int			str_contain(char *where, char *what, int len);
 
 void	ft_aff(t_token *first);
 

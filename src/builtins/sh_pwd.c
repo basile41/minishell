@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:42:57 by cmarion           #+#    #+#             */
-/*   Updated: 2022/04/04 17:04:23 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:38:31 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	sh_pwd(void)
 		ft_free_and_exit(1);
 	printf("%s\n", buf);
 	free(buf);
+	g_data.exit_code = 0;
 }
