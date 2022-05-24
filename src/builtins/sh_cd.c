@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:23:02 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/24 13:32:00 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:19:13 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	pwds_actu(char *old)
 	env = g_data.env;
 	while (env && ft_strcmp(env->key, "OLDPWD") != 0)
 		env = env->next;
-	if (old && ft_strcmp(env->key, "OLDPWD") == 0)
+	if (env && old && ft_strcmp(env->key, "OLDPWD") == 0)
 		pwds_actu_in(env, "OLDPWD=", old);
 	env = g_data.env;
 	while (env && ft_strcmp(env->key, "PWD") != 0)
 		env = env->next;
-	if (ft_strcmp(env->key, "PWD") == 0)
+	if (env && ft_strcmp(env->key, "PWD") == 0)
 	{
 		add = NULL;
 		add = getcwd(add, 4096);
@@ -53,7 +53,7 @@ void	home_cd(char *old)
 	env = g_data.env;
 	while (env && ft_strcmp(env->key, "HOME") != 0)
 		env = env->next;
-	if (ft_strcmp(env->key, "HOME") == 0 && env->value
+	if (env && ft_strcmp(env->key, "HOME") == 0 && env->value
 		&& chdir(env->value) == 0)
 		pwds_actu(old);
 	else
