@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:04:27 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/23 14:12:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:08:06 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	ft_exec(char **cmd)
 		execve(path, cmd, ft_get_env());
 		perror(ft_strjoin("minishell: ", *cmd));
 	}
-	exit(127);
+	ft_free_and_exit(127);
+	// exit(127);
 }

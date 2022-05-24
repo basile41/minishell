@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:13:28 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 14:10:11 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:16:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	ft_create_tmp_file(char *here_doc)
 	fd = open(HD_TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR
 			| S_IRGRP | S_IROTH | S_IWUSR);
 	if (fd == -1)
-		ft_exit_perror("open");
+		perror("open");
 	if (here_doc != NULL)
 		write(fd, here_doc, ft_strlen(here_doc));
 	close(fd);
 	fd = open(HD_TMP_FILE, O_RDONLY);
 	if (fd == -1)
-		ft_exit_perror("open");
+		perror("open");
 	unlink(HD_TMP_FILE);
 	return (fd);
 }

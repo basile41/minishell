@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:46:34 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/24 15:07:00 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/24 20:11:10 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	main(int argc, char **argv, char **envp)
 	while (line)
 	{
 		ft_signal1();
-		ft_putstr_fd(MS_PROMPT, 2);
-		line = readline(NULL);
+		line = readline(MS_PROMPT);
 		ft_signal2();
 		if (line == NULL)
 			break ;
