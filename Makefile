@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/24 11:49:33 by cmarion          ###   ########.fr        #
+#    Updated: 2022/05/24 13:13:22 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ_DIRS) $(LIBFT) $(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) -fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 $(LIBFT):	
 					@echo "Compiling libft..."

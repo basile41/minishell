@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/24 10:15:08 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/24 13:08:47 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int			star_before(char *str, int i);
 int			star_after(char *str);
 int			tabchar_len(char **tchar);
 char		**tab_del_one(char **tchar, int del);
+int			str_contain(char *where, char *what, int len);
 
 void	ft_aff(t_token *first);
 

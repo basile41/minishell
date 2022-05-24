@@ -6,11 +6,28 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:55:44 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/24 11:39:16 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/05/24 14:11:58 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	str_contain(char *where, char *what, int len)
+{
+	int	j;
+	int	k;
+
+	j = -1;
+	while (where[++ j])
+	{
+		k = 0;
+		while (where[j + k] == what[k] && k <= len)
+			k ++;
+		if (k == len)
+			return (1);
+	}
+	return (0);
+}
 
 char	**tab_del_one(char **tchar, int del)
 {
@@ -38,10 +55,10 @@ int	tabchar_len(char **tchar)
 
 int	star_before(char *str, int i)
 {
-	while (str[i] && str[i] != '*' && i > 0)
+	while (str[i] && str[i] != '*' && i >= 0)
 		i --;
 	if (str[i] && str[i] == '*')
-		return (i);
+		return (1);
 	return (0);
 }
 
