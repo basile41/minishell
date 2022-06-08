@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/07 15:56:12 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:14:05 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_parse_pipeline(t_token **toks)
 	}
 	pl.end = *toks;
 	ft_pipex(&pl, nb_cmds);
+	ft_dup_fd(0);
 }
 
 // t_token	*ft_get_next_ccom(t_token *curr, int status)
@@ -82,19 +83,18 @@ void	ft_parse_pipeline(t_token **toks)
 // 	return (temp->next);
 // }
 
-
 t_token	*ft_get_next_ccom(t_token *curr, int status)
 {
-	int	parenth;
+	// int	parenth;
 
-	parenth = 0;
+	// parenth = 0;
 	if (curr == NULL)
 		return (NULL);
 	if (status == 0)
 		while (curr && curr->type != AND_IF)
 		{
-			if (curr->type == L_PARENTH)
-				parenth++;
+			// if (curr->type == L_PARENTH)
+			// 	parenth++;
 			curr = curr->next;
 		}
 	else
