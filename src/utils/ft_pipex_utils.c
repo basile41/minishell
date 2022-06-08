@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/08 17:51:05 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:08:30 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**ft_toks_to_strs(t_pipeline *pl)
 	tok = pl->start;
 	i = 0;
 	cmd = NULL;
-	while (tok != pl->end && tok->type != PIPE)
+	while (tok->word && tok != pl->end && tok->type != PIPE)
 	{
 		if (tok->type == WORD)
 		{

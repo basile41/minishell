@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/09 21:19:28 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:24:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ char	*get_env_value(char *var)
 	while (var[i] && var[i] != '=')
 		i ++;
 	if (var[i] == '=' && var[i + 1])
-		return (var + i + 1);
+		return (ft_strdup(var + i + 1));
 	else
-		return (NULL);
+		return (ft_strdup(""));
 }
 
 t_env	*env_last(t_env *lst)

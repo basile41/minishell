@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 19:42:05 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:24:51 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_lstfree_env(void)
 		{
 			free(env->key);
 			free(env->var);
+			free(env->value);
 			temp = env->next;
 			free(env);
 			env = temp;

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:57:01 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/08 17:25:04 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:49:29 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,23 +82,38 @@ void	ft_parse_pipeline(t_token **toks)
 // 	return (temp->next);
 // }
 
+int	ft_if_parenth(int parenth, t_type type)
+{
+	if (type == L_PARENTH)
+		return (parenth + 1);
+	if (type == R_PARENTH)
+		return ((parenth - 1));
+	return (parenth);
+}
+
 t_token	*ft_get_next_ccom(t_token *curr, int status)
 {
-	// int	parenth;
+	int	parenth;
 
-	// parenth = 0;
+	parenth = 0;
 	if (curr == NULL)
 		return (NULL);
 	if (status == 0)
-		while (curr && curr->type != AND_IF)
+	{
+		while (curr && (curr->type != AND_IF || parenth > 0))
 		{
-			// if (curr->type == L_PARENTH)
-			// 	parenth++;
+			parenth = ft_if_parenth(parenth, curr->type);
 			curr = curr->next;
 		}
+	}
 	else
-		while (curr && curr->type != OR_IF)
+	{
+		while (curr && (curr->type != OR_IF || parenth > 0))
+		{
+			parenth = ft_if_parenth(parenth, curr->type);
 			curr = curr->next;
+		}
+	}
 	if (curr == NULL)
 		return (NULL);
 	return (curr->next);
