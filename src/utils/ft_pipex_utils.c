@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/08 17:21:02 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 17:51:05 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ char	**ft_expand_wildc(char **cmd, int *pos, char *word)
 			cmd[*pos + i] = wc[i];
 		cmd[*pos + i] = NULL;
 		*pos += i - 1;
+		free(wc);
 		return (cmd);
 	}
 	cmd = ft_realloc(cmd, (*pos + 1) * sizeof(*cmd), (*pos + 2) * sizeof(*cmd));
-	cmd[*pos] = word;
+	cmd[*pos] = ft_strdup(word);
 	cmd[*pos + 1] = NULL;
 	return (cmd);
 }
