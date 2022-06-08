@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wildcards.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/24 14:17:25 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/08 16:58:21 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ char	**complex_star(char *str, char **content)
 	return (content);
 }
 
-char	**ft_wildcard(char *wild)
+char	**ft_wildcard(char *word)
 {	
 	char			**expwild;
 	struct dirent	*content;
@@ -140,7 +140,7 @@ char	**ft_wildcard(char *wild)
 	free (dir);
 	free (content);
 	expwild[size - 1] = NULL;
-	if (wild[0] == '*' && !wild[1])
+	if (word[0] == '*' && !word[1])
 		return (expwild);
-	return (complex_star(wild, expwild));
+	return (complex_star(word, expwild));
 }

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:21:29 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/12 17:03:01 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:38:19 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ int	ft_expand_status(t_token **tok_exp)
 	free(str);
 	return (1);
 }
+

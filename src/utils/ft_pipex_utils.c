@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/19 11:22:11 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/08 17:21:02 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,33 @@ void	ft_redir(t_token *tok)
 	close(fd);
 }
 
+char	**ft_expand_wildc(char **cmd, int *pos, char *word)
+{
+	char	**wc;
+	int		size;
+	int		i;
+
+	if (ft_strchr(word, '*'))
+	{
+		wc = ft_wildcard(word);
+		size = tabchar_len(wc);
+		cmd = ft_realloc(cmd, (*pos + 1) * sizeof(*cmd),
+				(*pos + size + 1) * sizeof(*cmd));
+		if (cmd == NULL)
+			return (NULL);
+		i = -1;
+		while (++i < size)
+			cmd[*pos + i] = wc[i];
+		cmd[*pos + i] = NULL;
+		*pos += i - 1;
+		return (cmd);
+	}
+	cmd = ft_realloc(cmd, (*pos + 1) * sizeof(*cmd), (*pos + 2) * sizeof(*cmd));
+	cmd[*pos] = word;
+	cmd[*pos + 1] = NULL;
+	return (cmd);
+}
+
 char	**ft_toks_to_strs(t_pipeline *pl)
 {
 	t_token	*tok;
@@ -53,11 +80,7 @@ char	**ft_toks_to_strs(t_pipeline *pl)
 	{
 		if (tok->type == WORD)
 		{
-			cmd = ft_realloc(cmd, (i + 1) * sizeof(*cmd),
-					(i + 2) * sizeof(*cmd));
-			if (cmd == NULL)
-				return (NULL);
-			cmd[i] = tok->word;
+			cmd = ft_expand_wildc(cmd, &i, tok->word);
 			i++;
 		}
 		if (tok->type == IO_NUMBER)
