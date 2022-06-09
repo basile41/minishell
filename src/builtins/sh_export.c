@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 14:05:42 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/09 17:40:50 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void	add_var_to_env(char **cmd)
 			ft_free_env(env);
 			if (key_valid == -1)
 				env_add_back(&g_data.env, env_new(cmd[i], 0));
-			else if (key_valid >= 0)
+			else if (key_valid > 0)
 				env_add_back(&g_data.env, env_new(cmd[i], 1));
 		}
-		else if (key_valid >= 0 && key_nexist)
+		else if (key_valid > 0 && key_nexist)
 			env_add_back(&g_data.env, env_new(cmd[i], 1));
 		else if (key_valid == -1 && key_nexist)
 			env_add_back(&g_data.env, env_new(cmd[i], 0));
