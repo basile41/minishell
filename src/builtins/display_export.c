@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 15:11:20 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/09 16:34:27 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	export_display(void)
 	t_env	*env;
 	int		i;
 
-	tenv = NULL; //ft_calloc(g_data.env_size + 2, sizeof(char *));
+	tenv = ft_calloc(g_data.env_size + 2, sizeof(char *));
 	if (!tenv)
 		ft_free_and_exit(1);
 	env = g_data.env;

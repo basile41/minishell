@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:21:29 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/08 19:39:07 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:56:58 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_quoted	ft_set_quoted(t_quoted q, char c)
 {
-	if (c == '\'')
+	if (c == '\'' && q != DQUOTED)
 		return (QUOTED);
 	if (q == QUOTED)
 		return (NOT_QUOTED);
