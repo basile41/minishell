@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 17:40:50 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/09 17:56:44 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exit_not_a_valid_identifier(char *cmd)
 {
-	ft_dprintf(2, "bash: export: `%s': not a valid identifier\n", cmd);
+	ft_dprintf(2, "minishell: export: `%s': not a valid identifier\n", cmd);
 	g_data.exit_code = 1;
 	return (0);
 }
