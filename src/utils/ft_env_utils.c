@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 18:19:53 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/23 14:01:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:27:55 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*ft_get_path(char *cmd_name)
 		free(path);
 		path = NULL;
 	}
+	free(tmp);
 	ft_free_strs(paths);
 	if (path == NULL)
 		ft_dprintf(2, "%s : command not found\n", cmd_name);

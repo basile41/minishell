@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:04:27 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/24 20:08:06 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:29:12 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@ void	ft_exec(char **cmd)
 		path = ft_get_path(*cmd);
 	else
 		path = *cmd;
+	free(path_var);
 	if (path)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		execve(path, cmd, ft_get_env());
 		perror(ft_strjoin("minishell: ", *cmd));
 	}
+	if (path != *cmd)
+		free(path);
+	ft_free_strs(cmd);
 	ft_free_and_exit(127);
 	// exit(127);
 }

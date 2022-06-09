@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/08 20:24:12 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:31:19 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	env_add_back(t_env **alst, t_env *new)
 	}
 	else
 		*alst = new;
+	g_data.env_size ++;
 }
 
 t_env	*env_new(char *var, int env_disp)

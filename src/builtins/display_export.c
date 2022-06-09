@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/20 17:34:54 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/09 15:11:20 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	print_name_env(char *env)
 	i = 0;
 	while (env[i] && env[i] != '=')
 		i ++;
-	name = malloc(sizeof(char) * i + 1);
+	name = malloc(sizeof(char) * i + 2);
 	if (!name)
 		ft_free_and_exit(1);
 	ft_strlcpy(name, env, i + 1);
-	name[i + 2] = '\0';
+	name[i + 1] = '\0';
 	printf("%s", name);
 	free(name);
 }
@@ -74,7 +74,7 @@ void	export_display(void)
 	t_env	*env;
 	int		i;
 
-	tenv = ft_calloc(sizeof(char *), g_data.env_size + 1);
+	tenv = NULL; //ft_calloc(g_data.env_size + 2, sizeof(char *));
 	if (!tenv)
 		ft_free_and_exit(1);
 	env = g_data.env;
