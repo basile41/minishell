@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/24 15:07:39 by cmarion          ###   ########.fr        #
+#    Updated: 2022/06/09 09:42:33 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC_UTILS		=	env_lst.c \
 					ft_pipex_utils.c \
 					ft_signal.c \
 					ft_wildcards_utils.c \
+					ft_wildcards_utils2.c \
 					ft_dup_fd.c
 SRC				= 	main.c \
 					ft_minishell.c \

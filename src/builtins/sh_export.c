@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:49 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/19 14:12:41 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/09 14:05:42 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	env_name_verif(char *cmd)
 		if (cmd[i] && !(ft_isalnum(cmd[i]) || cmd[i] == '_' || cmd[i] == '='))
 			return (exit_not_a_valid_identifier(cmd));
 		else
-			return (i);
+			return (-1);
 	}
 	else
 		return (exit_not_a_valid_identifier(cmd));

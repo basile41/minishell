@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:55:44 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/24 14:11:58 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/09 13:17:28 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	tabchar_len(char **tchar)
 
 int	star_before(char *str, int i)
 {
-	while (str[i] && str[i] != '*' && i >= 0)
+	while (i >= 0 && str[i] && str[i] != '*')
 		i --;
-	if (str[i] && str[i] == '*')
+	if (i >= 0 && str[i] && str[i] == '*')
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/08 15:06:54 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/09 13:38:35 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int			star_after(char *str);
 int			tabchar_len(char **tchar);
 char		**tab_del_one(char **tchar, int del);
 int			str_contain(char *where, char *what, int len);
+char		**simple_star(char **content);
+void		if_not_found(char **content, char *str);
 
 void	ft_aff(t_token *first);
 
