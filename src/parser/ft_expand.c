@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/08 19:39:03 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:26:00 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,18 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 	return (i);
 }
 
-t_token	*ft_do_expand_in(t_token *tok_exp, char **word, t_quoted quoted)
+t_token	*ft_do_expand_in(t_token *tok_exp, char **word, t_quoted *quoted)
 {
-	if (quoted == QUOTED)
+	if (*quoted == QUOTED)
 	{
 		tok_exp->word = ft_add_to_str(tok_exp->word, *word + 1,
 				ft_q_size(*word));
 		*word += ft_q_size(*word) + 1;
+		*quoted = NOT_QUOTED;
 	}
 	else if (**word == '$')
-		*word += ft_expand_dollar(&tok_exp, *word, quoted);
-	else if (quoted == DQUOTED && **word != '\"')
+		*word += ft_expand_dollar(&tok_exp, *word, *quoted);
+	else if (*quoted == DQUOTED && **word != '\"')
 		tok_exp->word = ft_add_to_str(tok_exp->word, *word, 1);
 	return (tok_exp);
 }
@@ -97,7 +98,7 @@ t_token	*ft_do_expand(t_token *tok_exp, char *word)
 				tok_exp->word = ft_add_to_str(tok_exp->word, word, i);
 			word += i;
 			i = 0;
-			tok_exp = ft_do_expand_in(tok_exp, &word, quoted);
+			tok_exp = ft_do_expand_in(tok_exp, &word, &quoted);
 			if (*word)
 				word++;
 		}
@@ -119,7 +120,7 @@ t_token	*ft_expand(t_token **tok)
 	if ((*tok)->type != WORD && 0 == (ft_strchr(word, '$')
 			|| ft_strchr(word, '\'') || ft_strchr(word, '\"')))
 		return (*tok);
-	*tok = ft_new_tok(NULL, WORD);
+	*tok = ft_new_tok("", WORD);
 	start = *tok;
 	end = ft_do_expand(*tok, word);
 	if (tmp->prev)
