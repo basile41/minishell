@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 14:13:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:14:43 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	ft_tok_rec(char *line)
 	{
 		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
 			strs[i - 1]);
+		g_data.exit_code = 2;
 		ft_free_strs(strs);
 		return (2);
 	}
