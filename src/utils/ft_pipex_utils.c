@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/08 19:08:30 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 13:48:17 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_expand_cmd(t_pipeline *pl)
 	pl->start = ft_expand(&pl->start);
 	// 	printf("%s\n", pl->start->word);
 	// ft_expand(&pl->start);
-	while (tok != pl->end && tok->type != PIPE)
+	while (tok && tok != pl->end && tok->type != PIPE)
 	{
 		// printf("%s\n", (tok)->word);
 		ft_expand(&tok);

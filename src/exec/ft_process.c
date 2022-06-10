@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_process.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:37:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/09 15:30:53 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:09:29 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void	ft_process(t_pipeline *pl)
 	cmd = ft_toks_to_strs(pl);
 	if (cmd == NULL)
 		exit(EXIT_SUCCESS);
-	ft_exec(cmd);
+	if (is_builtins(*cmd))
+	{
+		builtins_ex(cmd);
+		ft_free_strs(cmd);
+		ft_free_and_exit(g_data.exit_code);
+	}
+	else
+		ft_exec(cmd);
 	ft_free_strs(cmd);
 }
