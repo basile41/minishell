@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:13:28 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 14:54:11 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 17:32:46 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	ft_heredoc(char	*delimiter)
 	int		fd;
 
 	here_doc = NULL;
+	signal(SIGINT, ft_handler_hd);
 	line = readline("> ");
+	ft_signal2();
 	while (line && ft_strcmp(line, delimiter))
 	{
 		here_doc = ft_add_to_str(here_doc, line, ft_strlen(line));
