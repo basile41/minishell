@@ -4,3 +4,4 @@ obj
 libft/libft.a
 *.git
 notes
+ignoreliberror

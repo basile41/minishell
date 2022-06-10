@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 18:32:32 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:06:56 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	**w_contain(char **content, char *str, int i)
 {
 	int		j;
-	int		count_size;
 	char	*point;
 
 	j = -1;
@@ -24,13 +23,11 @@ char	**w_contain(char **content, char *str, int i)
 	{
 		if (!str_contain(content[j], str, i))
 		{	
-			count_size = tabchar_len(content);
 			content = tab_del_one(content, j);
 			j --;
 		}
 		else if (!point && ft_strchr(content[j], '.'))
 		{	
-			count_size = tabchar_len(content);
 			content = tab_del_one(content, j);
 			j --;
 		}
@@ -43,7 +40,6 @@ char	**w_ending(char **content, char *str)
 	int	i;
 	int	j;
 	int	k;
-	int	count_size;
 
 	i = -1;
 	while (content[++ i])
@@ -54,7 +50,11 @@ char	**w_ending(char **content, char *str)
 			;
 		if (!(content[i][j + 1] == str[k + 1] && str[k] == '*'))
 		{
-			count_size = tabchar_len(content);
+			content = tab_del_one(content, i);
+			i --;
+		}
+		else if (str[0] != '.' && content[i][0] == '.')
+		{
 			content = tab_del_one(content, i);
 			i --;
 		}
@@ -66,7 +66,6 @@ char	**w_begining(char **content, char *str, int i)
 {	
 	int	j;
 	int	k;
-	int	count_size;
 
 	j = -1;
 	while (content[++ j])
@@ -76,7 +75,6 @@ char	**w_begining(char **content, char *str, int i)
 			k ++;
 		if (i != k)
 		{
-			count_size = tabchar_len(content);
 			content = tab_del_one(content, j);
 			j --;
 		}
