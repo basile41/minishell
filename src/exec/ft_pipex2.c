@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 14:53:13 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:12:10 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void	ft_pipe_fork(t_pipeline *pl, pid_t *child)
 		if (ret < 0)
 			ft_exit_perror("dup2");
 		ft_process(pl);
+		exit(0);
 	}
 	close(pipefd[1]);
 	ret = dup2(pipefd[0], STDIN_FILENO);
-	close(pipefd[0]);
 	if (ret < 0)
 		ft_exit_perror("dup2");
+	close(pipefd[0]);
 }
 
 void	ft_last_cmd(t_pipeline *pl, pid_t *child)

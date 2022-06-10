@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:39:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 14:57:23 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:11:42 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_expand_cmd(t_pipeline *pl)
 
 	tok = pl->start->next;
 	pl->start = ft_expand(&pl->start);
-	while (tok != pl->end && tok->type != PIPE)
+	while (tok && tok != pl->end && tok->type != PIPE)
 	{
 		ft_expand(&tok);
 		tok = tok->next;
