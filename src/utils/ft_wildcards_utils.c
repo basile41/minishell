@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:55:44 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 13:17:28 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:49:40 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ char	**tab_del_one(char **tchar, int del)
 	{
 		free (tchar[del]);
 		if (tchar[del + 1])
+		{
 			tchar[del] = ft_strdup(tchar[del + 1]);
+			if (!tchar[del])
+				ft_free_and_exit(EXIT_FAILURE);
+		}
 		else
 			tchar[del] = NULL;
 		del ++;

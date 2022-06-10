@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/09 13:38:35 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:06:58 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int			ft_tok_rec(char *line);
 void		ft_parse_env(char **envp);
 int			ft_heredoc(char	*delimiter);
 int			ft_check_tok(t_token *last, t_type type);
-int			ft_is_redir(t_type type);
+void		ft_del_cmd(t_token **tok);
+//int			ft_is_redir(t_type type);
+void		ft_open_redir(t_token *tok);
 void		ft_parser(t_token *toks);
 t_token		*ft_expand(t_token **tok);
 char		**ft_wildcard(char *word);
@@ -103,6 +105,6 @@ int			str_contain(char *where, char *what, int len);
 char		**simple_star(char **content);
 void		if_not_found(char **content, char *str);
 
-void	ft_aff(t_token *first);
+void		ft_aff(t_token *first);
 
 #endif

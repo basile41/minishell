@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:04:27 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/09 16:29:12 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:52:31 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ void	ft_exec(char **cmd)
 		free(path);
 	ft_free_strs(cmd);
 	ft_free_and_exit(127);
-	// exit(127);
 }

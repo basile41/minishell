@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:41:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/21 16:41:51 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:58:23 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_token
 {
 	char			*word;
 	t_type			type;
-	// struct s_token	*sub;
 	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;
@@ -60,7 +59,6 @@ typedef struct s_pipeline
 {
 	t_token				*start;
 	t_token				*end;
-	// struct s_pipeline	*next;
 }	t_pipeline;
 
 typedef struct s_global

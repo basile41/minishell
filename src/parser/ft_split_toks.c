@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_toks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:02:38 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/16 14:13:32 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:56:09 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	ft_get_end_quote(char *s)
 		i++;
 	if (s[i] == '\0')
 	{
-		ft_dprintf(2, "minishell: unexpected NL while looking for matching `%c'\n",
-			*s);
+		ft_dprintf(2,
+			"minishell: unexpected NL while looking for matching `%c'\n", *s);
 		return (-1);
 	}
 	if (s[i] == *s)

@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/09 17:53:14 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:52:59 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	ft_pipex(t_pipeline *pl, int nb_cmds)
 	int		status;
 
 	memset(childs, '\0', 4096 * sizeof(*childs));
-	// childs = ft_calloc((nb_cmds + 1), sizeof(*childs));
-	// if (childs == NULL)
-	// 	ft_exit_perror("malloc");
 	tok = pl->start;
 	if (nb_cmds == 1)
 		ft_simple_cmd(pl, childs);
@@ -62,5 +59,4 @@ void	ft_pipex(t_pipeline *pl, int nb_cmds)
 				g_data.exit_code = WEXITSTATUS(status);
 		}
 	}
-	// free(childs);
 }

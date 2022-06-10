@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:27:30 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/10 14:06:56 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:33:06 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ char	**ft_wildcard(char *word)
 		expwild = ft_realloc(expwild, (size + 1) * sizeof(char *),
 				(size + 2) * sizeof(char *));
 		expwild[size - 1] = ft_strdup(content->d_name);
+		if (!expwild[size - 1])
+			ft_free_and_exit(EXIT_FAILURE);
 		content = readdir(dir);
 		size ++;
 	}

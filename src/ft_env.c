@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/09 14:43:30 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:39:37 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ char	**ft_get_env(void)
 		if (env == NULL)
 			return (NULL);
 		env[i] = ft_strdup(curr->var);
+		if (!env[i])
+			ft_free_and_exit(EXIT_FAILURE);
 		i++;
 		curr = curr->next;
 	}

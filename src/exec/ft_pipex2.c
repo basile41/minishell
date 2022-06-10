@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:54:54 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/21 17:04:09 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:53:13 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,3 @@ void	ft_pipeline(t_pipeline *pl, int nb_cmds, pid_t *childs)
 		pl->start = pl->start->next;
 	}
 }
-
-// int	main(int argc, char **argv, char **envp)
-// {
-// 	(void)argc;
-// 	ft_bzero(&g_data, sizeof(g_data));
-// 	ft_fill_env(envp);
-// 	printf("%s\n", ft_get_path(argv[1]));
-// }

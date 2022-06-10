@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_tok.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:07:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/20 14:22:41 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:53:39 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_check_word(t_token *last)
 
 int	ft_check_tok_in(t_token *last, t_type type)
 {
-
 	if ((type == OR_IF || type == AND_IF || type == PIPE || type == ENDLINE)
 		&& last->type != WORD && last->type != R_PARENTH
 		&& last->type != IO_NUMBER)

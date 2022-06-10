@@ -6,27 +6,17 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:55:44 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 18:37:57 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:57:38 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*void	aff_tabcchar(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		printf("%s, %d\n", tab[i], i);
-		i ++;
-	}
-}*/
-
 void	if_not_found(char **content, char *str)
 {
 	content[0] = ft_strdup(str);
+	if (!content[0])
+		ft_free_and_exit(EXIT_FAILURE);
 	content [1] = NULL;
 }
 

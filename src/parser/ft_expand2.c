@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:21:29 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 16:56:58 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:53:55 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ int	ft_expand_status(t_token **tok_exp)
 	free(str);
 	return (1);
 }
-

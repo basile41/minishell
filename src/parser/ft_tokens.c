@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tokens.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:35:55 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/07 15:13:25 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:39:06 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_token	*ft_new_tok(char *word, t_type type)
 	if (new == NULL)
 		return (NULL);
 	if (word)
+	{
 		new->word = ft_strdup(word);
+		if (!new->word)
+			ft_free_and_exit(EXIT_FAILURE);
+	}
 	new->type = type;
 	return (new);
 }

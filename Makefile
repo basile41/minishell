@@ -6,7 +6,7 @@
 #    By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:43:49 by bregneau          #+#    #+#              #
-#    Updated: 2022/06/09 09:42:33 by cmarion          ###   ########.fr        #
+#    Updated: 2022/06/10 15:03:03 by cmarion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC_PARSER		=	ft_tok_rec.c \
 					ft_heredoc.c \
 					ft_check_tok.c \
 					ft_parser.c \
+					ft_redir.c \
 					ft_expand.c \
 					ft_expand2.c \
 					ft_wildcards.c

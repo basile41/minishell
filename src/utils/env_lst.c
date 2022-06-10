@@ -6,7 +6,7 @@
 /*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/09 14:31:19 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 14:44:15 by cmarion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ char	*get_env_key(char *var)
 char	*get_env_value(char *var)
 {
 	int		i;
+	char	*ret;
 
 	i = 0;
 	while (var[i] && var[i] != '=')
 		i ++;
 	if (var[i] == '=' && var[i + 1])
-		return (ft_strdup(var + i + 1));
+		ret = ft_strdup(var + i + 1);
 	else
-		return (ft_strdup(""));
+		ret = ft_strdup("");
+	if (!ret)
+		ft_free_and_exit(EXIT_FAILURE);
+	return (ret);
 }
 
 t_env	*env_last(t_env *lst)
@@ -69,8 +73,10 @@ t_env	*env_new(char *var, int env_disp)
 
 	new = malloc(sizeof (t_env));
 	if (!new)
-		ft_free_and_exit(1);
+		ft_free_and_exit(EXIT_FAILURE);
 	new->var = ft_strdup(var);
+	if (!new->var)
+		ft_free_and_exit(EXIT_FAILURE);
 	new->key = get_env_key(new->var);
 	new->value = get_env_value(new->var);
 	new->env_disp = env_disp;
