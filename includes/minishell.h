@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 15:06:58 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/10 17:31:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char		*ft_get_value(char *key);
 char		*ft_get_path(char *cmd_name);
 void		ft_free_and_exit(int status);
 void		ft_exit_perror(char *message);
+void		ft_handler_hd(int signum);
 void		ft_signal1(void);
 void		ft_signal2(void);
 void		ft_dup_fd(int b);

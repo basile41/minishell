@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 14:39:37 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:36:31 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ void	ft_fill_env(char **envp)
 	g_data.env_size = 0;
 	g_data.env = env_new(envp[0], 1);
 	i = 1;
-	while (envp[i])
-	{
-		env_add_back(&g_data.env, env_new(envp[i], 1));
-		i ++;
-	}
+	if (*envp)
+		while (envp[i])
+		{
+			env_add_back(&g_data.env, env_new(envp[i], 1));
+			i ++;
+		}
 }

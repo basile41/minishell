@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:39:11 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/24 13:32:48 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:26:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sh_env(void)
 		g_data.exit_code = 1;
 	while (env)
 	{
-		if (env->env_disp)
+		if (env->env_disp && env->var)
 		{
 			printf("%s", env->key);
 			if (env->value)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 11:16:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/24 13:37:11 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/20 15:50:24 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	cmd_verif(char *cmd)
 {
 	int	i;
 
-	if (!ft_isalpha(cmd[0]))
+	if (!ft_isalpha(cmd[0]) && cmd[0] != '_')
 		return (0);
 	i = 1;
 	while (cmd[i])
 	{
-		if (!ft_isalnum(cmd[i]))
+		if (!ft_isalnum(cmd[i]) && cmd[i] != '_')
 			return (0);
 		i ++;
 	}
