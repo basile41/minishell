@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_ex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarion <cmarion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:58:13 by cmarion           #+#    #+#             */
-/*   Updated: 2022/05/19 13:50:22 by cmarion          ###   ########.fr       */
+/*   Updated: 2022/06/20 15:01:26 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	builtins_ex(char **cmd)
 		sh_pwd();
 	else if (!ft_strcmp(*cmd, "unset"))
 		sh_unset(cmd);
+	ft_free_strs(cmd);
 }

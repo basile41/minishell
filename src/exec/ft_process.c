@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:37:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 14:09:29 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:24:46 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_process(t_pipeline *pl)
 	ft_expand_cmd(pl);
 	cmd = ft_toks_to_strs(pl);
 	if (cmd == NULL)
-		exit(EXIT_SUCCESS);
+		ft_free_and_exit(EXIT_SUCCESS);
 	if (is_builtins(*cmd))
 	{
 		builtins_ex(cmd);
