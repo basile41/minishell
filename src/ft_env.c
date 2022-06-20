@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/20 18:41:49 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/20 20:00:41 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,22 @@ void	ft_free_env(t_env *env)
 	if (g_data.env)
 	{
 		temp = g_data.env;
+		if (temp == env)
+			g_data.env = temp->next;
 		while (temp)
 		{
 			if (temp->next == env)
 			{
 				temp->next = env->next;
-				free (env->var);
-				free(env->key);
-				free(env->value);
-				free(env);
 				break ;
 			}
 			temp = temp->next;
 		}
-		g_data.env_size --;
+		free (env->var);
+		free(env->key);
+		free(env->value);
+		free(env);
+		// g_data.env_size --;
 	}
 }
 
