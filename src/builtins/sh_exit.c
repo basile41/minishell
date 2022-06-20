@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:31:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/20 15:12:23 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:38:59 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	__exit(int exit_code, char **cmd)
 	clear_history();
 	ft_free_strs(cmd);
 	ft_free_and_exit(exit_code);
-	// exit(exit_code);
 }
 
 void	sh_exit(char **cmd)

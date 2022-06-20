@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:10:31 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/20 16:17:53 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:12:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,12 @@ t_env	*env_new(char *var, int env_disp)
 	new = malloc(sizeof (t_env));
 	if (!new)
 		ft_free_and_exit(EXIT_FAILURE);
-	if (var)
-	{
-		new->var = ft_strdup(var);
-		if (!new->var)
-			ft_free_and_exit(EXIT_FAILURE);
-		new->key = get_env_key(new->var);
-		new->value = get_env_value(new->var);
-		new->env_disp = env_disp;
-		new->next = NULL;
-	}
-	else
-	{
-		new->var = NULL;
-		new->key = NULL;
-		new->value = NULL;
-		new->env_disp = env_disp;
-		new->next = NULL;
-	}
+	new->var = ft_strdup(var);
+	if (!new->var)
+		ft_free_and_exit(EXIT_FAILURE);
+	new->key = get_env_key(new->var);
+	new->value = get_env_value(new->var);
+	new->env_disp = env_disp;
+	new->next = NULL;
 	return (new);
 }

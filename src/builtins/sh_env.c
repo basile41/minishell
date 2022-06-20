@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:39:11 by cmarion           #+#    #+#             */
-/*   Updated: 2022/06/20 16:26:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:57:48 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	sh_env(void)
 	env = g_data.env;
 	if (!env)
 		g_data.exit_code = 1;
-	while (env)
+	while (env && env->var)
 	{
-		if (env->env_disp && env->var)
+		if (env->env_disp)
 		{
 			printf("%s", env->key);
 			if (env->value)
