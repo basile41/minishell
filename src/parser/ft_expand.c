@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/20 15:22:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:38:51 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	ft_expand_dollar(t_token **tok_exp, char *str, int quoted)
 
 t_token	*ft_do_expand_in(t_token *tok_exp, char **word, t_quoted quoted)
 {
-
 	if (quoted == QUOTED)
 	{
 		tok_exp->word = ft_add_to_str(tok_exp->word, *word + 1,
