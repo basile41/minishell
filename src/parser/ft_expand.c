@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/20 18:44:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:39:44 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ t_token	*ft_expand(t_token **tok)
 	if ((*tok)->type != WORD && 0 == (ft_strchr(word, '$')
 			|| ft_strchr(word, '\'') || ft_strchr(word, '\"')))
 		return (*tok);
-	*tok = ft_new_tok("", WORD);
+	*tok = ft_new_tok(NULL, WORD);
 	start = *tok;
 	end = ft_do_expand(*tok, word);
 	if (tmp->prev)

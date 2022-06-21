@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:46:41 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/20 20:00:41 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:09:14 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_free_env(t_env *env)
 		free(env->key);
 		free(env->value);
 		free(env);
-		// g_data.env_size --;
+		g_data.env_size --;
 	}
 }
 

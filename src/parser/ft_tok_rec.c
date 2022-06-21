@@ -6,13 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:33:44 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/10 15:14:43 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:40 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_type	ft_get_type(char *s)
+t_type	ft_get_type(char *s, char *next)
 {
 	if (ft_strncmp(s, "&&", 2) == 0)
 		return (AND_IF);
@@ -22,7 +22,7 @@ t_type	ft_get_type(char *s)
 		return (DLESS);
 	if (ft_strncmp(s, ">>", 2) == 0)
 		return (DGREAT);
-	if (ft_strncmp(s, "\\n", 2) == 0)
+	if (ft_strncmp(s, "\\n", 2) == 0 && next == NULL)
 		return (ENDLINE);
 	if (*s == '|')
 		return (PIPE);
@@ -77,7 +77,7 @@ int	ft_tok_rec(char *line)
 	i = -1;
 	ret = 1;
 	while (strs[++i] && ret)
-		ret = ft_parse_tok(strs[i], ft_get_type(strs[i]));
+		ret = ft_parse_tok(strs[i], ft_get_type(strs[i], strs[i + 1]));
 	if (ret == 0)
 	{
 		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",

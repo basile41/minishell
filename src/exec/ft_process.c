@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:37:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/20 15:24:46 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:12:07 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_process(t_pipeline *pl)
 	if (is_builtins(*cmd))
 	{
 		builtins_ex(cmd);
-		ft_free_strs(cmd);
 		ft_free_and_exit(g_data.exit_code);
 	}
 	else
